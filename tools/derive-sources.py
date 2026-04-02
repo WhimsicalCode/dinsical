@@ -13,12 +13,14 @@ Pipeline applied to each master (Regular, Bold):
      (hhea 830/−170/200, sTypo 750/−250/200, win 850/350)
      → gives exactly 120 px line height at 100 px font-size
   5. Apply any per-glyph overrides from overlay/sources/Dinsy/
+  6. Apply kern patch from overlay/kern-patch.py
 
 Usage:
     uv run python tools/derive-sources.py [--dry-run]
 """
 
 import argparse
+import importlib.util
 import plistlib
 import shutil
 import sys
@@ -224,6 +226,24 @@ def process_ufo(
         elif item.suffix in (".plist", ".fea"):
             if not dry_run:
                 dst_item.write_text(rename(item.read_text()))
+
+    # Apply kern patch (features.fea only) --------------------------------
+    if overlay_dir is not None and dst_family == "Dinsy":
+        kern_patch_path = overlay_dir.parent / "kern-patch.py"
+        fea_path = dst_ufo / "features.fea"
+        if kern_patch_path.exists() and fea_path.exists() and not dry_run:
+            spec = importlib.util.spec_from_file_location("kern_patch", kern_patch_path)
+            kern_patch = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(kern_patch)
+            original = fea_path.read_text()
+            patched = kern_patch.apply(original)
+            if patched != original:
+                fea_path.write_text(patched)
+                print(f"    kern-patch applied → {fea_path.relative_to(REPO)}")
+            else:
+                print(f"    kern-patch: no changes (already patched?)")
+        elif dry_run and kern_patch_path.exists():
+            print(f"    [dry-run] would apply kern-patch to {fea_path.relative_to(REPO)}")
 
         else:
             if not dry_run:
