@@ -2,15 +2,12 @@ SRCDIR  := $(abspath $(lastword $(MAKEFILE_LIST))/..)
 VERSION := $(shell cat VERSION)
 PYTHON  := uv run --with fontparts --with xmltodict --with fonttools python
 
-SOURCES := $(wildcard sources/*/*.ufo)
-OTFNAMES := $(patsubst sources/%.ufo,otf/%.otf,$(SOURCES))
-TTFNAMES := $(patsubst sources/%.ufo,ttf/%.ttf,$(SOURCES))
-WOFFNAMES := $(patsubst sources/%.ufo,woff/%.woff,$(SOURCES))
-WOFF2NAMES := $(patsubst sources/%.ufo,woff2/%.woff2,$(SOURCES))
-OTFS  := $(patsubst otf/%.otf,fonts/otf/%.otf,$(OTFNAMES))
-TTFS  := $(patsubst ttf/%.ttf,fonts/ttf/%.ttf,$(TTFNAMES))
-WOFFS := $(patsubst woff/%.woff,fonts/woff/%.woff,$(WOFFNAMES))
-WOFF2S := $(patsubst woff2/%.woff2,fonts/woff2/%.woff2,$(WOFF2NAMES))
+SOURCES := $(wildcard sources/Dinsy/*.ufo)
+NAMES   := $(patsubst sources/Dinsy/%.ufo,%,$(SOURCES))
+OTFS    := $(patsubst %,fonts/otf/%.otf,$(NAMES))
+TTFS    := $(patsubst %,fonts/ttf/%.ttf,$(NAMES))
+WOFFS   := $(patsubst %,fonts/woff/%.woff,$(NAMES))
+WOFF2S  := $(patsubst %,fonts/woff2/%.woff2,$(NAMES))
 
 .PHONY: all sources build full release update-upstream clean dist-clean help
 
@@ -46,15 +43,15 @@ help:  ## Show this help
 	@grep -E '^[a-z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 	  awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
 
-fonts/otf/%.otf: sources/%.ufo
+fonts/otf/%.otf: sources/Dinsy/%.ufo
 	@mkdir -p $(@D)
 	tools/process-font.sh $< $@
 
-fonts/ttf/%.ttf: sources/%.ufo
+fonts/ttf/%.ttf: sources/Dinsy/%.ufo
 	@mkdir -p $(@D)
 	tools/process-font.sh $< $@
 
-fonts/woff/%.woff: fonts/ttf/%.ttf
+fonts/woff/%.woff: fonts/ttf/%.woff
 	@mkdir -p $(@D)
 	tools/process-font.sh $< $@
 
@@ -68,6 +65,6 @@ sync_features:
 
 fontbakery:
 	-fontbakery check-universal --verbose --full-lists \
-	  --html fontbakery-variable-report.html variable_ttf/*.ttf
+	  --html fontbakery-variable-report.html fonts/ttf/Dinsy-Var.ttf
 	-fontbakery check-universal --verbose --full-lists \
-	  --html fontbakery-static-report.html fonts/ttf/Dinsy/*.ttf
+	  --html fontbakery-static-report.html fonts/ttf/Dinsy-*.ttf

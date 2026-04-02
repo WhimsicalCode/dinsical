@@ -114,9 +114,9 @@ rm -f variable_ttf/*prep-gasp.ttf
 
 woff2_compress "$out"
 
-mkdir -p "$SRCDIR/fonts/ttf/variable" "$SRCDIR/fonts/woff2/variable"
-cp "$BUILD/variable_ttf/Dinsy-Variable-VF.ttf"   "$SRCDIR/fonts/ttf/variable/Dinsy[slnt,wght].ttf"
-cp "$BUILD/variable_ttf/Dinsy-Variable-VF.woff2"  "$SRCDIR/fonts/woff2/variable/Dinsy[slnt,wght].woff2"
+mkdir -p "$SRCDIR/fonts/ttf" "$SRCDIR/fonts/woff2"
+cp "$BUILD/variable_ttf/Dinsy-Variable-VF.ttf"   "$SRCDIR/fonts/ttf/Dinsy-Var.ttf"
+cp "$BUILD/variable_ttf/Dinsy-Variable-VF.woff2"  "$SRCDIR/fonts/woff2/Dinsy-Var.woff2"
 
 # ---------------------------------------------------------------------------
 # Static masters — interpolated weights + italics
@@ -158,21 +158,21 @@ done
 # Compile static fonts (TTF + OTF in parallel, then woff/woff2)
 # ---------------------------------------------------------------------------
 mkdir -p \
-    "$SRCDIR/fonts/ttf/Dinsy" \
-    "$SRCDIR/fonts/otf/Dinsy" \
-    "$SRCDIR/fonts/woff/Dinsy" \
-    "$SRCDIR/fonts/woff2/Dinsy"
+    "$SRCDIR/fonts/ttf" \
+    "$SRCDIR/fonts/otf" \
+    "$SRCDIR/fonts/woff" \
+    "$SRCDIR/fonts/woff2"
 
 for ufo in "$BUILD/static/Dinsy/"*.ufo; do
     name=$(basename "$ufo" .ufo)
-    "$TOOLSDIR/process-font.sh" "$ufo" "$SRCDIR/fonts/ttf/Dinsy/$name.ttf" &
-    "$TOOLSDIR/process-font.sh" "$ufo" "$SRCDIR/fonts/otf/Dinsy/$name.otf" &
+    "$TOOLSDIR/process-font.sh" "$ufo" "$SRCDIR/fonts/ttf/$name.ttf" &
+    "$TOOLSDIR/process-font.sh" "$ufo" "$SRCDIR/fonts/otf/$name.otf" &
 done
 wait
 
-for ttf in "$SRCDIR/fonts/ttf/Dinsy/"*.ttf; do
+for ttf in "$SRCDIR/fonts/ttf/"Dinsy-[!V]*.ttf; do
     name=$(basename "$ttf" .ttf)
-    "$TOOLSDIR/process-font.sh" "$ttf" "$SRCDIR/fonts/woff/Dinsy/$name.woff" &
-    "$TOOLSDIR/process-font.sh" "$ttf" "$SRCDIR/fonts/woff2/Dinsy/$name.woff2" &
+    "$TOOLSDIR/process-font.sh" "$ttf" "$SRCDIR/fonts/woff/$name.woff" &
+    "$TOOLSDIR/process-font.sh" "$ttf" "$SRCDIR/fonts/woff2/$name.woff2" &
 done
 wait
