@@ -1,139 +1,104 @@
 #!/bin/bash
 # Full build: interpolate all weights + generate italics + variable font +
-# static fonts in all formats.  Results are synced back to fonts/.
+# static fonts in all formats.  Results land in $SRCDIR/fonts/.
 #
-# The build runs in a scratch directory (/tmp/dinsy-build) so the source
-# tree stays clean.  The full source tree (including .git) is rsynced to
-# scratch so that git commands work correctly there.
+# All intermediate files go into $SRCDIR/.build/ — only the two committed
+# master UFOs are copied in; the real source tree is never written to.
 #
 # Version string (release vs dev) is determined by tools/update-version.sh:
-#   release — VERSION file matches a git tag, working tree clean
-#   dev     — otherwise
+#   release — working tree is clean
+#   dev     — uncommitted changes present
 
 set -e
 
 SRCDIR="$(cd "$(dirname "$0")/.." && pwd)"
-SCRATCH="${SCRATCH:-/tmp/dinsy-build}"
+BUILD="$SRCDIR/.build"
 TOOLSDIR="$SRCDIR/tools"
 
 # Prefer GNU sed
 if command -v gsed >/dev/null 2>&1; then SED=gsed; else SED=sed; fi
 
-# Python with required packages via uv
 PYTHON="uv run --with fontparts --with xmltodict --with fonttools python"
 NPROC="$(nproc 2>/dev/null || sysctl -n hw.logicalcpu 2>/dev/null || echo 4)"
 
 # ---------------------------------------------------------------------------
-# Set up scratch
+# Set up build directory
 # ---------------------------------------------------------------------------
-mkdir -p "$SCRATCH"
-rm -rf "$SCRATCH"/* "$SCRATCH"/.??* 2>/dev/null || true
-rsync -raWH --delete "$SRCDIR"/./ "$SCRATCH"/./
-cd "$SCRATCH"
+rm -rf "$BUILD"
+mkdir -p \
+    "$BUILD/sources/Dinsy" \
+    "$BUILD/vfwork/Dinsy" \
+    "$BUILD/static/Dinsy"
 
-# ---------------------------------------------------------------------------
-# Version stamp
-# ---------------------------------------------------------------------------
-version=$(tools/update-version.sh)
+# Copy master UFOs into build dir
+cp -r "$SRCDIR/sources/Dinsy/Dinsy-Regular.ufo" "$BUILD/sources/Dinsy/"
+cp -r "$SRCDIR/sources/Dinsy/Dinsy-Bold.ufo"    "$BUILD/sources/Dinsy/"
+
+# Sync features.fea from Regular master to Bold
+cp "$BUILD/sources/Dinsy/Dinsy-Regular.ufo/features.fea" \
+   "$BUILD/sources/Dinsy/Dinsy-Bold.ufo/features.fea"
+
+# Version-stamp the build copies (leaves real sources untouched)
+version=$(cd "$SRCDIR" && BUILD_SOURCES="$BUILD/sources" tools/update-version.sh)
 echo "$version"
 
-make clean 2>/dev/null || rm -rf fonts
-
 # ---------------------------------------------------------------------------
-# Sync features.fea from master to other UFOs
+# VF masters — interpolated weights + italics
 # ---------------------------------------------------------------------------
-cd "$SCRATCH/sources"
-masterdir=Dinsy/Dinsy-Regular.ufo
-for s in Regular Bold; do
-    dir=Dinsy/Dinsy-$s.ufo
-    [ "$dir" != "$masterdir" ] && cp "$masterdir/features.fea" "$dir/"
-done
-
-# ---------------------------------------------------------------------------
-# Generate VF masters (interpolated weights + italics)
-# ---------------------------------------------------------------------------
-mkdir -p "$SCRATCH/sources/vfwork/Dinsy"
-cp -r Dinsy/Dinsy-Regular.ufo "$SCRATCH/sources/vfwork/Dinsy/"
-cp -r Dinsy/Dinsy-Bold.ufo    "$SCRATCH/sources/vfwork/Dinsy/"
+cp -r "$BUILD/sources/Dinsy/Dinsy-Regular.ufo" "$BUILD/vfwork/Dinsy/"
+cp -r "$BUILD/sources/Dinsy/Dinsy-Bold.ufo"    "$BUILD/vfwork/Dinsy/"
 
 for weight in Light Heavy Black; do
-    case $weight in
-        Light) w=3 ;; Heavy) w=8 ;; Black) w=9 ;;
-    esac
+    case $weight in Light) w=3;; Heavy) w=8;; Black) w=9;; esac
     $PYTHON "$TOOLSDIR/interpolate-font.py" \
-        --dest="$SCRATCH/sources/vfwork/Dinsy/Dinsy-$weight.ufo" \
-        --weight=$w \
-        Dinsy/Dinsy-Regular.ufo Dinsy/Dinsy-Bold.ufo
+        --dest="$BUILD/vfwork/Dinsy/Dinsy-$weight.ufo" --weight=$w \
+        "$BUILD/sources/Dinsy/Dinsy-Regular.ufo" \
+        "$BUILD/sources/Dinsy/Dinsy-Bold.ufo"
 done
 
-# Fixup Black: copy ordfeminine/ordmasculine and dnom digits from Heavy
+# Fixup Black: borrow ordfeminine/ordmasculine + dnom digits from Heavy
 for name in ordfeminine ordmasculine \
     zero.dnom one.dnom two.dnom three.dnom four.dnom \
     five.dnom six.dnom seven.dnom eight.dnom nine.dnom; do
-    cp "$SCRATCH/sources/vfwork/Dinsy/Dinsy-Heavy.ufo/glyphs/$name.glif" \
-       "$SCRATCH/sources/vfwork/Dinsy/Dinsy-Black.ufo/glyphs/"
+    cp "$BUILD/vfwork/Dinsy/Dinsy-Heavy.ufo/glyphs/$name.glif" \
+       "$BUILD/vfwork/Dinsy/Dinsy-Black.ufo/glyphs/"
 done
 
-# Generate italic counterparts for VF
+# Italic VF counterparts
 for weight in Light Regular Bold Black; do
     [ "$weight" = "Regular" ] && stylename="Italic" || stylename="${weight}Italic"
-    cp -r "$SCRATCH/sources/vfwork/Dinsy/Dinsy-$weight.ufo" \
-          "$SCRATCH/sources/vfwork/Dinsy/Dinsy-$stylename.ufo"
+    cp -r "$BUILD/vfwork/Dinsy/Dinsy-$weight.ufo" \
+          "$BUILD/vfwork/Dinsy/Dinsy-$stylename.ufo"
     $PYTHON "$TOOLSDIR/copy-missing-italics.py" \
-        --source "$SCRATCH/sources/vfwork/Dinsy/Dinsy-$weight.ufo" \
-        --dest   "$SCRATCH/sources/vfwork/Dinsy/Dinsy-$stylename.ufo" \
+        --source "$BUILD/vfwork/Dinsy/Dinsy-$weight.ufo" \
+        --dest   "$BUILD/vfwork/Dinsy/Dinsy-$stylename.ufo" \
         --uprights "$SRCDIR/sources/Dinsy/upright-in-italic-dinsy.enc"
 done
 
-# ---------------------------------------------------------------------------
-# Generate static masters (interpolated weights + italics)
-# ---------------------------------------------------------------------------
-cd "$SCRATCH/sources"
+# Remove "Regular" from internal VF source name
+$SED -i 's/\(Dinsy\).Regular/\1/' \
+    "$BUILD/vfwork/Dinsy/Dinsy-Regular.ufo/fontinfo.plist"
 
-for weight in Light Medium SemiBold Heavy Black; do
-    case $weight in
-        Light)    w=3 ;; Medium)   w=5 ;; SemiBold) w=6 ;;
-        Heavy)    w=8 ;; Black)    w=9 ;;
-    esac
-    $PYTHON "$TOOLSDIR/interpolate-font.py" \
-        --dest="$SCRATCH/sources/Dinsy/Dinsy-$weight.ufo" \
-        --weight=$w \
-        Dinsy/Dinsy-Regular.ufo Dinsy/Dinsy-Bold.ufo
-done
-
-# Fixup Black for static
-for name in ordfeminine ordmasculine \
-    zero.dnom one.dnom two.dnom three.dnom four.dnom \
-    five.dnom six.dnom seven.dnom eight.dnom nine.dnom; do
-    cp "$SCRATCH/sources/Dinsy/Dinsy-Heavy.ufo/glyphs/$name.glif" \
-       "$SCRATCH/sources/Dinsy/Dinsy-Black.ufo/glyphs/"
-done
-
-# Generate italic counterparts for statics
-for weight in Light Regular Medium SemiBold Bold Heavy Black; do
-    [ "$weight" = "Regular" ] && stylename="Italic" || stylename="${weight}Italic"
-    cp -r "$SCRATCH/sources/Dinsy/Dinsy-$weight.ufo" \
-          "$SCRATCH/sources/Dinsy/Dinsy-$stylename.ufo"
-    $PYTHON "$TOOLSDIR/copy-missing-italics.py" \
-        --source "$SCRATCH/sources/Dinsy/Dinsy-$weight.ufo" \
-        --dest   "$SCRATCH/sources/Dinsy/Dinsy-$stylename.ufo" \
-        --uprights "$SRCDIR/sources/Dinsy/upright-in-italic-dinsy.enc" \
-        --overwrite a=a.ss02
-done
+# Nuke inconsistent anchors
+$PYTHON "$TOOLSDIR/nuke-inconsistent-anchors.py" "$BUILD/vfwork/Dinsy/Dinsy"*.ufo
 
 # ---------------------------------------------------------------------------
 # Variable font
 # ---------------------------------------------------------------------------
-cd "$SCRATCH"
 
-# Remove "Regular" from internal VF source name
-$SED -i 's/\(Dinsy\).Regular/\1/' \
-    "$SCRATCH/sources/vfwork/Dinsy/Dinsy-Regular.ufo/fontinfo.plist"
+# Write a build-local designspace with paths relative to .build/
+python3 -c "
+from pathlib import Path
+build = Path('$BUILD')
+src   = Path('$SRCDIR')
+ds = (src / 'Dinsy-Variable.designspace').read_text()
+ds = ds.replace('sources/vfwork/Dinsy/', 'vfwork/Dinsy/')
+(build / 'Dinsy-Variable.designspace').write_text(ds)
+"
 
-# Nuke inconsistent anchors (known issue in source)
-$PYTHON "$TOOLSDIR/nuke-inconsistent-anchors.py" \
-    "$SCRATCH/sources/vfwork/Dinsy/Dinsy"*.ufo
+cp "$SRCDIR/Dinsy-Variable.stylespace" "$BUILD/"
 
+cd "$BUILD"
 fontmake --flatten-components --overlaps-backend pathops \
     Dinsy-Variable.designspace -o variable
 
@@ -141,25 +106,73 @@ statmake --stylespace Dinsy-Variable.stylespace \
          --designspace Dinsy-Variable.designspace \
          variable_ttf/Dinsy-Variable-VF.ttf
 
-# Fix non-hinting
 out=variable_ttf/Dinsy-Variable-VF.ttf
 res=$(gftools fix-nonhinting "$out" "$out.fix" 2>&1)
 echo "$res" | grep -Pv '(^$|prep-gasp\.ttf|^\t|^GASP|^PREP)' || true
 mv "$out.fix" "$out"
 rm -f variable_ttf/*prep-gasp.ttf
 
-woff2_compress variable_ttf/Dinsy-Variable-VF.ttf
+woff2_compress "$out"
 
-mkdir -p fonts/ttf/variable fonts/woff2/variable
-cp variable_ttf/Dinsy-Variable-VF.ttf  "fonts/ttf/variable/Dinsy[slnt,wght].ttf"
-cp variable_ttf/Dinsy-Variable-VF.woff2 "fonts/woff2/variable/Dinsy[slnt,wght].woff2"
-
-# ---------------------------------------------------------------------------
-# Static fonts
-# ---------------------------------------------------------------------------
-make -j"$NPROC" build
+mkdir -p "$SRCDIR/fonts/ttf/variable" "$SRCDIR/fonts/woff2/variable"
+cp "$BUILD/variable_ttf/Dinsy-Variable-VF.ttf"   "$SRCDIR/fonts/ttf/variable/Dinsy[slnt,wght].ttf"
+cp "$BUILD/variable_ttf/Dinsy-Variable-VF.woff2"  "$SRCDIR/fonts/woff2/variable/Dinsy[slnt,wght].woff2"
 
 # ---------------------------------------------------------------------------
-# Sync results back to source directory
+# Static masters — interpolated weights + italics
 # ---------------------------------------------------------------------------
-rsync -raWH --exclude='.git' "$SCRATCH/fonts/" "$SRCDIR/fonts/"
+cd "$SRCDIR"
+
+cp -r "$BUILD/sources/Dinsy/Dinsy-Regular.ufo" "$BUILD/static/Dinsy/"
+cp -r "$BUILD/sources/Dinsy/Dinsy-Bold.ufo"    "$BUILD/static/Dinsy/"
+
+for weight in Light Medium SemiBold Heavy Black; do
+    case $weight in Light) w=3;; Medium) w=5;; SemiBold) w=6;; Heavy) w=8;; Black) w=9;; esac
+    $PYTHON "$TOOLSDIR/interpolate-font.py" \
+        --dest="$BUILD/static/Dinsy/Dinsy-$weight.ufo" --weight=$w \
+        "$BUILD/sources/Dinsy/Dinsy-Regular.ufo" \
+        "$BUILD/sources/Dinsy/Dinsy-Bold.ufo"
+done
+
+# Fixup Black for static
+for name in ordfeminine ordmasculine \
+    zero.dnom one.dnom two.dnom three.dnom four.dnom \
+    five.dnom six.dnom seven.dnom eight.dnom nine.dnom; do
+    cp "$BUILD/static/Dinsy/Dinsy-Heavy.ufo/glyphs/$name.glif" \
+       "$BUILD/static/Dinsy/Dinsy-Black.ufo/glyphs/"
+done
+
+# Italic static counterparts
+for weight in Light Regular Medium SemiBold Bold Heavy Black; do
+    [ "$weight" = "Regular" ] && stylename="Italic" || stylename="${weight}Italic"
+    cp -r "$BUILD/static/Dinsy/Dinsy-$weight.ufo" \
+          "$BUILD/static/Dinsy/Dinsy-$stylename.ufo"
+    $PYTHON "$TOOLSDIR/copy-missing-italics.py" \
+        --source "$BUILD/static/Dinsy/Dinsy-$weight.ufo" \
+        --dest   "$BUILD/static/Dinsy/Dinsy-$stylename.ufo" \
+        --uprights "$SRCDIR/sources/Dinsy/upright-in-italic-dinsy.enc" \
+        --overwrite a=a.ss02
+done
+
+# ---------------------------------------------------------------------------
+# Compile static fonts (TTF + OTF in parallel, then woff/woff2)
+# ---------------------------------------------------------------------------
+mkdir -p \
+    "$SRCDIR/fonts/ttf/Dinsy" \
+    "$SRCDIR/fonts/otf/Dinsy" \
+    "$SRCDIR/fonts/woff/Dinsy" \
+    "$SRCDIR/fonts/woff2/Dinsy"
+
+for ufo in "$BUILD/static/Dinsy/"*.ufo; do
+    name=$(basename "$ufo" .ufo)
+    "$TOOLSDIR/process-font.sh" "$ufo" "$SRCDIR/fonts/ttf/Dinsy/$name.ttf" &
+    "$TOOLSDIR/process-font.sh" "$ufo" "$SRCDIR/fonts/otf/Dinsy/$name.otf" &
+done
+wait
+
+for ttf in "$SRCDIR/fonts/ttf/Dinsy/"*.ttf; do
+    name=$(basename "$ttf" .ttf)
+    "$TOOLSDIR/process-font.sh" "$ttf" "$SRCDIR/fonts/woff/Dinsy/$name.woff" &
+    "$TOOLSDIR/process-font.sh" "$ttf" "$SRCDIR/fonts/woff2/Dinsy/$name.woff2" &
+done
+wait

@@ -34,11 +34,13 @@ update-upstream:  ## Pull latest upstream from playbeing/dinish
 	@echo "  git -C dinish log --oneline HEAD@{1}..HEAD"
 	@echo "Then run 'make release' to incorporate."
 
-clean:  ## Remove scratch build dir
-	rm -rf /tmp/dinsy-build
-
-dist-clean: clean  ## Remove scratch + built fonts
+clean:  ## Remove built fonts from repo
 	rm -rf fonts/
+
+clean-build:  ## Remove ephemeral build directory (.build/)
+	rm -rf .build/
+
+dist-clean: clean clean-build  ## Remove all generated files
 
 help:  ## Show this help
 	@grep -E '^[a-z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \

@@ -44,7 +44,11 @@ now=$(date +'%Y/%m/%d %H:%M:%S')
 
 echo "$versionstr"
 
-for ufo in sources/Dinsy/Dinsy*.ufo; do
+# BUILD_SOURCES lets the build script stamp a build-dir copy instead of the
+# real sources, keeping the working tree clean.
+SOURCES_DIR="${BUILD_SOURCES:-$ROOT/sources}"
+
+for ufo in "$SOURCES_DIR"/Dinsy/Dinsy*.ufo; do
     $SED -i \
         -e "/versionMajor/,+1s/>[0-9]*</>$major</" \
         -e "/versionMinor/,+1s/>[0-9]*</>$minor</" \
