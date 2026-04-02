@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kern Compare — Dinsy vs DINsical</title>
+</head>
+<body>
+
+  <div class="toolbar">
+    <span class="toolbar-title">Kern Compare</span>
+
+    <div class="ctrl-row">
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">Weight</span>
+        <select id="sel-weight">
+          <option value="Light">Light</option>
+          <option value="Regular" selected>Regular</option>
+          <option value="Medium">Medium</option>
+          <option value="Bold">Bold</option>
+          <option value="Heavy">Heavy</option>
+          <option value="Black">Black</option>
+        </select>
+      </div>
+      <label class="ctrl-check">
+        <input type="checkbox" id="chk-italic" /> Italic
+      </label>
+
+      <div class="ctrl-sep"></div>
+
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">Size</span>
+        <input type="range" id="rng-size" min="30" max="160" value="60" step="5" />
+        <span class="ctrl-val" id="val-size">60px</span>
+      </div>
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">Line</span>
+        <input type="range" id="rng-lw" min="3" max="30" value="12" step="1" />
+        <span class="ctrl-val" id="val-lw">1.2px</span>
+      </div>
+
+      <div class="ctrl-sep"></div>
+
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">View</span>
+        <div class="toggle-group" id="btn-view-group">
+          <button data-value="overlay" class="active">Overlay</button>
+          <button data-value="sbs">Side by side</button>
+        </div>
+      </div>
+
+      <div class="ctrl-sep"></div>
+
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">Show</span>
+        <div class="toggle-group" id="btn-filter-group">
+          <button data-value="all" class="active">All</button>
+          <button data-value="dinsical">DINsical ≠0</button>
+          <button data-value="dinsy">Dinsy ≠0</button>
+        </div>
+      </div>
+
+      <div class="ctrl-sep"></div>
+
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">Range</span>
+        <div class="toggle-group" id="btn-range-group">
+          <button data-value="ascii" class="active">ASCII</button>
+          <button data-value="latin">Latin+</button>
+          <button data-value="all">All</button>
+        </div>
+      </div>
+
+      <div class="ctrl-sep"></div>
+
+      <label class="ctrl-check">
+        <input type="checkbox" id="chk-baseline" /> Baseline
+      </label>
+    </div>
+  </div>
+
+  <div class="status" id="status">Loading…</div>
+
+  <div class="main-scroll">
+
+    <!-- String preview -->
+    <div class="preview-section">
+      <div class="preview-controls">
+        <div id="preset-btns"></div>
+        <input type="text" id="preview-input" class="preview-input" value="WATER" placeholder="type a word…" />
+      </div>
+      <div class="preview-canvas-wrap" id="preview-wrap"></div>
+    </div>
+
+    <!-- Pair grid -->
+    <div class="grid-wrap">
+      <div id="grid"></div>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-head-left">
+          <span class="modal-pair" id="modal-pair"></span>
+          <span class="modal-meta" id="modal-meta"></span>
+        </div>
+        <button class="modal-close-btn" id="modal-close">✕</button>
+      </div>
+
+      <div class="modal-canvas-wrap" id="modal-canvas-wrap"></div>
+
+      <div class="modal-ctx-label">In context</div>
+      <div class="modal-ctx-wrap" id="modal-ctx-wrap"></div>
+
+      <div class="modal-metrics" id="modal-metrics"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
