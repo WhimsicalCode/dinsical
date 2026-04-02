@@ -6,19 +6,13 @@
   <title>Metrics — Dinsy vs DINsical</title>
   <style>
     /* ── Font faces ─────────────────────────────────────────────────────── */
-    @font-face { font-family: 'Dinsy'; font-weight: 300; font-style: normal;  src: url('/fonts/woff2/Dinsy-Light.woff2')        format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 300; font-style: italic;  src: url('/fonts/woff2/Dinsy-LightItalic.woff2')  format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 400; font-style: normal;  src: url('/fonts/woff2/Dinsy-Regular.woff2')       format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 400; font-style: italic;  src: url('/fonts/woff2/Dinsy-Italic.woff2')        format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 500; font-style: normal;  src: url('/fonts/woff2/Dinsy-Medium.woff2')        format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 500; font-style: italic;  src: url('/fonts/woff2/Dinsy-MediumItalic.woff2') format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 600; font-style: normal;  src: url('/fonts/woff2/Dinsy-SemiBold.woff2')      format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 700; font-style: normal;  src: url('/fonts/woff2/Dinsy-Bold.woff2')          format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 700; font-style: italic;  src: url('/fonts/woff2/Dinsy-BoldItalic.woff2')   format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 800; font-style: normal;  src: url('/fonts/woff2/Dinsy-Heavy.woff2')         format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 800; font-style: italic;  src: url('/fonts/woff2/Dinsy-HeavyItalic.woff2')  format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 900; font-style: normal;  src: url('/fonts/woff2/Dinsy-Black.woff2')         format('woff2'); }
-    @font-face { font-family: 'Dinsy'; font-weight: 900; font-style: italic;  src: url('/fonts/woff2/Dinsy-BlackItalic.woff2')  format('woff2'); }
+    /* Dinsy — variable font (wght 300–900, slnt 0–−12, wdth 75–125) */
+    @font-face {
+      font-family: 'Dinsy';
+      src: url('/fonts/woff2/Dinsy-Var.woff2') format('woff2');
+      font-weight: 300 900;
+      font-style: oblique 0deg 12deg;
+    }
 
     @font-face { font-family: 'DINsical'; font-weight: 300; font-style: normal; src: url('/dinsical/otf/DINsical-Light.otf');        }
     @font-face { font-family: 'DINsical'; font-weight: 300; font-style: italic; src: url('/dinsical/otf/DINsical-LightItalic.otf'); }
@@ -267,6 +261,12 @@
     <span class="ctrl-val" id="val-size">80px</span>
   </div>
 
+  <div class="ctrl-group">
+    <span class="ctrl-lbl">wdth</span>
+    <input type="range" id="rng-wdth" min="75" max="125" value="100" step="1" />
+    <span class="ctrl-val" id="val-wdth">100</span>
+  </div>
+
   <div class="ctrl-sep"></div>
 
   <label class="ctrl-check">
@@ -321,6 +321,9 @@
     <div class="section-body">
       <div class="custom-row">
         <input type="text" id="inline-text" value="Hamburgevons 0.7% fjord" />
+      </div>
+      <div style="font-size:11px;color:#888;margin-bottom:12px;font-family:monospace">
+        Dinsy: font-variation-settings: <span id="fvs-badge" style="color:#444"></span>
       </div>
       <!-- ruler host wraps both spans so rulers span the full text block -->
       <div class="ruler-host" id="inline-host">
@@ -378,18 +381,35 @@ const X_D       = 499;   // Dinsy
 const X_DC      = 479;   // DINsical
 const DESC      = 170;   // hhea descender absolute value
 
-let fontSize  = 80;
+let fontSize   = 80;
 let fontWeight = 400;
 let fontItalic = false;
+let fontWdth   = 100;
 let showRulers = true;
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 function applyFont(el, family) {
-  el.style.fontSize    = fontSize + 'px';
-  el.style.fontWeight  = fontWeight;
-  el.style.fontStyle   = fontItalic ? 'italic' : 'normal';
-  el.style.fontFamily  = `'${family}'`;
-  el.style.lineHeight  = '1';
+  el.style.fontSize   = fontSize + 'px';
+  el.style.fontFamily = `'${family}'`;
+  el.style.lineHeight = '1';
+
+  if (family === 'Dinsy') {
+    // Variable font: drive all axes via font-variation-settings.
+    // slnt: 0 = upright, −12 = full italic
+    const slnt = fontItalic ? -12 : 0;
+    el.style.fontVariationSettings = `'wght' ${fontWeight}, 'slnt' ${slnt}, 'wdth' ${fontWdth}`;
+    el.style.fontWeight = fontWeight; // hint for fallback / matching
+    el.style.fontStyle  = 'normal';   // slnt drives oblique, not font-style
+  } else {
+    el.style.fontVariationSettings = 'normal';
+    el.style.fontWeight = fontWeight;
+    el.style.fontStyle  = fontItalic ? 'italic' : 'normal';
+  }
+}
+
+function varSettingsString() {
+  const slnt = fontItalic ? -12 : 0;
+  return `'wght' ${fontWeight}, 'slnt' ${slnt}, 'wdth' ${fontWdth}`;
 }
 
 function makeRulers() {
@@ -427,6 +447,7 @@ function updateInline() {
   d.textContent  = text;
   dc.textContent = text;
   document.getElementById('inline-rulers').innerHTML = makeRulers();
+  document.getElementById('fvs-badge').textContent = varSettingsString();
   // Size the ruler-host to contain the text
   const host = document.getElementById('inline-host');
   host.style.fontSize = fontSize + 'px';
@@ -503,6 +524,11 @@ document.getElementById('chk-italic').addEventListener('change', e => {
 document.getElementById('rng-size').addEventListener('input', e => {
   fontSize = +e.target.value;
   document.getElementById('val-size').textContent = fontSize + 'px';
+  updateAll();
+});
+document.getElementById('rng-wdth').addEventListener('input', e => {
+  fontWdth = +e.target.value;
+  document.getElementById('val-wdth').textContent = fontWdth;
   updateAll();
 });
 document.getElementById('chk-rulers').addEventListener('change', e => {
