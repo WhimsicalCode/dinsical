@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="K" format="2">
-  <advance width="620" />
+  <advance width="640" />
   <unicode hex="004B" />
   <outline>
     <contour>
       <point x="65" y="0" type="line" />
       <point x="195" y="0" type="line" />
       <point x="195" y="190" type="line" />
-      <point x="284" y="302" type="line" />
-      <point x="452" y="0" type="line" />
-      <point x="601" y="0" type="line" />
-      <point x="367" y="407" type="line" />
-      <point x="584" y="680" type="line" />
-      <point x="429" y="680" type="line" />
-      <point x="195" y="363" type="line" />
+      <point x="291" y="305" type="line" />
+      <point x="469" y="0" type="line" />
+      <point x="621" y="0" type="line" />
+      <point x="374" y="407" type="line" />
+      <point x="602" y="680" type="line" />
+      <point x="445" y="680" type="line" />
+      <point x="195" y="359" type="line" />
       <point x="195" y="680" type="line" />
       <point x="65" y="680" type="line" />
     </contour>

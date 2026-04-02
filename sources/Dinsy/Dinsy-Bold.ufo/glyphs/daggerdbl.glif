@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="daggerdbl" format="2">
-  <advance width="537" />
+  <advance width="552" />
   <unicode hex="2021" />
   <outline>
     <contour>
-      <point x="205" y="-154" type="line" />
-      <point x="334" y="-154" type="line" />
-      <point x="334" y="56" type="line" />
-      <point x="484" y="56" type="line" />
-      <point x="484" y="169" type="line" />
-      <point x="334" y="169" type="line" />
-      <point x="334" y="362" type="line" />
-      <point x="484" y="362" type="line" />
-      <point x="484" y="475" type="line" />
-      <point x="334" y="475" type="line" />
-      <point x="334" y="680" type="line" />
-      <point x="205" y="680" type="line" />
-      <point x="205" y="475" type="line" />
+      <point x="213" y="-154" type="line" />
+      <point x="341" y="-154" type="line" />
+      <point x="341" y="56" type="line" />
+      <point x="499" y="56" type="line" />
+      <point x="499" y="169" type="line" />
+      <point x="341" y="169" type="line" />
+      <point x="341" y="362" type="line" />
+      <point x="499" y="362" type="line" />
+      <point x="499" y="475" type="line" />
+      <point x="341" y="475" type="line" />
+      <point x="341" y="680" type="line" />
+      <point x="213" y="680" type="line" />
+      <point x="213" y="475" type="line" />
       <point x="53" y="475" type="line" />
       <point x="53" y="362" type="line" />
-      <point x="205" y="362" type="line" />
-      <point x="205" y="169" type="line" />
+      <point x="213" y="362" type="line" />
+      <point x="213" y="169" type="line" />
       <point x="53" y="169" type="line" />
       <point x="53" y="56" type="line" />
-      <point x="205" y="56" type="line" />
+      <point x="213" y="56" type="line" />
     </contour>
   </outline>
   <lib>

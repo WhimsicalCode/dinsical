@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Encyr" format="2">
-  <advance width="614" />
+  <advance width="631" />
   <unicode hex="041D" />
-  <anchor x="308" y="-83" name="bottom" />
-  <anchor x="307" y="746" name="top" />
+  <anchor x="317" y="-83" name="bottom" />
+  <anchor x="316" y="746" name="top" />
   <outline>
     <component base="H" />
   </outline>

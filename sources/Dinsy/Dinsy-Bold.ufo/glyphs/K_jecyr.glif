@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Kjecyr" format="2">
-  <advance width="600" />
+  <advance width="619" />
   <unicode hex="040C" />
   <guideline x="0" y="680" angle="0" name="horizontal" />
   <guideline x="291" y="0" angle="90" name="h1" />
   <guideline x="291" y="0" angle="90" name="h1" />
   <outline>
     <component base="Kacyr" />
-    <component base="acutecomb" xOffset="291" yOffset="167" />
+    <component base="acutecomb" xOffset="303" yOffset="167" />
   </outline>
   <lib>
     <dict>

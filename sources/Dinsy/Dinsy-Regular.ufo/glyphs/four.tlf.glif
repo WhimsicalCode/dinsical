@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="four.tlf" format="2">
-  <advance width="504" />
+  <advance width="515" />
   <outline>
-    <component base="four" xOffset="12" />
+    <component base="four" xOffset="11" />
   </outline>
 </glyph>

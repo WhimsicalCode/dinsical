@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="N" format="2">
-  <advance width="663" />
+  <advance width="684" />
   <unicode hex="004E" />
-  <anchor x="337" y="680" name="top" />
+  <anchor x="339" y="680" name="top" />
   <outline>
     <contour>
       <point x="84" y="0" type="line" />
-      <point x="156" y="0" type="line" />
-      <point x="156" y="547" type="line" />
-      <point x="507" y="0" type="line" />
-      <point x="579" y="0" type="line" />
-      <point x="579" y="680" type="line" />
-      <point x="507" y="680" type="line" />
-      <point x="507" y="134" type="line" />
-      <point x="156" y="680" type="line" />
+      <point x="161" y="0" type="line" />
+      <point x="161" y="542" type="line" />
+      <point x="523" y="0" type="line" />
+      <point x="600" y="0" type="line" />
+      <point x="600" y="680" type="line" />
+      <point x="523" y="680" type="line" />
+      <point x="523" y="139" type="line" />
+      <point x="161" y="680" type="line" />
       <point x="84" y="680" type="line" />
     </contour>
   </outline>
@@ -40,13 +40,13 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>84</integer>
+            <integer>86</integer>
             <key>width</key>
             <integer>72</integer>
           </dict>
           <dict>
             <key>position</key>
-            <integer>507</integer>
+            <integer>509</integer>
             <key>width</key>
             <integer>72</integer>
           </dict>

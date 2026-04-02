@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="ishortcyr.loclBGR" format="2">
-  <advance width="512" />
+  <advance width="526" />
   <outline>
     <component base="icyr.loclBGR" />
-    <component base="brevecmb" xOffset="256" yOffset="16" />
+    <component base="brevecmb" xOffset="264" yOffset="16" />
   </outline>
   <lib>
     <dict>

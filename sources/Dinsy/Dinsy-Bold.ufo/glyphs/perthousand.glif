@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="perthousand" format="2">
-  <advance width="1235" />
+  <advance width="1265" />
   <unicode hex="2030" />
   <outline>
-    <component base="divisionslash" xOffset="339" />
-    <component base="zero.dnom" xOffset="558" />
-    <component base="zero.dnom" xOffset="901" />
-    <component base="zero.dnom" xOffset="11" yOffset="276" />
+    <component base="divisionslash" xOffset="297" />
+    <component base="zero.dnom" xOffset="568" />
+    <component base="zero.dnom" xOffset="921" />
+    <component base="zero.dnom" xOffset="12" yOffset="274" />
   </outline>
 </glyph>

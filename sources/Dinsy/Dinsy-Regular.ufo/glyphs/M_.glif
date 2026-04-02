@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="M" format="2">
-  <advance width="752" />
+  <advance width="777" />
   <unicode hex="004D" />
   <outline>
     <contour>
       <point x="84" y="0" type="line" />
-      <point x="156" y="0" type="line" />
-      <point x="156" y="532" type="line" />
-      <point x="348" y="136" type="line" />
-      <point x="404" y="136" type="line" />
-      <point x="596" y="532" type="line" />
-      <point x="596" y="0" type="line" />
-      <point x="668" y="0" type="line" />
-      <point x="668" y="680" type="line" />
-      <point x="596" y="680" type="line" />
-      <point x="376" y="221" type="line" />
-      <point x="156" y="680" type="line" />
+      <point x="161" y="0" type="line" />
+      <point x="161" y="527" type="line" />
+      <point x="360" y="136" type="line" />
+      <point x="418" y="136" type="line" />
+      <point x="616" y="527" type="line" />
+      <point x="616" y="0" type="line" />
+      <point x="693" y="0" type="line" />
+      <point x="693" y="680" type="line" />
+      <point x="616" y="680" type="line" />
+      <point x="389" y="226" type="line" />
+      <point x="161" y="680" type="line" />
       <point x="84" y="680" type="line" />
     </contour>
   </outline>
@@ -42,13 +42,13 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>84</integer>
+            <integer>86</integer>
             <key>width</key>
             <integer>72</integer>
           </dict>
           <dict>
             <key>position</key>
-            <integer>596</integer>
+            <integer>598</integer>
             <key>width</key>
             <integer>72</integer>
           </dict>

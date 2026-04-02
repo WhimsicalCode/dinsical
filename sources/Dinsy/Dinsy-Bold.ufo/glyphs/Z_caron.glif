@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Zcaron" format="2">
-  <advance width="520" />
+  <advance width="536" />
   <unicode hex="017D" />
   <anchor x="258" y="680" name="top" />
   <outline>
     <component base="Z" />
-    <component base="caron" xOffset="12" yOffset="167" />
+    <component base="caron" xOffset="20" yOffset="167" />
   </outline>
   <lib>
     <dict>

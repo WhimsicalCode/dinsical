@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="hacyr" format="2">
-  <advance width="466" />
+  <advance width="482" />
   <unicode hex="0445" />
   <anchor x="234" y="-83" name="bottom" />
-  <anchor x="228" y="579" name="top" />
+  <anchor x="236" y="579" name="top" />
   <outline>
     <component base="x" />
   </outline>

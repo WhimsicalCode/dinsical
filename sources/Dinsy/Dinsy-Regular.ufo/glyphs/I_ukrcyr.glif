@@ -2,9 +2,9 @@
 <glyph name="Iukrcyr" format="2">
   <advance width="245" />
   <unicode hex="0406" />
-  <anchor x="159" y="0" name="b.cedilla" />
+  <anchor x="162" y="0" name="b.cedilla" />
   <anchor x="122" y="-83" name="bottom" />
-  <anchor x="122" y="744" name="top" />
+  <anchor x="122" y="740" name="top" />
   <outline>
     <component base="I" />
   </outline>

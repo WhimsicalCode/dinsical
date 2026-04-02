@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Emcyr" format="2">
-  <advance width="752" />
+  <advance width="777" />
   <unicode hex="041C" />
-  <anchor x="232" y="-83" name="bottom" />
-  <anchor x="376" y="744" name="top" />
+  <anchor x="234" y="-83" name="bottom" />
+  <anchor x="389" y="740" name="top" />
   <outline>
     <component base="M" />
   </outline>

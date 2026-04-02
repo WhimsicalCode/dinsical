@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="ocyr" format="2">
-  <advance width="502" />
+  <advance width="517" />
   <unicode hex="043E" />
-  <anchor x="232" y="0" name="b.cedilla" />
-  <anchor x="252" y="-83" name="bottom" />
-  <anchor x="252" y="579" name="top" />
+  <anchor x="227" y="0" name="b.cedilla" />
+  <anchor x="260" y="-83" name="bottom" />
+  <anchor x="260" y="579" name="top" />
   <outline>
     <component base="o" />
   </outline>

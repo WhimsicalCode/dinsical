@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="tsecyr.loclBGR" format="2">
-  <advance width="525" />
+  <advance width="543" />
   <outline>
     <component base="icyr.loclBGR" />
     <contour>
-      <point x="404" y="-164" type="line" />
-      <point x="525" y="-164" type="line" />
-      <point x="525" y="107" type="line" />
-      <point x="404" y="107" type="line" />
+      <point x="422" y="-164" type="line" />
+      <point x="543" y="-164" type="line" />
+      <point x="543" y="108" type="line" />
+      <point x="422" y="108" type="line" />
     </contour>
   </outline>
   <lib>

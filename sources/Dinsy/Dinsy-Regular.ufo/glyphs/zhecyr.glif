@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="zhecyr" format="2">
-  <advance width="747" />
+  <advance width="783" />
   <unicode hex="0436" />
   <guideline x="263" y="0" angle="90" name="vertical" />
   <guideline x="0" y="499" angle="0" name="horizontal" />
@@ -8,17 +8,17 @@
   <guideline x="0" y="499" angle="0" name="horizontal" />
   <anchor x="748" y="499" name="top" />
   <outline>
-    <component base="kacyr" xOffset="266" />
+    <component base="kacyr" xOffset="284" />
     <contour>
       <point x="13" y="0" type="line" />
-      <point x="95" y="0" type="line" />
-      <point x="259" y="231" type="line" />
-      <point x="360" y="231" type="line" />
-      <point x="360" y="293" type="line" />
-      <point x="265" y="293" type="line" />
-      <point x="122" y="499" type="line" />
-      <point x="41" y="499" type="line" />
-      <point x="207" y="271" type="line" />
+      <point x="100" y="0" type="line" />
+      <point x="264" y="232" type="line" />
+      <point x="375" y="232" type="line" />
+      <point x="375" y="298" type="line" />
+      <point x="279" y="298" type="line" />
+      <point x="123" y="500" type="line" />
+      <point x="36" y="500" type="line" />
+      <point x="212" y="279" type="line" />
     </contour>
   </outline>
   <lib>

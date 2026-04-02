@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="emcyr" format="2">
-  <advance width="642" />
+  <advance width="676" />
   <unicode hex="043C" />
   <outline>
     <contour>
-      <point x="74" y="0" type="line" />
-      <point x="141" y="0" type="line" />
-      <point x="141" y="390" type="line" />
-      <point x="298" y="77" type="line" />
-      <point x="344" y="77" type="line" />
-      <point x="500" y="390" type="line" />
-      <point x="500" y="0" type="line" />
-      <point x="568" y="0" type="line" />
-      <point x="568" y="499" type="line" />
-      <point x="498" y="499" type="line" />
-      <point x="321" y="167" type="line" />
-      <point x="143" y="499" type="line" />
-      <point x="74" y="499" type="line" />
+      <point x="72" y="0" type="line" />
+      <point x="144" y="0" type="line" />
+      <point x="144" y="393" type="line" />
+      <point x="315" y="71" type="line" />
+      <point x="363" y="71" type="line" />
+      <point x="533" y="393" type="line" />
+      <point x="533" y="0" type="line" />
+      <point x="604" y="0" type="line" />
+      <point x="604" y="500" type="line" />
+      <point x="524" y="500" type="line" />
+      <point x="339" y="164" type="line" />
+      <point x="153" y="500" type="line" />
+      <point x="72" y="500" type="line" />
     </contour>
   </outline>
   <lib>

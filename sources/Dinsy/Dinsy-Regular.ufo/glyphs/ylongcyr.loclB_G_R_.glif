@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="ylongcyr.loclBGR" format="2">
-  <advance width="764" />
-  <anchor x="382" y="564" name="top" />
+  <advance width="771" />
+  <anchor x="386" y="564" name="top" />
   <outline>
     <component base="softcyr.loclBGR" />
-    <component base="dotlessi" xOffset="534" />
+    <component base="dotlessi" xOffset="542" />
   </outline>
   <lib>
     <dict>

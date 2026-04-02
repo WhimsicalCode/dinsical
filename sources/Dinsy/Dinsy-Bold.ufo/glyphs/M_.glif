@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="M" format="2">
-  <advance width="735" />
+  <advance width="757" />
   <unicode hex="004D" />
   <outline>
     <contour>
       <point x="65" y="0" type="line" />
       <point x="195" y="0" type="line" />
-      <point x="195" y="406" type="line" />
-      <point x="326" y="131" type="line" />
-      <point x="413" y="131" type="line" />
-      <point x="541" y="403" type="line" />
-      <point x="541" y="0" type="line" />
-      <point x="670" y="0" type="line" />
-      <point x="670" y="680" type="line" />
-      <point x="541" y="680" type="line" />
-      <point x="369" y="304" type="line" />
+      <point x="195" y="414" type="line" />
+      <point x="337" y="131" type="line" />
+      <point x="423" y="131" type="line" />
+      <point x="563" y="411" type="line" />
+      <point x="563" y="0" type="line" />
+      <point x="692" y="0" type="line" />
+      <point x="692" y="680" type="line" />
+      <point x="563" y="680" type="line" />
+      <point x="380" y="300" type="line" />
       <point x="195" y="680" type="line" />
       <point x="65" y="680" type="line" />
     </contour>
@@ -42,13 +42,13 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>55</integer>
+            <integer>58</integer>
             <key>width</key>
             <integer>130</integer>
           </dict>
           <dict>
             <key>position</key>
-            <integer>531</integer>
+            <integer>534</integer>
             <key>width</key>
             <integer>129</integer>
           </dict>

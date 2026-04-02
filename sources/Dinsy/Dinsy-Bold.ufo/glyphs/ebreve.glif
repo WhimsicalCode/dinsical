@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="ebreve" format="2">
-  <advance width="509" />
+  <advance width="523" />
   <unicode hex="0115" />
-  <anchor x="318" y="0" name="b.cedilla" />
-  <anchor x="255" y="-83" name="bottom" />
+  <anchor x="331" y="0" name="b.cedilla" />
+  <anchor x="263" y="-83" name="bottom" />
   <outline>
     <component base="e" />
-    <component base="brevecmb" xOffset="255" yOffset="16" />
+    <component base="brevecmb" xOffset="263" yOffset="16" />
   </outline>
   <lib>
     <dict>

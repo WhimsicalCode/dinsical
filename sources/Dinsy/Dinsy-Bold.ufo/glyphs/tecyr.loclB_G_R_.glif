@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="tecyr.loclBGR" format="2">
-  <advance width="812" />
+  <advance width="836" />
   <anchor x="237" y="-83" name="bottom" />
-  <anchor x="409" y="579" name="top" />
+  <anchor x="421" y="579" name="top" />
   <outline>
     <component base="m" />
   </outline>

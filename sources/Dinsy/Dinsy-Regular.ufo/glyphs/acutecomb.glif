@@ -4,10 +4,10 @@
   <anchor x="0" y="499" name="_top" />
   <outline>
     <contour>
-      <point x="-55" y="564" type="line" />
-      <point x="8" y="564" type="line" />
-      <point x="126" y="687" type="line" />
-      <point x="43" y="687" type="line" />
+      <point x="-62" y="564" type="line" />
+      <point x="6" y="564" type="line" />
+      <point x="129" y="688" type="line" />
+      <point x="40" y="688" type="line" />
     </contour>
   </outline>
   <lib>

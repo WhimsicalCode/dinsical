@@ -5,15 +5,18 @@ Derive Dinsy UFO sources from the dinish/ submodule.
 Pipeline applied to each master (Regular, Bold):
   1. Copy DINish/DINish-{weight}.ufo  →  sources/Dinsy/Dinsy-{weight}.ufo
   2. Rename DINish → Dinsy in all text content (family names, PS names, …)
-  3. Scale all glyph coordinates by a combined factor:
+  3. [Dinsy only] Blend glyph coordinates toward DINishExpanded by WDTH_BLEND
+     (0.28 ≈ wdth 107 on the 75–100–125 axis, matching DINsical proportions)
+  4. Scale all glyph coordinates by a combined factor:
        (1000 / 1024)   — rescale UPM from 1024 to 1000
        × 0.985         — reduce glyph body to match DINsical visual size
        = 0.9619140625
-  4. Set UPM to 1000 and override line metrics with exact DINsical values
+  5. Set UPM to 1000 and override line metrics with exact DINsical values
      (hhea 830/−170/200, sTypo 750/−250/200, win 850/350)
      → gives exactly 120 px line height at 100 px font-size
-  5. Apply any per-glyph overrides from overlay/sources/Dinsy/
-  6. Apply kern patch from overlay/kern-patch.py
+  6. Apply any per-glyph overrides from overlay/sources/Dinsy/
+  7. Apply spacing patch from overlay/spacing-patch.py
+  8. Apply kern patch from overlay/kern-patch.py
 
 Usage:
     uv run python tools/derive-sources.py [--dry-run]
@@ -38,6 +41,12 @@ FAMILIES: dict[str, str] = {
 
 # Combined scale: UPM rescale × glyph size reduction
 SCALE = (1000 / 1024) * 0.985   # = 0.9619140625
+
+# Width blend: fraction toward DINishExpanded for the Dinsy (wdth=100) masters.
+# 0.0 = pure DINish Normal proportions.
+# 0.28 ≈ wdth 107 on the 75–125 axis — median of Dinsical ink-width targets.
+# Set to 0.0 to disable.
+WDTH_BLEND: float = 0.28
 
 # Line-spacing metrics — set verbatim from DINsical, NOT scaled.
 # Gives: (750 + 250 + 200) / 1000 * 100px = 120.000 px @ 100 px
@@ -75,6 +84,94 @@ PROPORTIONAL_KEYS: frozenset = frozenset({
 
 def sc(v: float | str) -> int:
     return round(float(v) * SCALE)
+
+
+def lerp(a: float | str, b: float | str, t: float) -> int:
+    """Linear interpolation, rounded to int."""
+    return round(float(a) + t * (float(b) - float(a)))
+
+
+def _blend_hint_dicts(arr_n: ET.Element, arr_e: ET.Element, t: float) -> None:
+    """Blend position values inside a hintData hhints/vhints array."""
+    for dict_n, dict_e in zip(arr_n.findall("dict"), arr_e.findall("dict")):
+        ch_n, ch_e = list(dict_n), list(dict_e)
+        for i in range(0, min(len(ch_n), len(ch_e)) - 1, 2):
+            if ch_n[i].tag == "key" and ch_n[i].text == "position":
+                if ch_n[i+1].tag in ("integer", "real") and ch_e[i+1].tag in ("integer", "real"):
+                    ch_n[i+1].tag = "integer"
+                    ch_n[i+1].text = str(lerp(ch_n[i+1].text, ch_e[i+1].text, t))
+
+
+def _blend_roots(root_n: ET.Element, root_e: ET.Element, t: float) -> None:
+    """
+    Blend root_n (DINish Normal) in-place toward root_e (DINishExpanded)
+    by factor t (0=normal, 1=expanded).  Applied before UPM scaling.
+
+    Skips blending if point counts differ (incompatible glyph outlines).
+    """
+    # Advance width
+    adv_n, adv_e = root_n.find("advance"), root_e.find("advance")
+    if adv_n is not None and adv_e is not None:
+        for attr in ("width", "height"):
+            if attr in adv_n.attrib and attr in adv_e.attrib:
+                adv_n.set(attr, str(lerp(adv_n.get(attr), adv_e.get(attr), t)))
+
+    # Contour points — only blend if both sources have the same count
+    pts_n = list(root_n.iter("point"))
+    pts_e = list(root_e.iter("point"))
+    if len(pts_n) == len(pts_e):
+        for pn, pe in zip(pts_n, pts_e):
+            for attr in ("x", "y"):
+                if attr in pn.attrib and attr in pe.attrib:
+                    pn.set(attr, str(lerp(pn.get(attr), pe.get(attr), t)))
+    elif pts_n:  # mismatched — warn and leave outline unchanged
+        print(f"  [wdth-blend] point count mismatch "
+              f"({len(pts_n)} vs {len(pts_e)}) — skipping outline blend",
+              file=sys.stderr)
+
+    # Component offsets
+    comps_n = list(root_n.iter("component"))
+    comps_e = list(root_e.iter("component"))
+    if len(comps_n) == len(comps_e):
+        for cn, ce in zip(comps_n, comps_e):
+            for attr in ("xOffset", "yOffset"):
+                vn, ve = cn.get(attr), ce.get(attr)
+                if vn is not None and ve is not None:
+                    cn.set(attr, str(lerp(vn, ve, t)))
+
+    # Anchors
+    anch_n = list(root_n.iter("anchor"))
+    anch_e = list(root_e.iter("anchor"))
+    for an, ae in zip(anch_n, anch_e):
+        for attr in ("x", "y"):
+            if attr in an.attrib and attr in ae.attrib:
+                an.set(attr, str(lerp(an.get(attr), ae.get(attr), t)))
+
+    # Guidelines
+    guid_n = list(root_n.iter("guideline"))
+    guid_e = list(root_e.iter("guideline"))
+    for gn, ge in zip(guid_n, guid_e):
+        for attr in ("x", "y"):
+            if attr in gn.attrib and attr in ge.attrib:
+                gn.set(attr, str(lerp(gn.get(attr), ge.get(attr), t)))
+
+    # PostScript hints
+    lib_n, lib_e = root_n.find("lib"), root_e.find("lib")
+    if lib_n is not None and lib_e is not None:
+        ld_n, ld_e = lib_n.find("dict"), lib_e.find("dict")
+        if ld_n is not None and ld_e is not None:
+            ch_n, ch_e = list(ld_n), list(ld_e)
+            for i in range(0, min(len(ch_n), len(ch_e)) - 1, 2):
+                if (ch_n[i].tag == "key" and ch_n[i].text == "com.fontlab.hintData"
+                        and i < len(ch_e) - 1 and ch_e[i].tag == "key"
+                        and ch_e[i].text == "com.fontlab.hintData"):
+                    hd_n, hd_e = list(ch_n[i+1]), list(ch_e[i+1])
+                    for j in range(0, min(len(hd_n), len(hd_e)) - 1, 2):
+                        if (hd_n[j].tag == "key"
+                                and hd_n[j].text in ("hhints", "vhints")
+                                and hd_e[j].tag == "key"
+                                and hd_e[j].text == hd_n[j].text):
+                            _blend_hint_dicts(hd_n[j+1], hd_e[j+1], t)
 
 
 def rename(s: str) -> str:
@@ -128,9 +225,15 @@ def _scale_hint_dicts(array_elem: ET.Element) -> None:
                     ve.text = str(sc(ve.text))
 
 
-def scale_glif(src: Path, dst: Path, dry_run: bool) -> None:
+def scale_glif(src: Path, dst: Path, dry_run: bool,
+               expanded: Path | None = None, wdth_blend: float = 0.0) -> None:
     tree = ET.parse(src)
     root = tree.getroot()
+
+    # Width blend: interpolate toward DINishExpanded before UPM scaling
+    if expanded is not None and wdth_blend > 0 and expanded.exists():
+        root_e = ET.parse(expanded).getroot()
+        _blend_roots(root, root_e, wdth_blend)
 
     # advance
     adv = root.find("advance")
@@ -213,15 +316,44 @@ def process_ufo(
             if not dry_run:
                 glyphs_dst.mkdir(exist_ok=True)
 
+            # Build expanded-source glyph map for width blending (Dinsy only)
+            exp_glif_map: dict[str, Path] = {}
+            if WDTH_BLEND > 0 and dst_family == "Dinsy":
+                exp_ufo = (
+                    REPO / "dinish" / "sources" / "DINishExpanded"
+                    / f"DINishExpanded-{weight}.ufo"
+                )
+                exp_contents_path = exp_ufo / "glyphs" / "contents.plist"
+                if exp_contents_path.exists():
+                    exp_contents = plistlib.loads(exp_contents_path.read_bytes())
+                    exp_glif_map = {
+                        name: exp_ufo / "glyphs" / fname
+                        for name, fname in exp_contents.items()
+                    }
+
+            # Reverse map: filename → glyph name (for the normal source)
+            src_contents_path = item / "contents.plist"
+            filename_to_name: dict[str, str] = {}
+            if src_contents_path.exists() and exp_glif_map:
+                src_contents = plistlib.loads(src_contents_path.read_bytes())
+                filename_to_name = {fname: name for name, fname in src_contents.items()}
+
             glifs = sorted(item.glob("*.glif"))
+            blended = 0
             for glif in glifs:
-                scale_glif(glif, glyphs_dst / glif.name, dry_run)
+                glyph_name = filename_to_name.get(glif.name)
+                exp_glif = exp_glif_map.get(glyph_name) if glyph_name else None
+                scale_glif(glif, glyphs_dst / glif.name, dry_run,
+                           expanded=exp_glif, wdth_blend=WDTH_BLEND)
+                if exp_glif is not None and exp_glif.exists():
+                    blended += 1
 
             contents = item / "contents.plist"
             if contents.exists() and not dry_run:
                 shutil.copy2(contents, glyphs_dst / "contents.plist")
 
-            print(f"    scaled {len(glifs)} glif files")
+            blend_note = f", {blended} blended toward wdth={100 + WDTH_BLEND*25:.0f}" if blended else ""
+            print(f"    scaled {len(glifs)} glif files{blend_note}")
 
         elif item.suffix in (".plist", ".fea"):
             if not dry_run:

@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="k" format="2">
-  <advance width="503" />
+  <advance width="524" />
   <unicode hex="006B" />
   <outline>
     <contour>
       <point x="82" y="0" type="line" />
-      <point x="148" y="0" type="line" />
-      <point x="148" y="149" type="line" />
-      <point x="243" y="259" type="line" />
-      <point x="394" y="0" type="line" />
-      <point x="475" y="0" type="line" />
-      <point x="287" y="311" type="line" />
-      <point x="448" y="499" type="line" />
-      <point x="367" y="499" type="line" />
-      <point x="148" y="234" type="line" />
-      <point x="148" y="680" type="line" />
+      <point x="153" y="0" type="line" />
+      <point x="153" y="149" type="line" />
+      <point x="250" y="258" type="line" />
+      <point x="409" y="0" type="line" />
+      <point x="496" y="0" type="line" />
+      <point x="299" y="311" type="line" />
+      <point x="468" y="500" type="line" />
+      <point x="380" y="500" type="line" />
+      <point x="153" y="238" type="line" />
+      <point x="153" y="680" type="line" />
       <point x="82" y="680" type="line" />
     </contour>
   </outline>
@@ -47,7 +47,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>82</integer>
+            <integer>84</integer>
             <key>width</key>
             <integer>66</integer>
           </dict>

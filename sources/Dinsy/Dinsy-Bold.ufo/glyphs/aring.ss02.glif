@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="aring.ss02" format="2">
-  <advance width="493" />
+  <advance width="508" />
   <anchor x="239" y="512" name="top" />
   <outline>
     <component base="a.ss02" />
-    <component base="ringcmb" xOffset="239" />
+    <component base="ringcmb" xOffset="245" />
   </outline>
   <lib>
     <dict>

@@ -1,36 +1,36 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Yacyr" format="2">
-  <advance width="590" />
+  <advance width="608" />
   <unicode hex="042F" />
-  <guideline x="314" y="0" angle="90" name="h1" />
-  <anchor x="314" y="744" name="top" />
+  <guideline x="330" y="0" angle="90" name="h1" />
+  <anchor x="330" y="740" name="top" />
   <outline>
     <contour>
-      <point x="39" y="0" type="line" />
-      <point x="122" y="0" type="line" />
-      <point x="275" y="298" type="line" />
-      <point x="439" y="298" type="line" />
-      <point x="439" y="0" type="line" />
-      <point x="511" y="0" type="line" />
-      <point x="511" y="680" type="line" />
-      <point x="259" y="680" type="line" smooth="yes" />
-      <point x="132" y="680" />
+      <point x="38" y="0" type="line" />
+      <point x="126" y="0" type="line" />
+      <point x="281" y="295" type="line" />
+      <point x="454" y="295" type="line" />
+      <point x="454" y="0" type="line" />
+      <point x="531" y="0" type="line" />
+      <point x="531" y="680" type="line" />
+      <point x="266" y="680" type="line" smooth="yes" />
+      <point x="133" y="680" />
       <point x="54" y="610" />
-      <point x="54" y="489" type="curve" smooth="yes" />
-      <point x="54" y="391" />
-      <point x="107" y="326" />
-      <point x="199" y="305" type="curve" />
+      <point x="54" y="488" type="curve" smooth="yes" />
+      <point x="54" y="390" />
+      <point x="107" y="325" />
+      <point x="200" y="303" type="curve" />
     </contour>
     <contour>
-      <point x="126" y="488" type="curve" smooth="yes" />
-      <point x="126" y="572" />
-      <point x="176" y="615" />
-      <point x="265" y="615" type="curve" smooth="yes" />
-      <point x="439" y="615" type="line" />
-      <point x="439" y="361" type="line" />
-      <point x="265" y="361" type="line" smooth="yes" />
-      <point x="176" y="361" />
-      <point x="126" y="407" />
+      <point x="132" y="487" type="curve" smooth="yes" />
+      <point x="132" y="569" />
+      <point x="180" y="611" />
+      <point x="272" y="611" type="curve" smooth="yes" />
+      <point x="454" y="611" type="line" />
+      <point x="454" y="363" type="line" />
+      <point x="270" y="363" type="line" smooth="yes" />
+      <point x="180" y="363" />
+      <point x="132" y="406" />
     </contour>
   </outline>
   <lib>

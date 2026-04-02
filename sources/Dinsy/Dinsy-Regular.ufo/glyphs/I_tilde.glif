@@ -2,11 +2,11 @@
 <glyph name="Itilde" format="2">
   <advance width="245" />
   <unicode hex="0128" />
-  <anchor x="159" y="0" name="b.cedilla" />
+  <anchor x="162" y="0" name="b.cedilla" />
   <anchor x="122" y="-83" name="bottom" />
   <outline>
     <component base="I" />
-    <component base="tildecomb" xOffset="122" yOffset="180" />
+    <component base="tildecomb" xOffset="122" yOffset="176" />
   </outline>
   <lib>
     <dict>

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Ugrave" format="2">
-  <advance width="625" />
+  <advance width="646" />
   <unicode hex="00D9" />
-  <anchor x="313" y="680" name="top" />
+  <anchor x="315" y="680" name="top" />
   <outline>
     <component base="U" />
-    <component base="gravecomb" xOffset="313" yOffset="180" />
+    <component base="gravecomb" xOffset="322" yOffset="179" />
   </outline>
   <lib>
     <dict>

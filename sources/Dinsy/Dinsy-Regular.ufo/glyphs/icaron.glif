@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="icaron" format="2">
-  <advance width="231" />
+  <advance width="236" />
   <unicode hex="01D0" />
   <outline>
-    <component base="caroncmb" xOffset="115" />
+    <component base="caroncmb" xOffset="118" />
     <component base="dotlessi" />
   </outline>
 </glyph>

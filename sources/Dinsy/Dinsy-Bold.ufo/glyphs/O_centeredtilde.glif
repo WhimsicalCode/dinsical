@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Ocenteredtilde" format="2">
-  <advance width="591" />
+  <advance width="611" />
   <unicode hex="019F" />
   <outline>
     <component base="O" />
-    <component base="minus" xOffset="38" />
+    <component base="minus" xOffset="55" />
   </outline>
 </glyph>

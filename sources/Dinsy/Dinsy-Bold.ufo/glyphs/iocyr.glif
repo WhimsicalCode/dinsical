@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="iocyr" format="2">
-  <advance width="509" />
+  <advance width="523" />
   <unicode hex="0451" />
-  <anchor x="318" y="0" name="b.cedilla" />
-  <anchor x="255" y="-83" name="bottom" />
+  <anchor x="331" y="0" name="b.cedilla" />
+  <anchor x="263" y="-83" name="bottom" />
   <outline>
-    <component base="dieresiscmb" xOffset="255" />
+    <component base="dieresiscmb" xOffset="263" />
     <component base="e" />
   </outline>
   <lib>

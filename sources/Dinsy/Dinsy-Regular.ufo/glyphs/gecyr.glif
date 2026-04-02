@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="gecyr" format="2">
-  <advance width="332" />
+  <advance width="343" />
   <unicode hex="0433" />
-  <guideline x="205" y="0" angle="90" name="h1" />
-  <anchor x="205" y="564" name="top" />
+  <guideline x="208" y="0" angle="90" name="h1" />
+  <anchor x="208" y="564" name="top" />
   <outline>
     <contour>
-      <point x="74" y="0" type="line" />
-      <point x="140" y="0" type="line" />
-      <point x="140" y="437" type="line" />
-      <point x="307" y="437" type="line" />
-      <point x="307" y="499" type="line" />
-      <point x="74" y="499" type="line" />
+      <point x="72" y="0" type="line" />
+      <point x="143" y="0" type="line" />
+      <point x="143" y="434" type="line" />
+      <point x="319" y="434" type="line" />
+      <point x="319" y="500" type="line" />
+      <point x="72" y="500" type="line" />
     </contour>
   </outline>
   <lib>

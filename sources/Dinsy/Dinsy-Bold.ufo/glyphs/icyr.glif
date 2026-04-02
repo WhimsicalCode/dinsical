@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="icyr" format="2">
-  <advance width="552" />
+  <advance width="568" />
   <unicode hex="0438" />
-  <guideline x="271" y="0" angle="90" name="h1" />
-  <anchor x="271" y="579" name="top" />
+  <guideline x="280" y="0" angle="90" name="h1" />
+  <anchor x="280" y="579" name="top" />
   <outline>
     <contour>
       <point x="53" y="0" type="line" />
       <point x="184" y="0" type="line" />
-      <point x="378" y="341" type="line" />
-      <point x="378" y="0" type="line" />
-      <point x="499" y="0" type="line" />
-      <point x="499" y="512" type="line" />
-      <point x="368" y="512" type="line" />
-      <point x="174" y="172" type="line" />
+      <point x="394" y="341" type="line" />
+      <point x="394" y="0" type="line" />
+      <point x="516" y="0" type="line" />
+      <point x="516" y="512" type="line" />
+      <point x="385" y="512" type="line" />
+      <point x="174" y="171" type="line" />
       <point x="174" y="512" type="line" />
       <point x="53" y="512" type="line" />
     </contour>

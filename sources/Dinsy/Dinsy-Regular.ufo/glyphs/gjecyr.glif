@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="gjecyr" format="2">
-  <advance width="332" />
+  <advance width="343" />
   <unicode hex="0453" />
   <outline>
     <component base="gecyr" />
-    <component base="acutecomb" xOffset="205" />
+    <component base="acutecomb" xOffset="208" />
   </outline>
   <lib>
     <dict>

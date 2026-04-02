@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Lbar" format="2">
-  <advance width="514" />
+  <advance width="528" />
   <unicode hex="023D" />
   <outline>
     <component base="L" />
-    <component base="hyphen" xOffset="-41" yOffset="77" />
+    <component base="hyphen" xOffset="-38" yOffset="72" />
   </outline>
 </glyph>

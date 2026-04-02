@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="shchacyr" format="2">
-  <advance width="734" />
+  <advance width="739" />
   <unicode hex="0449" />
   <outline>
     <contour>
       <point x="657" y="-164" type="line" />
-      <point x="724" y="-164" type="line" />
-      <point x="724" y="63" type="line" />
-      <point x="676" y="63" type="line" />
-      <point x="676" y="499" type="line" />
-      <point x="609" y="499" type="line" />
-      <point x="609" y="63" type="line" />
-      <point x="409" y="63" type="line" />
-      <point x="409" y="499" type="line" />
-      <point x="341" y="499" type="line" />
-      <point x="341" y="63" type="line" />
-      <point x="141" y="63" type="line" />
-      <point x="141" y="499" type="line" />
-      <point x="74" y="499" type="line" />
-      <point x="74" y="0" type="line" />
+      <point x="729" y="-164" type="line" />
+      <point x="729" y="66" type="line" />
+      <point x="680" y="66" type="line" />
+      <point x="680" y="500" type="line" />
+      <point x="608" y="500" type="line" />
+      <point x="608" y="66" type="line" />
+      <point x="412" y="66" type="line" />
+      <point x="412" y="500" type="line" />
+      <point x="340" y="500" type="line" />
+      <point x="340" y="66" type="line" />
+      <point x="144" y="66" type="line" />
+      <point x="144" y="500" type="line" />
+      <point x="72" y="500" type="line" />
+      <point x="72" y="0" type="line" />
       <point x="657" y="0" type="line" />
     </contour>
   </outline>

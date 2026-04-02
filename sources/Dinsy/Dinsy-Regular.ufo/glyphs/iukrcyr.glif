@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="iukrcyr" format="2">
-  <advance width="231" />
+  <advance width="234" />
   <unicode hex="0456" />
-  <anchor x="149" y="0" name="b.cedilla" />
-  <anchor x="116" y="-83" name="bottom" />
+  <anchor x="153" y="0" name="b.cedilla" />
+  <anchor x="117" y="-83" name="bottom" />
   <anchor x="116" y="499" name="top" />
   <outline>
     <component base="i" />

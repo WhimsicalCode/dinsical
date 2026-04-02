@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="shchacyr" format="2">
-  <advance width="775" />
+  <advance width="799" />
   <unicode hex="0449" />
   <outline>
     <contour>
-      <point x="644" y="-164" type="line" />
-      <point x="766" y="-164" type="line" />
-      <point x="766" y="107" type="line" />
-      <point x="697" y="107" type="line" />
-      <point x="697" y="512" type="line" />
-      <point x="576" y="512" type="line" />
-      <point x="576" y="107" type="line" />
-      <point x="436" y="107" type="line" />
-      <point x="436" y="512" type="line" />
-      <point x="315" y="512" type="line" />
-      <point x="315" y="107" type="line" />
+      <point x="669" y="-164" type="line" />
+      <point x="790" y="-164" type="line" />
+      <point x="790" y="108" type="line" />
+      <point x="718" y="108" type="line" />
+      <point x="718" y="512" type="line" />
+      <point x="596" y="512" type="line" />
+      <point x="596" y="107" type="line" />
+      <point x="446" y="107" type="line" />
+      <point x="446" y="512" type="line" />
+      <point x="325" y="512" type="line" />
+      <point x="325" y="107" type="line" />
       <point x="174" y="107" type="line" />
       <point x="174" y="512" type="line" />
       <point x="53" y="512" type="line" />
       <point x="53" y="0" type="line" />
-      <point x="644" y="0" type="line" />
+      <point x="669" y="0" type="line" />
     </contour>
   </outline>
   <lib>

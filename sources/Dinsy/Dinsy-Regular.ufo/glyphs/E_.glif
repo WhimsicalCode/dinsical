@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="E" format="2">
-  <advance width="547" />
+  <advance width="564" />
   <unicode hex="0045" />
-  <anchor x="269" y="680" name="top" />
+  <anchor x="271" y="680" name="top" />
   <outline>
     <contour>
       <point x="84" y="0" type="line" />
-      <point x="497" y="0" type="line" />
-      <point x="497" y="65" type="line" />
-      <point x="156" y="65" type="line" />
-      <point x="156" y="314" type="line" />
-      <point x="447" y="314" type="line" />
-      <point x="447" y="378" type="line" />
-      <point x="156" y="378" type="line" />
-      <point x="156" y="615" type="line" />
-      <point x="497" y="615" type="line" />
-      <point x="497" y="680" type="line" />
+      <point x="514" y="0" type="line" />
+      <point x="514" y="69" type="line" />
+      <point x="161" y="69" type="line" />
+      <point x="161" y="311" type="line" />
+      <point x="463" y="311" type="line" />
+      <point x="463" y="380" type="line" />
+      <point x="161" y="380" type="line" />
+      <point x="161" y="611" type="line" />
+      <point x="514" y="611" type="line" />
+      <point x="514" y="680" type="line" />
       <point x="84" y="680" type="line" />
     </contour>
   </outline>
@@ -48,7 +48,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>84</integer>
+            <integer>86</integer>
             <key>width</key>
             <integer>72</integer>
           </dict>

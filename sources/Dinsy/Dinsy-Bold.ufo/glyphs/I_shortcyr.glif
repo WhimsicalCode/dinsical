@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Ishortcyr" format="2">
-  <advance width="624" />
+  <advance width="640" />
   <unicode hex="0419" />
   <outline>
     <component base="Icyr" />
-    <component base="brevecmb" xOffset="303" yOffset="184" />
+    <component base="brevecmb" xOffset="313" yOffset="184" />
   </outline>
   <lib>
     <dict>

@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="kacyr.loclBGR" format="2">
-  <advance width="486" />
+  <advance width="503" />
   <outline>
     <contour>
-      <point x="74" y="0" type="line" />
-      <point x="140" y="0" type="line" />
-      <point x="140" y="231" type="line" />
-      <point x="222" y="231" type="line" />
-      <point x="386" y="0" type="line" />
-      <point x="467" y="0" type="line" />
-      <point x="274" y="271" type="line" />
-      <point x="440" y="499" type="line" />
-      <point x="359" y="499" type="line" />
-      <point x="216" y="293" type="line" />
-      <point x="140" y="293" type="line" />
-      <point x="140" y="680" type="line" />
-      <point x="74" y="680" type="line" />
+      <point x="72" y="0" type="line" />
+      <point x="143" y="0" type="line" />
+      <point x="143" y="232" type="line" />
+      <point x="236" y="232" type="line" />
+      <point x="399" y="0" type="line" />
+      <point x="486" y="0" type="line" />
+      <point x="287" y="279" type="line" />
+      <point x="464" y="500" type="line" />
+      <point x="376" y="500" type="line" />
+      <point x="220" y="298" type="line" />
+      <point x="143" y="298" type="line" />
+      <point x="143" y="680" type="line" />
+      <point x="72" y="680" type="line" />
     </contour>
   </outline>
   <lib>

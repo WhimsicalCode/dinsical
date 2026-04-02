@@ -2,11 +2,11 @@
 <glyph name="Ibreve" format="2">
   <advance width="245" />
   <unicode hex="012C" />
-  <anchor x="159" y="0" name="b.cedilla" />
+  <anchor x="162" y="0" name="b.cedilla" />
   <anchor x="122" y="-83" name="bottom" />
   <outline>
     <component base="I" />
-    <component base="brevecmb" xOffset="122" yOffset="195" />
+    <component base="brevecmb" xOffset="122" yOffset="190" />
   </outline>
   <lib>
     <dict>

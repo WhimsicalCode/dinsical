@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="acyr.ss02" format="2">
-  <advance width="493" />
-  <anchor x="441" y="0" name="b.cedilla" />
-  <anchor x="239" y="-83" name="bottom" />
-  <anchor x="238" y="556" name="t.ring" />
-  <anchor x="238" y="579" name="top" />
+  <advance width="508" />
+  <anchor x="455" y="0" name="b.cedilla" />
+  <anchor x="245" y="-83" name="bottom" />
+  <anchor x="245" y="559" name="t.ring" />
+  <anchor x="245" y="579" name="top" />
   <outline>
     <component base="a.ss02" />
   </outline>

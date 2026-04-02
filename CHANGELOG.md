@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+## [1.008] - 2026-04-02
+
+- Width blend: `tools/derive-sources.py` now interpolates the Dinsy (wdth=100)
+  masters toward DINishExpanded by `WDTH_BLEND=0.28` before UPM scaling.
+  This corresponds to approximately wdth=107 on the 75–125 axis — the median
+  position at which DINish letterform ink widths match DINsical proportions.
+  Implemented via `_blend_roots()` (blends all outline points, advances,
+  component offsets, anchors, and PS hints between the two source UFOs).
+- h/n advance now exactly matches DINsical (544=544). Overall advance total
+  for `abcdefghijk` moved from −156 to +26 vs DINsical (0.5% over vs
+  original 4.4% under). b/d remain −9 (bowls in DINish are inherently
+  narrower than DINsical’s at this width interpolation point).
+- Condensed and Expanded masters are unaffected (they are derived from their
+  own upstream sources and are not blended).
+
 ## [1.007] - 2026-04-02
 
 - Spacing patch mechanism: `overlay/spacing-patch.py` is now applied by
