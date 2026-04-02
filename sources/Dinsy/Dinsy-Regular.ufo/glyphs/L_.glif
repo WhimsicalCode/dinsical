@@ -4,12 +4,12 @@
   <unicode hex="004C" />
   <outline>
     <contour>
-      <point x="79" y="0" type="line" />
-      <point x="490" y="0" type="line" />
-      <point x="490" y="65" type="line" />
-      <point x="151" y="65" type="line" />
-      <point x="151" y="680" type="line" />
-      <point x="79" y="680" type="line" />
+      <point x="84" y="0" type="line" />
+      <point x="495" y="0" type="line" />
+      <point x="495" y="65" type="line" />
+      <point x="156" y="65" type="line" />
+      <point x="156" y="680" type="line" />
+      <point x="84" y="680" type="line" />
     </contour>
   </outline>
   <lib>
@@ -35,7 +35,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>79</integer>
+            <integer>84</integer>
             <key>width</key>
             <integer>72</integer>
           </dict>

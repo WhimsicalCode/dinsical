@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+## [1.007] - 2026-04-02
+
+- Spacing patch mechanism: `overlay/spacing-patch.py` is now applied by
+  `tools/derive-sources.py` after every `make sources` run, so Dinsy-specific
+  sidebearing changes survive upstream DINish updates automatically.
+- Set sidebearings for ~50 base glyphs (a–z, A–Z, punctuation) to match
+  DINsical's exact LSB/RSB values. Propagated automatically to ~190 composite
+  glyphs (accented Latin, Cyrillic variants) via advance-width and
+  combining-mark xOffset update.
+- Excluded from patch: c/e/o (DINsical same or tighter for round shapes),
+  z (diff <5 units), digits (proportional vs tabular design difference),
+  C/J/O/Q/X (conflicting ink shapes between DINish and DINsical).
+- Residual advance-width difference (~4–8% per letter) reflects DINish
+  letterforms being inherently narrower than DINsical; sidebearing breathing
+  room is now identical.
+
 ## [1.006] - 2026-04-02
 
 - Kern patch mechanism: `overlay/kern-patch.py` is now applied by

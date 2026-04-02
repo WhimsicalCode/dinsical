@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Iegravecyr" format="2">
-  <advance width="539" />
+  <advance width="547" />
   <unicode hex="0400" />
-  <anchor x="492" y="0" name="b.cedilla" />
-  <anchor x="287" y="-83" name="bottom" />
+  <anchor x="497" y="0" name="b.cedilla" />
+  <anchor x="292" y="-83" name="bottom" />
   <outline>
-    <component base="gravecomb" xOffset="287" yOffset="180" />
+    <component base="gravecomb" xOffset="292" yOffset="180" />
     <component base="E" />
   </outline>
   <lib>

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Scircumflex" format="2">
-  <advance width="540" />
+  <advance width="541" />
   <unicode hex="015C" />
-  <anchor x="243" y="0" name="b.cedilla" />
-  <anchor x="259" y="-83" name="bottom" />
+  <anchor x="245" y="0" name="b.cedilla" />
+  <anchor x="261" y="-83" name="bottom" />
   <outline>
     <component base="S" />
-    <component base="circumflexcmb" xOffset="259" yOffset="167" />
+    <component base="circumflexcmb" xOffset="261" yOffset="167" />
   </outline>
   <lib>
     <dict>

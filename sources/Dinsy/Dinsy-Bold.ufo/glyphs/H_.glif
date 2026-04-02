@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="H" format="2">
-  <advance width="599" />
+  <advance width="614" />
   <unicode hex="0048" />
   <outline>
     <contour>
-      <point x="58" y="0" type="line" />
-      <point x="188" y="0" type="line" />
-      <point x="188" y="288" type="line" />
-      <point x="413" y="288" type="line" />
-      <point x="413" y="0" type="line" />
-      <point x="542" y="0" type="line" />
-      <point x="542" y="680" type="line" />
-      <point x="413" y="680" type="line" />
-      <point x="413" y="400" type="line" />
-      <point x="188" y="400" type="line" />
-      <point x="188" y="680" type="line" />
-      <point x="58" y="680" type="line" />
+      <point x="65" y="0" type="line" />
+      <point x="195" y="0" type="line" />
+      <point x="195" y="288" type="line" />
+      <point x="420" y="288" type="line" />
+      <point x="420" y="0" type="line" />
+      <point x="549" y="0" type="line" />
+      <point x="549" y="680" type="line" />
+      <point x="420" y="680" type="line" />
+      <point x="420" y="400" type="line" />
+      <point x="195" y="400" type="line" />
+      <point x="195" y="680" type="line" />
+      <point x="65" y="680" type="line" />
     </contour>
   </outline>
   <lib>
@@ -47,13 +47,13 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>58</integer>
+            <integer>65</integer>
             <key>width</key>
             <integer>130</integer>
           </dict>
           <dict>
             <key>position</key>
-            <integer>413</integer>
+            <integer>420</integer>
             <key>width</key>
             <integer>129</integer>
           </dict>

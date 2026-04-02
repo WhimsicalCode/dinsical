@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="acyr" format="2">
-  <advance width="489" />
+  <advance width="506" />
   <unicode hex="0430" />
-  <anchor x="416" y="0" name="b.cedilla" />
-  <anchor x="236" y="-83" name="bottom" />
-  <anchor x="236" y="556" name="t.ring" />
-  <anchor x="236" y="564" name="top" />
+  <anchor x="428" y="0" name="b.cedilla" />
+  <anchor x="248" y="-83" name="bottom" />
+  <anchor x="248" y="556" name="t.ring" />
+  <anchor x="248" y="564" name="top" />
   <outline>
     <component base="a" />
   </outline>

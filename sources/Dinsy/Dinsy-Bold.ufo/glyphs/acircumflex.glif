@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="acircumflex" format="2">
-  <advance width="493" />
+  <advance width="507" />
   <unicode hex="00E2" />
-  <anchor x="239" y="512" name="top" />
+  <anchor x="245" y="512" name="top" />
   <outline>
     <component base="a" />
-    <component base="circumflexcmb" xOffset="239" />
+    <component base="circumflexcmb" xOffset="245" />
   </outline>
   <lib>
     <dict>

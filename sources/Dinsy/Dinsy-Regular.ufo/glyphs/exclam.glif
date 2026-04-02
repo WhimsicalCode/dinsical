@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="exclam" format="2">
-  <advance width="235" />
+  <advance width="280" />
   <unicode hex="0021" />
   <outline>
     <contour>
-      <point x="90" y="193" type="line" />
-      <point x="146" y="193" type="line" />
-      <point x="160" y="680" type="line" />
-      <point x="77" y="680" type="line" />
+      <point x="112" y="193" type="line" />
+      <point x="168" y="193" type="line" />
+      <point x="182" y="680" type="line" />
+      <point x="99" y="680" type="line" />
     </contour>
     <contour>
-      <point x="74" y="0" type="line" />
-      <point x="162" y="0" type="line" />
-      <point x="162" y="91" type="line" />
-      <point x="74" y="91" type="line" />
+      <point x="96" y="0" type="line" />
+      <point x="184" y="0" type="line" />
+      <point x="184" y="91" type="line" />
+      <point x="96" y="91" type="line" />
     </contour>
   </outline>
   <lib>
@@ -39,13 +39,13 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>74</integer>
+            <integer>96</integer>
             <key>width</key>
             <integer>88</integer>
           </dict>
           <dict>
             <key>position</key>
-            <integer>90</integer>
+            <integer>112</integer>
             <key>width</key>
             <integer>56</integer>
           </dict>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="yukrcyr" format="2">
-  <advance width="237" />
+  <advance width="247" />
   <unicode hex="0457" />
   <outline>
     <component base="dotlessi" />
-    <component base="dieresiscmb" xOffset="118" />
+    <component base="dieresiscmb" xOffset="123" />
   </outline>
   <lib>
     <dict>

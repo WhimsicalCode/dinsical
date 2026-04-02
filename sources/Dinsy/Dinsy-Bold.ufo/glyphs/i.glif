@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="i" format="2">
-  <advance width="237" />
+  <advance width="250" />
   <unicode hex="0069" />
-  <anchor x="118" y="512" name="top" />
+  <anchor x="125" y="512" name="top" />
   <outline>
     <contour>
-      <point x="58" y="0" type="line" />
-      <point x="179" y="0" type="line" />
-      <point x="179" y="512" type="line" />
-      <point x="58" y="512" type="line" />
+      <point x="65" y="0" type="line" />
+      <point x="186" y="0" type="line" />
+      <point x="186" y="512" type="line" />
+      <point x="65" y="512" type="line" />
     </contour>
     <contour>
-      <point x="56" y="582" type="line" />
-      <point x="180" y="582" type="line" />
-      <point x="180" y="680" type="line" />
-      <point x="56" y="680" type="line" />
+      <point x="63" y="582" type="line" />
+      <point x="187" y="582" type="line" />
+      <point x="187" y="680" type="line" />
+      <point x="63" y="680" type="line" />
     </contour>
   </outline>
   <lib>
@@ -46,7 +46,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>58</integer>
+            <integer>65</integer>
             <key>width</key>
             <integer>121</integer>
           </dict>

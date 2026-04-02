@@ -262,6 +262,20 @@ def process_ufo(
                     for glif in glifs:
                         shutil.copy2(glif, dst_ufo / "glyphs" / glif.name)
 
+    # Apply spacing patch (Dinsy only) ------------------------------------
+    if overlay_dir is not None and dst_family == "Dinsy":
+        spacing_patch_path = overlay_dir.parent / "spacing-patch.py"
+        glyphs_dir = dst_ufo / "glyphs"
+        if spacing_patch_path.exists() and glyphs_dir.exists() and not dry_run:
+            spec = importlib.util.spec_from_file_location("spacing_patch", spacing_patch_path)
+            spacing_patch = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(spacing_patch)
+            n = spacing_patch.apply(glyphs_dir, weight)
+            print(f"    spacing-patch applied: {n} glyphs adjusted")
+        elif dry_run and spacing_patch_path.exists():
+            print(f"    [dry-run] would apply spacing-patch to {glyphs_dir.relative_to(REPO)}")
+
+
 
 # ---------------------------------------------------------------------------
 # Encoding file

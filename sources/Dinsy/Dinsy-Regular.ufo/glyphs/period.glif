@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="period" format="2">
-  <advance width="190" />
+  <advance width="227" />
   <unicode hex="002E" />
   <outline>
     <contour>
-      <point x="52" y="0" type="line" />
-      <point x="139" y="0" type="line" />
-      <point x="139" y="90" type="line" />
-      <point x="52" y="90" type="line" />
+      <point x="70" y="0" type="line" />
+      <point x="157" y="0" type="line" />
+      <point x="157" y="90" type="line" />
+      <point x="70" y="90" type="line" />
     </contour>
   </outline>
   <lib>
@@ -27,7 +27,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>52</integer>
+            <integer>70</integer>
             <key>width</key>
             <integer>87</integer>
           </dict>

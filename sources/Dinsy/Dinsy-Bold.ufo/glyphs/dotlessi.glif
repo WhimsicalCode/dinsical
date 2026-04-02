@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="dotlessi" format="2">
-  <advance width="237" />
+  <advance width="247" />
   <unicode hex="0131" />
-  <anchor x="118" y="512" name="top" />
+  <anchor x="123" y="512" name="top" />
   <outline>
     <contour>
-      <point x="58" y="0" type="line" />
-      <point x="179" y="0" type="line" />
-      <point x="179" y="512" type="line" />
-      <point x="58" y="512" type="line" />
+      <point x="63" y="0" type="line" />
+      <point x="184" y="0" type="line" />
+      <point x="184" y="512" type="line" />
+      <point x="63" y="512" type="line" />
     </contour>
   </outline>
   <lib>
@@ -34,7 +34,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>58</integer>
+            <integer>63</integer>
             <key>width</key>
             <integer>121</integer>
           </dict>
