@@ -1,0 +1,3 @@
+[submodule "dinish"]
+	path = dinish
+	url = https://github.com/playbeing/dinish.git

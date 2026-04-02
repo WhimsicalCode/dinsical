@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="six.dnom" format="2">
+  <advance width="324" />
+  <outline>
+    <contour>
+      <point x="163" y="-17" type="curve" smooth="yes" />
+      <point x="251" y="-17" />
+      <point x="309" y="34" />
+      <point x="309" y="115" type="curve" smooth="yes" />
+      <point x="309" y="134" type="line" smooth="yes" />
+      <point x="309" y="219" />
+      <point x="250" y="257" />
+      <point x="185" y="257" type="curve" smooth="yes" />
+      <point x="182" y="257" />
+      <point x="178" y="257" />
+      <point x="175" y="257" type="curve" />
+      <point x="263" y="415" type="line" />
+      <point x="149" y="415" type="line" />
+      <point x="46" y="229" type="line" smooth="yes" />
+      <point x="16" y="176" />
+      <point x="16" y="142" />
+      <point x="16" y="131" type="curve" smooth="yes" />
+      <point x="16" y="114" type="line" smooth="yes" />
+      <point x="16" y="-8" />
+      <point x="129" y="-17" />
+    </contour>
+    <contour>
+      <point x="123" y="112" type="curve" smooth="yes" />
+      <point x="123" y="130" type="line" smooth="yes" />
+      <point x="123" y="164" />
+      <point x="144" y="171" />
+      <point x="163" y="171" type="curve" smooth="yes" />
+      <point x="200" y="171" />
+      <point x="203" y="142" />
+      <point x="203" y="130" type="curve" smooth="yes" />
+      <point x="203" y="112" type="line" smooth="yes" />
+      <point x="203" y="75" />
+      <point x="179" y="69" />
+      <point x="163" y="69" type="curve" smooth="yes" />
+      <point x="128" y="69" />
+      <point x="123" y="96" />
+    </contour>
+  </outline>
+</glyph>

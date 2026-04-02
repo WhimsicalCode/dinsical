@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="decyr" format="2">
+  <advance width="518" />
+  <unicode hex="0434" />
+  <guideline x="224" y="402" angle="87.1659" />
+  <guideline x="163" y="499" angle="266.6" />
+  <outline>
+    <contour>
+      <point x="19" y="-164" type="line" />
+      <point x="91" y="-164" type="line" />
+      <point x="91" y="0" type="line" />
+      <point x="432" y="0" type="line" />
+      <point x="432" y="-164" type="line" />
+      <point x="499" y="-164" type="line" />
+      <point x="499" y="63" type="line" />
+      <point x="451" y="63" type="line" />
+      <point x="451" y="499" type="line" />
+      <point x="163" y="499" type="line" />
+      <point x="157" y="402" type="line" smooth="yes" />
+      <point x="145" y="225" />
+      <point x="119" y="101" />
+      <point x="79" y="63" type="curve" />
+      <point x="19" y="63" type="line" />
+    </contour>
+    <contour>
+      <point x="158" y="63" type="line" />
+      <point x="193" y="127" />
+      <point x="215" y="241" />
+      <point x="224" y="402" type="curve" smooth="yes" />
+      <point x="226" y="435" type="line" />
+      <point x="384" y="435" type="line" />
+      <point x="384" y="63" type="line" />
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.metricsLeft</key>
+      <string>=20</string>
+      <key>com.fontlab.metricsRight</key>
+      <string>=20</string>
+    </dict>
+  </lib>
+</glyph>
