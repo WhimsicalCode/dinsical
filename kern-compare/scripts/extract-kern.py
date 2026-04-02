@@ -33,7 +33,14 @@ PATHS: dict[str, tuple[str, str]] = {
 
 
 def get_kern_pairs(font: TTFont) -> dict[tuple[str, str], int]:
-    """Return {(left_name, right_name): xAdvance} for all non-zero kern pairs (F1 + F2)."""
+    """
+    Return {(left_name, right_name): xAdvance} for all non-zero kern pairs.
+
+    Respects OpenType subtable ordering: within each lookup the first subtable
+    that matches a pair wins (later subtables cannot override it).  This matches
+    how layout engines apply GPOS — a Format-1 specific-pair subtable placed
+    before a Format-2 class subtable correctly takes precedence.
+    """
     gpos = font.get('GPOS')
     if not gpos:
         return {}
@@ -41,20 +48,34 @@ def get_kern_pairs(font: TTFont) -> dict[tuple[str, str], int]:
     result: dict[tuple[str, str], int] = {}
 
     for lookup in gpos.table.LookupList.Lookup:
-        if lookup.LookupType != 2:
+        if lookup.LookupType not in (2, 9):
             continue
-        for sub in lookup.SubTable:
-            if sub.Format == 1:
-                for i, ps in enumerate(sub.PairSet):
-                    left = sub.Coverage.glyphs[i]
-                    for rec in ps.PairValueRecord:
-                        val = getattr(rec.Value1, 'XAdvance', 0) or 0
-                        if val:
-                            result[(left, rec.SecondGlyph)] = val
+        # Pairs already matched by an earlier subtable in *this* lookup
+        matched_this_lookup: set[tuple[str, str]] = set()
 
-            elif sub.Format == 2:
-                cls1 = sub.ClassDef1.classDefs   # glyph_name -> class_id
-                cls2 = sub.ClassDef2.classDefs
+        for sub in lookup.SubTable:
+            # Unwrap Extension lookups (type 9)
+            st = sub.ExtSubTable if lookup.LookupType == 9 else sub
+            if not hasattr(st, 'Format'):
+                continue
+
+            if st.Format == 1 and hasattr(st, 'PairSet'):
+                coverage = st.Coverage.glyphs
+                for i, ps in enumerate(st.PairSet):
+                    left = coverage[i]
+                    for rec in ps.PairValueRecord:
+                        pair = (left, rec.SecondGlyph)
+                        if pair in matched_this_lookup:
+                            continue   # earlier subtable already handled this pair
+                        val = getattr(rec.Value1, 'XAdvance', 0) or 0
+                        matched_this_lookup.add(pair)
+                        if val:
+                            result[pair] = val
+                        # val==0 is still a match — mark it so later subtables are skipped
+
+            elif st.Format == 2 and hasattr(st, 'Class1Record'):
+                cls1 = st.ClassDef1.classDefs   # glyph_name -> class_id
+                cls2 = st.ClassDef2.classDefs
                 rev1: dict[int, list[str]] = defaultdict(list)
                 rev2: dict[int, list[str]] = defaultdict(list)
                 for g, c in cls1.items():
@@ -62,8 +83,8 @@ def get_kern_pairs(font: TTFont) -> dict[tuple[str, str], int]:
                 for g, c in cls2.items():
                     rev2[c].append(g)
 
-                coverage = set(sub.Coverage.glyphs)
-                for c1idx, row in enumerate(sub.Class1Record):
+                coverage = set(st.Coverage.glyphs)
+                for c1idx, row in enumerate(st.Class1Record):
                     for c2idx, cell in enumerate(row.Class2Record):
                         val = getattr(cell.Value1, 'XAdvance', None)
                         if not val:
@@ -74,7 +95,10 @@ def get_kern_pairs(font: TTFont) -> dict[tuple[str, str], int]:
                             if lg not in coverage:
                                 continue
                             for rg in rights:
-                                result[(lg, rg)] = val
+                                pair = (lg, rg)
+                                if pair not in matched_this_lookup:
+                                    matched_this_lookup.add(pair)
+                                    result[pair] = val
 
     return result
 
