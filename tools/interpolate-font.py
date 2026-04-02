@@ -33,9 +33,27 @@ def interpolate_font(src1, src2, dest, weight):
     # Note that we're not saving the new font to the original file, so this is safe
     newfont = OpenFont(src1)
 
-    # define interpolation factor. Regular is 0.0, Bold is 1.0. Adjust
-    # this if your source weights are not 400 and 700.
-    factor = (weight - 4.0) / 3.0
+    # Calibrated factor: piecewise-linear mapping of Dinsy weight integer
+    # (3=Light … 9=Black) to a DINish interpolation factor (0=Regular master,
+    # 1=Bold master, >1 extrapolates past Bold).
+    #
+    # Anchors were measured by comparing I-glyph stem widths between DINsical
+    # and Dinsy across the full weight range:
+    #   weight 4 (Regular, wght 400)  →  factor 0.298  (stem ≈89,  DINsical Regular=89)
+    #   weight 5 (Medium,  wght 500)  →  factor 0.807  (stem ≈118, DINsical Medium=118)
+    #   weight 7 (Bold,    wght 700)  →  factor 1.316  (stem ≈148, DINsical Bold=147)
+    # Note: DINsical Bold ≈ Dinsy Heavy in stem weight.
+    # Weights outside the anchor range are linearly extrapolated.
+    _ANCHORS = [(4, 0.298), (5, 0.807), (7, 1.316)]
+    def _calibrated_factor(w):
+        for i in range(len(_ANCHORS) - 1):
+            w0, f0 = _ANCHORS[i]
+            w1, f1 = _ANCHORS[i + 1]
+            if w <= w1:
+                return f0 + (w - w0) / (w1 - w0) * (f1 - f0)
+        w0, f0 = _ANCHORS[-2]; w1, f1 = _ANCHORS[-1]
+        return f1 + (w - w1) / (w1 - w0) * (f1 - f0)
+    factor = _calibrated_factor(weight)
 
     incompatibilities = 0
 
@@ -68,7 +86,7 @@ def interpolate_font(src1, src2, dest, weight):
 
     sort_font_glyphs(newfont)
 
-    weight_names = {1: 'Hairline', 2: 'Thin', 3: 'Light', 5: 'Medium', 6: 'SemiBold', 8: 'Heavy', 9: 'Black'}
+    weight_names = {1: 'Hairline', 2: 'Thin', 3: 'Light', 4: 'Regular', 5: 'Medium', 6: 'SemiBold', 7: 'Bold', 8: 'Heavy', 9: 'Black'}
     family_name = font1.info.familyName
     weight_name = weight_names[weight]
     simple_style = "regular"

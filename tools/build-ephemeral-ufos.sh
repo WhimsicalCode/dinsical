@@ -52,11 +52,10 @@ $PYTHON "$TOOLSDIR/derive-sources.py" \
 # ---------------------------------------------------------------------------
 for f in Dinsy DinsyCondensed DinsyExpanded; do
     mkdir -p "$BUILD/vfwork/$f"
-    cp -r "$BUILD/sources/$f/$f-Regular.ufo" "$BUILD/vfwork/$f/"
-    cp -r "$BUILD/sources/$f/$f-Bold.ufo"    "$BUILD/vfwork/$f/"
-
-    for weight in Light Heavy Black; do
-        case $weight in Light) w=3;; Heavy) w=8;; Black) w=9;; esac
+    # All VF masters go through the calibrated factor — including Regular (w=4)
+    # and Bold (w=7) — so the variable font axis matches DINsical stem weights.
+    for weight in Light Regular Bold Heavy Black; do
+        case $weight in Light) w=3;; Regular) w=4;; Bold) w=7;; Heavy) w=8;; Black) w=9;; esac
         $PYTHON "$TOOLSDIR/interpolate-font.py" \
             --dest="$BUILD/vfwork/$f/$f-$weight.ufo" --weight=$w \
             "$BUILD/sources/$f/$f-Regular.ufo" \
@@ -141,11 +140,8 @@ cp "$BUILD/variable_ttf/Dinsy-Variable-VF.woff2"  "$SRCDIR/fonts/woff2/Dinsy-Var
 # ---------------------------------------------------------------------------
 cd "$SRCDIR"
 
-cp -r "$BUILD/sources/Dinsy/Dinsy-Regular.ufo" "$BUILD/static/Dinsy/"
-cp -r "$BUILD/sources/Dinsy/Dinsy-Bold.ufo"    "$BUILD/static/Dinsy/"
-
-for weight in Light Medium SemiBold Heavy Black; do
-    case $weight in Light) w=3;; Medium) w=5;; SemiBold) w=6;; Heavy) w=8;; Black) w=9;; esac
+for weight in Light Regular Medium SemiBold Bold Heavy Black; do
+    case $weight in Light) w=3;; Regular) w=4;; Medium) w=5;; SemiBold) w=6;; Bold) w=7;; Heavy) w=8;; Black) w=9;; esac
     $PYTHON "$TOOLSDIR/interpolate-font.py" \
         --dest="$BUILD/static/Dinsy/Dinsy-$weight.ufo" --weight=$w \
         "$BUILD/sources/Dinsy/Dinsy-Regular.ufo" \
