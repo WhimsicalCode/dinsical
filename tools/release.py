@@ -60,6 +60,14 @@ def bump_version(v: str) -> str:
 # Main
 # ---------------------------------------------------------------------------
 
+def cleanup_stale_lock() -> None:
+    """Remove stale .git/index.lock left by a previously interrupted process."""
+    lock = ROOT / ".git" / "index.lock"
+    if lock.exists():
+        print(f"Removing stale git lock: {lock}")
+        lock.unlink()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -70,6 +78,8 @@ def main() -> None:
     dry = args.dry_run
     if dry:
         print("DRY RUN — no changes will be made\n")
+
+    cleanup_stale_lock()
 
     # 1. Assert clean state ------------------------------------------------
     dirty = git("status", "--short", "--untracked-files=no")

@@ -28,7 +28,9 @@ minor=$(printf "%d" "0${minor_raw}" 2>/dev/null || echo "$minor_raw")
 hash=$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo "unknown")
 
 # Count modified tracked files, ignoring tools/ and fonts/
-modified=$(git -C "$ROOT" status -s -uno 2>/dev/null \
+# GIT_OPTIONAL_LOCKS=0 prevents git status from acquiring an index lock,
+# which would conflict with any concurrent git process (e.g. uv, release.py).
+modified=$(GIT_OPTIONAL_LOCKS=0 git -C "$ROOT" status -s -uno 2>/dev/null \
     | grep -Ev '^\s*..\s+(tools|fonts)/' \
     | wc -l \
     | tr -d ' ')
