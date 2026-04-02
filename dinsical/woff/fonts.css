@@ -1,0 +1,33 @@
+@font-face{
+    font-family:DINsical;
+    font-weight: 400;
+    src: url("./7e5fbe11-4858-4bd1-9ec6-a1d9f9d227aa.woff") format("woff");
+}
+@font-face{
+    font-family:DINSical;
+    font-weight: 400;
+    font-style: italic;
+    src: url("./790ebbf2-62c5-4a32-946f-99d405f9243e.woff") format("woff");
+}
+@font-face{
+    font-weight: 500;
+    font-family:DINSical;
+    src: url("./bf73077c-e354-4562-a085-f4703eb1d653.woff") format("woff");
+}
+@font-face{
+    font-family:DINSical;
+    font-weight: 500;
+    font-style: italic;
+    src: url("./c5b62cb1-9795-45b1-8962-ca03659a91ec.woff") format("woff");
+}
+@font-face{
+    font-weight: 700;
+    font-family:DINSical;
+    src: url("./b8a280da-481f-44a0-8d9c-1bc64bd7227c.woff") format("woff");
+}
+@font-face{
+    font-family:DINSical;
+    font-weight: 700;
+    font-style: italic;
+    src: url("./366401fe-6df4-47be-8f55-8a411cff0dd2.woff") format("woff");
+}
