@@ -10,7 +10,7 @@
 
 - Before adding entries, read the full `[Unreleased]` section to see which subsections already exist
 - New entries ALWAYS go under `## [Unreleased]` section
-- Append to existing subsections (e.g., `### Fixed`), do not create duplicates
+- Append to existing subsections, do not create duplicates
 - Always update changelog when making changes to fonts. Do not include non-font changes in changelog.
 - NEVER modify already-released version sections (e.g., `## [1.001]`)
 - Each version section is immutable once released

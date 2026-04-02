@@ -4,7 +4,6 @@
 
 ## [1.005] - 2026-04-02
 
-### Changed
 - Calibrated weight axis to match DINsical stem weights — Regular, Medium, and Bold now have
   identical I-glyph stem widths to their DINsical counterparts (89 / 118 / 147 units at 1000 UPM).
   Previously DINsical Bold ≈ old Dinsy Heavy in visual weight.
@@ -13,13 +12,11 @@
 
 ## [1.004] - 2026-04-02
 
-### Changed
 - Restored `wdth` axis (75–100–125) in variable font, adding Condensed and Expanded variants.
   Condensed and Expanded are derived on-the-fly from upstream DINish during the build.
 
 ## [1.003] - 2026-04-03
 
-### Changed
 - Flattened `fonts/` directory — files moved from `fonts/{fmt}/Dinsy/Dinsy-*.{fmt}` to `fonts/{fmt}/Dinsy-*.{fmt}`
 - Variable font renamed from `Dinsy[slnt,wght]` to `Dinsy-Var`
 
