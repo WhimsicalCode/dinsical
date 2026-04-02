@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.001 (2026-04-02)
+
+**Upstream DINish:** playbeing/dinish @ `a5f3b2a3b932`
+
+### Upstream changes
+- No upstream changes
+
+---
+
 ## v1.000 (2026-04-01)
 
 Initial release.
