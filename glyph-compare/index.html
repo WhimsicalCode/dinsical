@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glyph Compare — Dinsy vs DINsical</title>
+</head>
+<body>
+  <div class="toolbar">
+    <span class="toolbar-title">Glyph Compare</span>
+    <div class="ctrl-row">
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">Weight</span>
+        <select id="sel-weight">
+          <option value="Light">Light</option>
+          <option value="Regular" selected>Regular</option>
+          <option value="Medium">Medium</option>
+          <option value="Bold">Bold</option>
+          <option value="Heavy">Heavy</option>
+          <option value="Black">Black</option>
+        </select>
+      </div>
+      <label class="ctrl-check">
+        <input type="checkbox" id="chk-italic" /> Italic
+      </label>
+
+      <div class="ctrl-sep"></div>
+
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">Size</span>
+        <input type="range" id="rng-size" min="40" max="200" value="100" step="5" />
+        <span class="ctrl-val" id="val-size">100px</span>
+      </div>
+      <div class="ctrl-group">
+        <span class="ctrl-lbl">Line</span>
+        <input type="range" id="rng-lw" min="3" max="30" value="12" step="1" />
+        <span class="ctrl-val" id="val-lw">1.2px</span>
+      </div>
+
+      <div class="ctrl-sep"></div>
+
+      <label class="legend-item">
+        <input type="checkbox" id="chk-dinsical" checked />
+        <span class="dot blue"></span>DINsical
+      </label>
+      <label class="legend-item">
+        <input type="checkbox" id="chk-dinsy" checked />
+        <span class="dot red"></span>Dinsy
+      </label>
+
+      <div class="ctrl-sep"></div>
+
+      <label class="ctrl-check">
+        <input type="checkbox" id="chk-baseline" /> Baseline
+      </label>
+    </div>
+  </div>
+
+  <div class="status" id="status">Loading fonts…</div>
+
+  <div class="grid-wrap">
+    <div id="grid"></div>
+  </div>
+
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal-card" id="modal-card">
+      <div class="modal-header">
+        <div class="modal-head-left">
+          <span class="modal-glyph" id="modal-char"></span>
+          <span class="modal-meta" id="modal-meta"></span>
+        </div>
+        <button class="modal-close-btn" id="modal-close">x</button>
+      </div>
+      <div class="modal-canvas-wrap" id="modal-canvas-wrap"></div>
+      <div class="modal-metrics" id="modal-metrics"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
