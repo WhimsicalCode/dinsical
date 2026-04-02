@@ -4,9 +4,9 @@
   <anchor x="0" y="0" name="_bottom" />
   <outline>
     <contour>
-      <point x="178" y="-149" type="line" />
-      <point x="252" y="-149" type="line" />
-      <point x="310" y="12" type="line" />
+      <point x="181" y="-148" type="line" />
+      <point x="253" y="-148" type="line" />
+      <point x="309" y="12" type="line" />
       <point x="246" y="12" type="line" />
     </contour>
   </outline>

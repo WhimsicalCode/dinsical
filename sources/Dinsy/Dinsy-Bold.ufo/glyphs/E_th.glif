@@ -1,39 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Eth" format="2">
-  <advance width="666" />
+  <advance width="664" />
   <unicode hex="00D0" />
   <outline>
     <contour>
-      <point x="104" y="0" type="line" />
+      <point x="106" y="0" type="line" />
       <point x="346" y="0" type="line" smooth="yes" />
-      <point x="507" y="0" />
-      <point x="606" y="84" />
-      <point x="606" y="279" type="curve" smooth="yes" />
-      <point x="606" y="402" type="line" smooth="yes" />
-      <point x="606" y="597" />
-      <point x="511" y="680" />
-      <point x="351" y="680" type="curve" smooth="yes" />
-      <point x="104" y="680" type="line" />
-      <point x="104" y="403" type="line" />
-      <point x="35" y="403" type="line" />
-      <point x="35" y="290" type="line" />
-      <point x="104" y="290" type="line" />
+      <point x="504" y="0" />
+      <point x="603" y="83" />
+      <point x="603" y="277" type="curve" smooth="yes" />
+      <point x="603" y="404" type="line" smooth="yes" />
+      <point x="603" y="598" />
+      <point x="508" y="680" />
+      <point x="350" y="680" type="curve" smooth="yes" />
+      <point x="106" y="680" type="line" />
+      <point x="106" y="403" type="line" />
+      <point x="36" y="403" type="line" />
+      <point x="36" y="290" type="line" />
+      <point x="106" y="290" type="line" />
     </contour>
     <contour>
-      <point x="233" y="113" type="line" />
-      <point x="233" y="290" type="line" />
-      <point x="360" y="290" type="line" />
-      <point x="360" y="403" type="line" />
-      <point x="233" y="403" type="line" />
-      <point x="233" y="568" type="line" />
-      <point x="350" y="568" type="line" smooth="yes" />
-      <point x="436" y="568" />
-      <point x="477" y="516" />
-      <point x="477" y="395" type="curve" smooth="yes" />
-      <point x="477" y="280" type="line" smooth="yes" />
-      <point x="477" y="164" />
-      <point x="435" y="113" />
-      <point x="350" y="113" type="curve" smooth="yes" />
+      <point x="235" y="113" type="line" />
+      <point x="235" y="290" type="line" />
+      <point x="359" y="290" type="line" />
+      <point x="359" y="403" type="line" />
+      <point x="235" y="403" type="line" />
+      <point x="235" y="568" type="line" />
+      <point x="349" y="568" type="line" smooth="yes" />
+      <point x="434" y="568" />
+      <point x="473" y="517" />
+      <point x="473" y="397" type="curve" smooth="yes" />
+      <point x="473" y="277" type="line" smooth="yes" />
+      <point x="473" y="164" />
+      <point x="432" y="113" />
+      <point x="349" y="113" type="curve" smooth="yes" />
     </contour>
   </outline>
   <lib>

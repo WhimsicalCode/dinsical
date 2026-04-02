@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="yucyr.loclBGR" format="2">
-  <advance width="682" />
-  <guideline x="32" y="360" angle="0" name="horizontal" />
-  <guideline x="207" y="0" angle="90" name="h1" />
+  <advance width="676" />
+  <guideline x="23" y="399" angle="0" name="horizontal" />
+  <guideline x="181" y="0" angle="90" name="h1" />
   <guideline x="0" y="499" angle="0" name="horizontal" />
   <guideline x="390" y="0" angle="90" name="h1" />
-  <anchor x="404" y="564" name="top" />
+  <anchor x="400" y="564" name="top" />
   <outline>
-    <component base="o" xOffset="166" />
+    <component base="o" xOffset="165" />
     <contour>
       <point x="72" y="0" type="line" />
-      <point x="144" y="0" type="line" />
-      <point x="144" y="236" type="line" />
-      <point x="261" y="236" type="line" />
-      <point x="261" y="302" type="line" />
-      <point x="144" y="302" type="line" />
-      <point x="144" y="680" type="line" />
+      <point x="143" y="0" type="line" />
+      <point x="143" y="236" type="line" />
+      <point x="260" y="236" type="line" />
+      <point x="260" y="301" type="line" />
+      <point x="143" y="301" type="line" />
+      <point x="143" y="680" type="line" />
       <point x="72" y="680" type="line" />
     </contour>
   </outline>

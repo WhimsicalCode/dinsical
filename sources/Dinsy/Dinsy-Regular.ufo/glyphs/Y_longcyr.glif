@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Ylongcyr" format="2">
-  <advance width="802" />
+  <advance width="796" />
   <unicode hex="042B" />
-  <anchor x="385" y="740" name="top" />
+  <anchor x="382" y="741" name="top" />
   <outline>
     <component base="Softcyr" />
-    <component base="I" xOffset="565" />
+    <component base="I" xOffset="559" />
   </outline>
   <lib>
     <dict>

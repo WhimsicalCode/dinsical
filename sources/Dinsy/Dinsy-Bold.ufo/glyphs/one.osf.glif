@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="one.osf" format="2">
-  <advance width="351" />
+  <advance width="348" />
   <outline>
     <contour>
-      <point x="159" y="0" type="line" />
-      <point x="288" y="0" type="line" />
-      <point x="288" y="522" type="line" />
-      <point x="159" y="522" type="line" />
+      <point x="156" y="0" type="line" />
+      <point x="285" y="0" type="line" />
+      <point x="285" y="522" type="line" />
+      <point x="156" y="522" type="line" />
       <point x="36" y="436" type="line" />
-      <point x="36" y="298" type="line" />
-      <point x="159" y="381" type="line" />
+      <point x="36" y="297" type="line" />
+      <point x="156" y="381" type="line" />
     </contour>
   </outline>
 </glyph>

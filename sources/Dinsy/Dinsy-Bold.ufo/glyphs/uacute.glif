@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="uacute" format="2">
-  <advance width="541" />
+  <advance width="537" />
   <unicode hex="00FA" />
   <anchor x="261" y="512" name="top" />
   <outline>

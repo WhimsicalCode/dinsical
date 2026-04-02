@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Vecyr" format="2">
-  <advance width="605" />
+  <advance width="600" />
   <unicode hex="0412" />
-  <anchor x="277" y="-83" name="bottom" />
-  <anchor x="277" y="746" name="top" />
+  <anchor x="276" y="-83" name="bottom" />
+  <anchor x="275" y="746" name="top" />
   <outline>
     <component base="B" />
   </outline>

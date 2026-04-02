@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Obarredcyrillic" format="2">
-  <advance width="623" />
+  <advance width="617" />
   <unicode hex="04E8" />
   <outline>
     <component base="O" />
-    <component base="minus" xOffset="62" />
+    <component base="minus" xOffset="58" />
   </outline>
 </glyph>

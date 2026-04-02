@@ -43,10 +43,12 @@ FAMILIES: dict[str, str] = {
 SCALE = (1000 / 1024) * 0.985   # = 0.9619140625
 
 # Width blend: fraction toward DINishExpanded for the Dinsy (wdth=100) masters.
-# 0.0 = pure DINish Normal proportions.
-# 0.28 ≈ wdth 107 on the 75–125 axis — median of Dinsical ink-width targets.
+# Formula:  wdth = 100 + WDTH_BLEND × 25   →   WDTH_BLEND = (wdth − 100) / 25
+# 0.0  = pure DINish Normal  (wdth 100)
+# 0.28 ≈ wdth 107  — median of Dinsical ink-width targets
+# 1.0  = full DINishExpanded (wdth 125)
 # Set to 0.0 to disable.
-WDTH_BLEND: float = 0.28
+WDTH_BLEND: float = 0.2 # DINish wdth 105
 
 # Line-spacing metrics — set verbatim from DINsical, NOT scaled.
 # Gives: (750 + 250 + 200) / 1000 * 100px = 120.000 px @ 100 px

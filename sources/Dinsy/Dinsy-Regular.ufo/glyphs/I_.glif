@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="I" format="2">
-  <advance width="246" />
+  <advance width="244" />
   <unicode hex="0049" />
-  <anchor x="122" y="680" name="top" />
+  <anchor x="121" y="680" name="top" />
   <outline>
     <contour>
       <point x="84" y="0" type="line" />
-      <point x="162" y="0" type="line" />
-      <point x="162" y="680" type="line" />
+      <point x="160" y="0" type="line" />
+      <point x="160" y="680" type="line" />
       <point x="84" y="680" type="line" />
     </contour>
   </outline>
@@ -34,7 +34,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>87</integer>
+            <integer>86</integer>
             <key>width</key>
             <integer>72</integer>
           </dict>

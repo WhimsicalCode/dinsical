@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="oogonekmacron" format="2">
-  <advance width="516" />
+  <advance width="511" />
   <unicode hex="01ED" />
   <outline>
     <component base="oogonek" />
-    <component base="macroncmb" xOffset="248" />
+    <component base="macroncmb" xOffset="246" />
   </outline>
 </glyph>

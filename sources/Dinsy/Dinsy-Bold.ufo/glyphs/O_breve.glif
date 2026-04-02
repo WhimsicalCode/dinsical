@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Obreve" format="2">
-  <advance width="611" />
+  <advance width="605" />
   <unicode hex="014E" />
-  <anchor x="253" y="0" name="b.cedilla" />
-  <anchor x="305" y="-83" name="bottom" />
+  <anchor x="251" y="0" name="b.cedilla" />
+  <anchor x="301" y="-83" name="bottom" />
   <outline>
     <component base="O" />
-    <component base="brevecmb" xOffset="305" yOffset="184" />
+    <component base="brevecmb" xOffset="301" yOffset="184" />
   </outline>
   <lib>
     <dict>

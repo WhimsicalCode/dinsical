@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="scaron" format="2">
-  <advance width="479" />
+  <advance width="475" />
   <unicode hex="0161" />
   <anchor x="227" y="710" name="top" />
   <outline>
     <component base="s" />
-    <component base="caroncmb" xOffset="233" />
+    <component base="caroncmb" xOffset="232" />
   </outline>
   <lib>
     <dict>

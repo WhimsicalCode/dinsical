@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="quotedblright" format="2">
-  <advance width="381" />
+  <advance width="380" />
   <unicode hex="201D" />
   <outline>
     <contour>
@@ -10,10 +10,10 @@
       <point x="38" y="680" type="line" />
     </contour>
     <contour>
-      <point x="228" y="385" type="line" />
-      <point x="343" y="483" type="line" />
-      <point x="343" y="680" type="line" />
-      <point x="228" y="680" type="line" />
+      <point x="227" y="385" type="line" />
+      <point x="342" y="483" type="line" />
+      <point x="342" y="680" type="line" />
+      <point x="227" y="680" type="line" />
     </contour>
   </outline>
   <lib>

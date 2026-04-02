@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="encyr" format="2">
-  <advance width="529" />
+  <advance width="525" />
   <unicode hex="043D" />
   <outline>
     <contour>
       <point x="72" y="0" type="line" />
-      <point x="144" y="0" type="line" />
-      <point x="144" y="236" type="line" />
-      <point x="385" y="236" type="line" />
-      <point x="385" y="0" type="line" />
-      <point x="457" y="0" type="line" />
-      <point x="457" y="500" type="line" />
-      <point x="385" y="500" type="line" />
-      <point x="385" y="302" type="line" />
-      <point x="144" y="302" type="line" />
-      <point x="144" y="500" type="line" />
+      <point x="143" y="0" type="line" />
+      <point x="143" y="236" type="line" />
+      <point x="382" y="236" type="line" />
+      <point x="382" y="0" type="line" />
+      <point x="453" y="0" type="line" />
+      <point x="453" y="500" type="line" />
+      <point x="382" y="500" type="line" />
+      <point x="382" y="301" type="line" />
+      <point x="143" y="301" type="line" />
+      <point x="143" y="500" type="line" />
       <point x="72" y="500" type="line" />
     </contour>
   </outline>

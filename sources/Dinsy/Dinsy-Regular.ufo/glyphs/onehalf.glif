@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="onehalf" format="2">
-  <advance width="735" />
+  <advance width="727" />
   <unicode hex="00BD" />
   <outline>
     <component base="one.dnom" yOffset="275" />
-    <component base="fraction" xOffset="222" />
-    <component base="two.dnom" xOffset="418" />
+    <component base="fraction" xOffset="219" />
+    <component base="two.dnom" xOffset="414" />
   </outline>
   <lib>
     <dict>

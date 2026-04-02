@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Kacyr" format="2">
-  <advance width="609" />
+  <advance width="603" />
   <unicode hex="041A" />
-  <guideline x="88" y="490" angle="0" name="horizontal" />
+  <guideline x="63" y="544" angle="0" name="horizontal" />
   <guideline x="274" y="0" angle="90" name="h1" />
-  <anchor x="285" y="740" name="top" />
+  <anchor x="282" y="741" name="top" />
   <outline>
     <contour>
       <point x="77" y="0" type="line" />
-      <point x="154" y="0" type="line" />
-      <point x="154" y="313" type="line" />
-      <point x="268" y="313" type="line" />
-      <point x="511" y="0" type="line" />
-      <point x="601" y="0" type="line" />
-      <point x="323" y="367" type="line" />
-      <point x="570" y="680" type="line" />
-      <point x="481" y="680" type="line" />
-      <point x="249" y="382" type="line" />
-      <point x="154" y="382" type="line" />
-      <point x="154" y="680" type="line" />
+      <point x="153" y="0" type="line" />
+      <point x="153" y="314" type="line" />
+      <point x="265" y="314" type="line" />
+      <point x="507" y="0" type="line" />
+      <point x="595" y="0" type="line" />
+      <point x="316" y="368" type="line" />
+      <point x="565" y="680" type="line" />
+      <point x="476" y="680" type="line" />
+      <point x="243" y="381" type="line" />
+      <point x="153" y="381" type="line" />
+      <point x="153" y="680" type="line" />
       <point x="77" y="680" type="line" />
     </contour>
   </outline>

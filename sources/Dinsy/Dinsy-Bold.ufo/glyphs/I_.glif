@@ -2,7 +2,7 @@
 <glyph name="I" format="2">
   <advance width="259" />
   <unicode hex="0049" />
-  <anchor x="128" y="680" name="top" />
+  <anchor x="129" y="680" name="top" />
   <outline>
     <contour>
       <point x="65" y="0" type="line" />
@@ -34,7 +34,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>69</integer>
+            <integer>70</integer>
             <key>width</key>
             <integer>129</integer>
           </dict>

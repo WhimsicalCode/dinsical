@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="igravecyr.loclBGR" format="2">
-  <advance width="526" />
+  <advance width="522" />
   <outline>
     <component base="icyr.loclBGR" />
-    <component base="gravecomb" xOffset="264" />
+    <component base="gravecomb" xOffset="261" />
   </outline>
   <lib>
     <dict>

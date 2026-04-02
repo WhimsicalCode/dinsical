@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="second" format="2">
-  <advance width="357" />
+  <advance width="354" />
   <unicode hex="2033" />
   <outline>
-    <component base="acutecomb.loclPLK" xOffset="231" />
-    <component base="acutecomb.loclPLK" xOffset="90" />
+    <component base="acutecomb.loclPLK" xOffset="230" />
+    <component base="acutecomb.loclPLK" xOffset="91" />
   </outline>
 </glyph>

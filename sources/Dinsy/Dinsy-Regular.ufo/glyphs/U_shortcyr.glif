@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Ushortcyr" format="2">
-  <advance width="514" />
+  <advance width="508" />
   <unicode hex="040E" />
-  <guideline x="252" y="0" angle="90" name="h1" />
+  <guideline x="248" y="0" angle="90" name="h1" />
   <outline>
     <component base="Ucyr" />
-    <component base="brevecmb" xOffset="252" yOffset="190" />
+    <component base="brevecmb" xOffset="248" yOffset="191" />
   </outline>
   <lib>
     <dict>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="ibreve" format="2">
-  <advance width="236" />
+  <advance width="235" />
   <unicode hex="012D" />
   <outline>
     <component base="dotlessi" />
-    <component base="brevecmb" xOffset="118" yOffset="14" />
+    <component base="brevecmb" xOffset="117" yOffset="14" />
   </outline>
   <lib>
     <dict>

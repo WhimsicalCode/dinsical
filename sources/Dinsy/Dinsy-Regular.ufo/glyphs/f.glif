@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="f" format="2">
-  <advance width="317" />
+  <advance width="313" />
   <unicode hex="0066" />
   <outline>
     <contour>
-      <point x="107" y="0" type="line" />
-      <point x="178" y="0" type="line" />
-      <point x="178" y="445" type="line" />
-      <point x="290" y="445" type="line" />
-      <point x="290" y="500" type="line" />
-      <point x="178" y="500" type="line" />
-      <point x="178" y="554" type="line" smooth="yes" />
-      <point x="178" y="601" />
-      <point x="200" y="623" />
-      <point x="247" y="623" type="curve" smooth="yes" />
-      <point x="290" y="623" type="line" />
-      <point x="290" y="680" type="line" />
-      <point x="235" y="680" type="line" smooth="yes" />
-      <point x="154" y="680" />
-      <point x="107" y="632" />
-      <point x="107" y="551" type="curve" smooth="yes" />
-      <point x="107" y="500" type="line" />
+      <point x="106" y="0" type="line" />
+      <point x="176" y="0" type="line" />
+      <point x="176" y="445" type="line" />
+      <point x="286" y="445" type="line" />
+      <point x="286" y="500" type="line" />
+      <point x="176" y="500" type="line" />
+      <point x="176" y="556" type="line" smooth="yes" />
+      <point x="176" y="602" />
+      <point x="198" y="624" />
+      <point x="244" y="624" type="curve" smooth="yes" />
+      <point x="286" y="624" type="line" />
+      <point x="286" y="680" type="line" />
+      <point x="232" y="680" type="line" smooth="yes" />
+      <point x="152" y="680" />
+      <point x="106" y="632" />
+      <point x="106" y="553" type="curve" smooth="yes" />
+      <point x="106" y="500" type="line" />
       <point x="41" y="500" type="line" />
       <point x="41" y="445" type="line" />
-      <point x="107" y="445" type="line" />
+      <point x="106" y="445" type="line" />
     </contour>
   </outline>
   <lib>
@@ -55,7 +55,7 @@
         <array>
           <dict>
             <key>position</key>
-            <integer>121</integer>
+            <integer>122</integer>
             <key>width</key>
             <integer>67</integer>
           </dict>

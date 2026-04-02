@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="atilde.ss02" format="2">
-  <advance width="503" />
+  <advance width="499" />
   <anchor x="235" y="506" name="top" />
   <outline>
     <component base="a.ss02" />
-    <component base="tildecomb" xOffset="247" />
+    <component base="tildecomb" xOffset="246" />
   </outline>
   <lib>
     <dict>

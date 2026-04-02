@@ -6,10 +6,10 @@
     <component base="f" xOffset="19" />
     <component base="dotlessi" xOffset="322" />
     <contour>
-      <point x="400" y="586" type="line" />
-      <point x="474" y="586" type="line" />
-      <point x="474" y="672" type="line" />
-      <point x="400" y="672" type="line" />
+      <point x="400" y="585" type="line" />
+      <point x="474" y="585" type="line" />
+      <point x="474" y="671" type="line" />
+      <point x="400" y="671" type="line" />
     </contour>
   </outline>
   <lib>

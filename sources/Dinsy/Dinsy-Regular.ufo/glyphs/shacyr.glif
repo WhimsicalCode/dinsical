@@ -5,16 +5,16 @@
   <outline>
     <contour>
       <point x="72" y="0" type="line" />
-      <point x="680" y="0" type="line" />
-      <point x="680" y="500" type="line" />
+      <point x="679" y="0" type="line" />
+      <point x="679" y="500" type="line" />
       <point x="608" y="500" type="line" />
-      <point x="608" y="66" type="line" />
-      <point x="412" y="66" type="line" />
-      <point x="412" y="500" type="line" />
-      <point x="340" y="500" type="line" />
-      <point x="340" y="66" type="line" />
-      <point x="144" y="66" type="line" />
-      <point x="144" y="500" type="line" />
+      <point x="608" y="65" type="line" />
+      <point x="411" y="65" type="line" />
+      <point x="411" y="500" type="line" />
+      <point x="341" y="500" type="line" />
+      <point x="341" y="65" type="line" />
+      <point x="143" y="65" type="line" />
+      <point x="143" y="500" type="line" />
       <point x="72" y="500" type="line" />
     </contour>
   </outline>

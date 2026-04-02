@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Shacyr" format="2">
-  <advance width="796" />
+  <advance width="797" />
   <unicode hex="0428" />
   <guideline x="58" y="0" angle="90" />
   <guideline x="187" y="0" angle="90" />
   <guideline x="334" y="0" angle="90" />
   <guideline x="463" y="0" angle="90" />
-  <guideline x="610" y="0" angle="90" />
-  <guideline x="739" y="0" angle="90" />
+  <guideline x="611" y="0" angle="90" />
+  <guideline x="740" y="0" angle="90" />
   <guideline x="0" y="680" angle="0" />
   <anchor x="651" y="669" name="top" />
   <outline>
     <contour>
       <point x="58" y="0" type="line" />
-      <point x="739" y="0" type="line" />
-      <point x="739" y="680" type="line" />
-      <point x="610" y="680" type="line" />
-      <point x="610" y="113" type="line" />
+      <point x="740" y="0" type="line" />
+      <point x="740" y="680" type="line" />
+      <point x="611" y="680" type="line" />
+      <point x="611" y="113" type="line" />
       <point x="463" y="113" type="line" />
       <point x="463" y="680" type="line" />
       <point x="334" y="680" type="line" />

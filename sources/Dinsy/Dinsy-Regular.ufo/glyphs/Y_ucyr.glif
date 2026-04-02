@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Yucyr" format="2">
-  <advance width="793" />
+  <advance width="784" />
   <unicode hex="042E" />
-  <guideline x="431" y="0" angle="90" name="h1" />
-  <anchor x="431" y="740" name="top" />
+  <guideline x="426" y="0" angle="90" name="h1" />
+  <anchor x="426" y="741" name="top" />
   <outline>
-    <component base="O" xOffset="169" />
+    <component base="O" xOffset="167" />
     <contour>
       <point x="77" y="0" type="line" />
-      <point x="154" y="0" type="line" />
-      <point x="154" y="313" type="line" />
-      <point x="278" y="313" type="line" />
-      <point x="278" y="382" type="line" />
-      <point x="154" y="382" type="line" />
-      <point x="154" y="680" type="line" />
+      <point x="153" y="0" type="line" />
+      <point x="153" y="314" type="line" />
+      <point x="277" y="314" type="line" />
+      <point x="277" y="381" type="line" />
+      <point x="153" y="381" type="line" />
+      <point x="153" y="680" type="line" />
       <point x="77" y="680" type="line" />
     </contour>
   </outline>

@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.009] - 2026-04-02
+
+- Tuned `WDTH_BLEND` from 0.28 to 0.20 (wdth 107 → 105) after visual review.
+- Added formula comment: `wdth = 100 + WDTH_BLEND × 25`  /  `WDTH_BLEND = (wdth − 100) / 25`.
+
 ## [1.008] - 2026-04-02
 
 - Width blend: `tools/derive-sources.py` now interpolates the Dinsy (wdth=100)

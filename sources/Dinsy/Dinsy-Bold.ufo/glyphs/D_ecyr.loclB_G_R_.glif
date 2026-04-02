@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Decyr.loclBGR" format="2">
-  <advance width="691" />
+  <advance width="686" />
   <outline>
-    <component base="Elcyr.loclBGR" xOffset="35" />
+    <component base="Elcyr.loclBGR" xOffset="37" />
     <contour>
       <point x="11" y="-164" type="line" />
       <point x="139" y="-164" type="line" />
       <point x="139" y="0" type="line" />
-      <point x="551" y="0" type="line" />
-      <point x="551" y="-164" type="line" />
-      <point x="680" y="-164" type="line" />
-      <point x="680" y="113" type="line" />
+      <point x="546" y="0" type="line" />
+      <point x="546" y="-164" type="line" />
+      <point x="676" y="-164" type="line" />
+      <point x="676" y="113" type="line" />
       <point x="11" y="113" type="line" />
     </contour>
   </outline>

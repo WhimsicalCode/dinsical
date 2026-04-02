@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="shchacyr.loclBGR" format="2">
-  <advance width="847" />
+  <advance width="841" />
   <outline>
     <component base="shacyr.loclBGR" />
     <contour>
-      <point x="726" y="-164" type="line" />
-      <point x="847" y="-164" type="line" />
-      <point x="847" y="108" type="line" />
-      <point x="726" y="108" type="line" />
+      <point x="720" y="-164" type="line" />
+      <point x="841" y="-164" type="line" />
+      <point x="841" y="107" type="line" />
+      <point x="720" y="107" type="line" />
     </contour>
   </outline>
   <lib>

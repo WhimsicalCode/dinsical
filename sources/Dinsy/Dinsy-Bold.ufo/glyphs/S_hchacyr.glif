@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Shchacyr" format="2">
-  <advance width="857" />
+  <advance width="858" />
   <unicode hex="0429" />
   <outline>
     <contour>
       <point x="719" y="-164" type="line" />
-      <point x="847" y="-164" type="line" />
-      <point x="847" y="113" type="line" />
-      <point x="739" y="113" type="line" />
-      <point x="739" y="680" type="line" />
-      <point x="610" y="680" type="line" />
-      <point x="610" y="113" type="line" />
+      <point x="848" y="-164" type="line" />
+      <point x="848" y="113" type="line" />
+      <point x="740" y="113" type="line" />
+      <point x="740" y="680" type="line" />
+      <point x="611" y="680" type="line" />
+      <point x="611" y="113" type="line" />
       <point x="463" y="113" type="line" />
       <point x="463" y="680" type="line" />
       <point x="334" y="680" type="line" />

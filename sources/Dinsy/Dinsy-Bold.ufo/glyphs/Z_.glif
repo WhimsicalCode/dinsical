@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="Z" format="2">
-  <advance width="536" />
+  <advance width="532" />
   <unicode hex="005A" />
   <anchor x="258" y="680" name="top" />
   <outline>
     <contour>
       <point x="40" y="0" type="line" />
-      <point x="496" y="0" type="line" />
-      <point x="496" y="114" type="line" />
+      <point x="492" y="0" type="line" />
+      <point x="492" y="114" type="line" />
       <point x="182" y="114" type="line" />
-      <point x="487" y="568" type="line" />
-      <point x="487" y="680" type="line" />
+      <point x="482" y="568" type="line" />
+      <point x="482" y="680" type="line" />
       <point x="46" y="680" type="line" />
       <point x="46" y="568" type="line" />
-      <point x="345" y="568" type="line" />
+      <point x="342" y="568" type="line" />
       <point x="40" y="114" type="line" />
     </contour>
   </outline>
