@@ -128,30 +128,29 @@ def main() -> None:
     )
 
     today = date.today().isoformat()
-    lines = [
-        f"## v{new_version} ({today})",
-        "",
-        f"**Upstream DINish:** playbeing/dinish @ `{curr_dinish[:12]}`",
-        "",
-        "### Upstream changes",
-    ]
+    lines = [f"## [{new_version}] - {today}", ""]
+
     if dinish_log:
+        lines += [
+            f"**Upstream DINish:** playbeing/dinish @ `{curr_dinish[:12]}`",
+            "",
+            "### Upstream changes",
+        ]
         for entry in dinish_log.splitlines():
             lines.append(f"- {entry}")
-    else:
-        lines.append("- No upstream changes")
+        lines.append("")
 
     if overlay_glifs:
-        lines += ["", "### Overlay glyphs"]
+        lines += ["### Overlay glyphs"]
         for p in overlay_glifs:
             lines.append(f"- `{p.relative_to(ROOT / 'overlay')}`")
+        lines.append("")
 
     if source_diff:
-        lines += ["", "### Source changes", "```"]
+        lines += ["### Source changes", "```"]
         lines += source_diff.splitlines()
-        lines += ["```"]
+        lines += ["```", ""]
 
-    lines += ["", "---", ""]
     entry = "\n".join(lines)
 
     print(f"\nChangelog entry:\n{entry}")

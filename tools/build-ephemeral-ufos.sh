@@ -125,7 +125,7 @@ statmake --stylespace Dinsy-Variable.stylespace \
 
 out=variable_ttf/Dinsy-Variable-VF.ttf
 res=$(gftools fix-nonhinting "$out" "$out.fix" 2>&1)
-echo "$res" | grep -Pv '(^$|prep-gasp\.ttf|^\t|^GASP|^PREP)' || true
+echo "$res" | grep -Ev '^$|prep-gasp\.ttf|^GASP|^PREP' | grep -v $'^\t' || true
 mv "$out.fix" "$out"
 rm -f variable_ttf/*prep-gasp.ttf
 
