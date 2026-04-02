@@ -1,6 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
 <designspace format="4.0">
   <axes>
+    <axis tag="wdth" name="width" default="100" minimum="75" maximum="125">
+      <labelname xml:lang="en">Width</labelname>
+      <labels>
+        <label uservalue="75"  name="Condensed"/>
+        <label uservalue="125" name="Expanded"/>
+      </labels>
+      <map output="75"  input="75"/>
+      <map output="100" input="100"/>
+      <map output="125" input="125"/>
+    </axis>
     <axis tag="slnt" name="slant" default="0" minimum="-12" maximum="0">
       <labelname xml:lang="en">Slant</labelname>
       <labels>
@@ -21,102 +31,53 @@
     </axis>
   </axes>
   <sources>
-    <source filename="sources/vfwork/Dinsy/Dinsy-Light.ufo" stylename="Light" familyname="Dinsy">
-      <location>
-        <dimension xvalue="300" name="weight"/>
-        <dimension xvalue="0" name="slant"/>
-      </location>
+    <!-- Condensed wdth=75 -->
+    <source filename="sources/vfwork/DinsyCondensed/DinsyCondensed-Light.ufo"        stylename="CondensedLight"        familyname="Dinsy"><location><dimension xvalue="300" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyCondensed/DinsyCondensed-LightItalic.ufo"  stylename="CondensedLightItalic"  familyname="Dinsy"><location><dimension xvalue="300" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyCondensed/DinsyCondensed-Regular.ufo"      stylename="CondensedRegular"      familyname="Dinsy"><location><dimension xvalue="400" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyCondensed/DinsyCondensed-Italic.ufo"       stylename="CondensedItalic"       familyname="Dinsy"><location><dimension xvalue="400" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyCondensed/DinsyCondensed-Bold.ufo"         stylename="CondensedBold"         familyname="Dinsy"><location><dimension xvalue="700" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyCondensed/DinsyCondensed-BoldItalic.ufo"   stylename="CondensedBoldItalic"   familyname="Dinsy"><location><dimension xvalue="700" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyCondensed/DinsyCondensed-Black.ufo"        stylename="CondensedBlack"        familyname="Dinsy"><location><dimension xvalue="900" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyCondensed/DinsyCondensed-BlackItalic.ufo"  stylename="CondensedBlackItalic"  familyname="Dinsy"><location><dimension xvalue="900" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <!-- Regular wdth=100 -->
+    <source filename="sources/vfwork/Dinsy/Dinsy-Light.ufo"        stylename="Light"        familyname="Dinsy"><location><dimension xvalue="300" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsy/Dinsy-LightItalic.ufo"  stylename="LightItalic"  familyname="Dinsy"><location><dimension xvalue="300" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsy/Dinsy-Regular.ufo"      stylename="Regular"      familyname="Dinsy">
+      <location><dimension xvalue="400" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0" name="slant"/></location>
+      <lib copy="1"/><groups copy="1"/><info copy="1"/><features copy="1"/>
     </source>
-    <source filename="sources/vfwork/Dinsy/Dinsy-LightItalic.ufo" stylename="LightItalic" familyname="Dinsy">
-      <location>
-        <dimension xvalue="300" name="weight"/>
-        <dimension xvalue="-12" name="slant"/>
-      </location>
-    </source>
-    <source filename="sources/vfwork/Dinsy/Dinsy-Regular.ufo" stylename="Regular" familyname="Dinsy">
-      <location>
-        <dimension xvalue="400" name="weight"/>
-        <dimension xvalue="0" name="slant"/>
-      </location>
-      <lib copy="1"/>
-      <groups copy="1"/>
-      <info copy="1"/>
-      <features copy="1"/>
-    </source>
-    <source filename="sources/vfwork/Dinsy/Dinsy-Italic.ufo" stylename="Italic" familyname="Dinsy">
-      <location>
-        <dimension xvalue="400" name="weight"/>
-        <dimension xvalue="-12" name="slant"/>
-      </location>
-    </source>
-    <source filename="sources/vfwork/Dinsy/Dinsy-Bold.ufo" stylename="Bold" familyname="Dinsy">
-      <location>
-        <dimension xvalue="700" name="weight"/>
-        <dimension xvalue="0" name="slant"/>
-      </location>
-    </source>
-    <source filename="sources/vfwork/Dinsy/Dinsy-BoldItalic.ufo" stylename="BoldItalic" familyname="Dinsy">
-      <location>
-        <dimension xvalue="700" name="weight"/>
-        <dimension xvalue="-12" name="slant"/>
-      </location>
-    </source>
-    <source filename="sources/vfwork/Dinsy/Dinsy-Black.ufo" stylename="Black" familyname="Dinsy">
-      <location>
-        <dimension xvalue="900" name="weight"/>
-        <dimension xvalue="0" name="slant"/>
-      </location>
-    </source>
-    <source filename="sources/vfwork/Dinsy/Dinsy-BlackItalic.ufo" stylename="BlackItalic" familyname="Dinsy">
-      <location>
-        <dimension xvalue="900" name="weight"/>
-        <dimension xvalue="-12" name="slant"/>
-      </location>
-    </source>
+    <source filename="sources/vfwork/Dinsy/Dinsy-Italic.ufo"       stylename="Italic"       familyname="Dinsy"><location><dimension xvalue="400" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsy/Dinsy-Bold.ufo"         stylename="Bold"         familyname="Dinsy"><location><dimension xvalue="700" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsy/Dinsy-BoldItalic.ufo"   stylename="BoldItalic"   familyname="Dinsy"><location><dimension xvalue="700" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsy/Dinsy-Black.ufo"        stylename="Black"        familyname="Dinsy"><location><dimension xvalue="900" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsy/Dinsy-BlackItalic.ufo"  stylename="BlackItalic"  familyname="Dinsy"><location><dimension xvalue="900" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <!-- Expanded wdth=125 -->
+    <source filename="sources/vfwork/DinsyExpanded/DinsyExpanded-Light.ufo"        stylename="ExpandedLight"        familyname="Dinsy"><location><dimension xvalue="300" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyExpanded/DinsyExpanded-LightItalic.ufo"  stylename="ExpandedLightItalic"  familyname="Dinsy"><location><dimension xvalue="300" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyExpanded/DinsyExpanded-Regular.ufo"      stylename="ExpandedRegular"      familyname="Dinsy"><location><dimension xvalue="400" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyExpanded/DinsyExpanded-Italic.ufo"       stylename="ExpandedItalic"       familyname="Dinsy"><location><dimension xvalue="400" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyExpanded/DinsyExpanded-Bold.ufo"         stylename="ExpandedBold"         familyname="Dinsy"><location><dimension xvalue="700" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyExpanded/DinsyExpanded-BoldItalic.ufo"   stylename="ExpandedBoldItalic"   familyname="Dinsy"><location><dimension xvalue="700" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyExpanded/DinsyExpanded-Black.ufo"        stylename="ExpandedBlack"        familyname="Dinsy"><location><dimension xvalue="900" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsyExpanded/DinsyExpanded-BlackItalic.ufo"  stylename="ExpandedBlackItalic"  familyname="Dinsy"><location><dimension xvalue="900" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
   </sources>
   <instances>
-    <instance filename="instances/Dinsy-Light.ufo" stylename="Light" name="Light" familyname="Dinsy" stylemapfamilyname="Dinsy Light" postscriptfontname="Dinsy-Light">
-      <location><dimension xvalue="300" name="weight"/><dimension xvalue="0" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-LightItalic.ufo" stylename="LightItalic" name="Light Italic" familyname="Dinsy" stylemapfamilyname="Dinsy LightItalic" postscriptfontname="Dinsy-LightItalic">
-      <location><dimension xvalue="300" name="weight"/><dimension xvalue="-12" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-Regular.ufo" stylename="Regular" name="Regular" familyname="Dinsy" stylemapfamilyname="Dinsy Regular" postscriptfontname="Dinsy">
-      <location><dimension xvalue="400" name="weight"/><dimension xvalue="0" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-Italic.ufo" stylename="Italic" name="Italic" familyname="Dinsy" stylemapfamilyname="Dinsy Italic" postscriptfontname="Dinsy-Italic">
-      <location><dimension xvalue="400" name="weight"/><dimension xvalue="-12" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-Medium.ufo" stylename="Medium" name="Medium" familyname="Dinsy" stylemapfamilyname="Dinsy Medium" postscriptfontname="Dinsy-Medium">
-      <location><dimension xvalue="500" name="weight"/><dimension xvalue="0" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-MediumItalic.ufo" stylename="MediumItalic" name="Medium Italic" familyname="Dinsy" stylemapfamilyname="Dinsy MediumItalic" postscriptfontname="Dinsy-MediumItalic">
-      <location><dimension xvalue="500" name="weight"/><dimension xvalue="-12" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-SemiBold.ufo" stylename="SemiBold" name="SemiBold" familyname="Dinsy" stylemapfamilyname="Dinsy SemiBold" postscriptfontname="Dinsy-SemiBold">
-      <location><dimension xvalue="600" name="weight"/><dimension xvalue="0" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-SemiBoldItalic.ufo" stylename="SemiBoldItalic" name="SemiBold Italic" familyname="Dinsy" stylemapfamilyname="Dinsy SemiBoldItalic" postscriptfontname="Dinsy-SemiBoldItalic">
-      <location><dimension xvalue="600" name="weight"/><dimension xvalue="-12" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-Bold.ufo" stylename="Bold" name="Bold" familyname="Dinsy" stylemapfamilyname="Dinsy Bold" postscriptfontname="Dinsy-Bold">
-      <location><dimension xvalue="700" name="weight"/><dimension xvalue="0" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-BoldItalic.ufo" stylename="BoldItalic" name="Bold Italic" familyname="Dinsy" stylemapfamilyname="Dinsy BoldItalic" postscriptfontname="Dinsy-BoldItalic">
-      <location><dimension xvalue="700" name="weight"/><dimension xvalue="-12" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-Heavy.ufo" stylename="Heavy" name="Heavy" familyname="Dinsy" stylemapfamilyname="Dinsy Heavy" postscriptfontname="Dinsy-Heavy">
-      <location><dimension xvalue="800" name="weight"/><dimension xvalue="0" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-HeavyItalic.ufo" stylename="HeavyItalic" name="Heavy Italic" familyname="Dinsy" stylemapfamilyname="Dinsy HeavyItalic" postscriptfontname="Dinsy-HeavyItalic">
-      <location><dimension xvalue="800" name="weight"/><dimension xvalue="-12" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-Black.ufo" stylename="Black" name="Black" familyname="Dinsy" stylemapfamilyname="Dinsy Black" postscriptfontname="Dinsy-Black">
-      <location><dimension xvalue="900" name="weight"/><dimension xvalue="0" name="slant"/></location>
-    </instance>
-    <instance filename="instances/Dinsy-BlackItalic.ufo" stylename="BlackItalic" name="Black Italic" familyname="Dinsy" stylemapfamilyname="Dinsy BlackItalic" postscriptfontname="Dinsy-BlackItalic">
-      <location><dimension xvalue="900" name="weight"/><dimension xvalue="-12" name="slant"/></location>
-    </instance>
+    <!-- Regular width instances -->
+    <instance filename="instances/Dinsy-Light.ufo"         name="Light"         familyname="Dinsy" stylename="Light"         postscriptfontname="Dinsy-Light"><location><dimension xvalue="300" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-LightItalic.ufo"   name="Light Italic"  familyname="Dinsy" stylename="LightItalic"   postscriptfontname="Dinsy-LightItalic"><location><dimension xvalue="300" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-Regular.ufo"       name="Regular"       familyname="Dinsy" stylename="Regular"       postscriptfontname="Dinsy"><location><dimension xvalue="400" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-Italic.ufo"        name="Italic"        familyname="Dinsy" stylename="Italic"        postscriptfontname="Dinsy-Italic"><location><dimension xvalue="400" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-Medium.ufo"        name="Medium"        familyname="Dinsy" stylename="Medium"        postscriptfontname="Dinsy-Medium"><location><dimension xvalue="500" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-MediumItalic.ufo"  name="Medium Italic" familyname="Dinsy" stylename="MediumItalic"  postscriptfontname="Dinsy-MediumItalic"><location><dimension xvalue="500" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-SemiBold.ufo"      name="SemiBold"      familyname="Dinsy" stylename="SemiBold"      postscriptfontname="Dinsy-SemiBold"><location><dimension xvalue="600" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-SemiBoldItalic.ufo" name="SemiBold Italic" familyname="Dinsy" stylename="SemiBoldItalic" postscriptfontname="Dinsy-SemiBoldItalic"><location><dimension xvalue="600" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-Bold.ufo"          name="Bold"          familyname="Dinsy" stylename="Bold"          postscriptfontname="Dinsy-Bold"><location><dimension xvalue="700" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-BoldItalic.ufo"    name="Bold Italic"   familyname="Dinsy" stylename="BoldItalic"    postscriptfontname="Dinsy-BoldItalic"><location><dimension xvalue="700" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-Heavy.ufo"         name="Heavy"         familyname="Dinsy" stylename="Heavy"         postscriptfontname="Dinsy-Heavy"><location><dimension xvalue="800" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-HeavyItalic.ufo"   name="Heavy Italic"  familyname="Dinsy" stylename="HeavyItalic"   postscriptfontname="Dinsy-HeavyItalic"><location><dimension xvalue="800" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-Black.ufo"         name="Black"         familyname="Dinsy" stylename="Black"         postscriptfontname="Dinsy-Black"><location><dimension xvalue="900" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsy-BlackItalic.ufo"   name="Black Italic"  familyname="Dinsy" stylename="BlackItalic"   postscriptfontname="Dinsy-BlackItalic"><location><dimension xvalue="900" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
   </instances>
   <rules>
     <rule>

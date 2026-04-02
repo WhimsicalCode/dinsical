@@ -42,45 +42,63 @@ cp "$BUILD/sources/Dinsy/Dinsy-Regular.ufo/features.fea" \
 version=$(cd "$SRCDIR" && BUILD_SOURCES="$BUILD/sources" tools/update-version.sh)
 echo "$version"
 
+# Derive Condensed/Expanded on-the-fly into build dir (not committed to sources/)
+$PYTHON "$TOOLSDIR/derive-sources.py" \
+    --families DinsyCondensed DinsyExpanded \
+    --dest-dir "$BUILD/sources"
+
 # ---------------------------------------------------------------------------
-# VF masters — interpolated weights + italics
+# VF masters — interpolated weights + italics for all three widths
 # ---------------------------------------------------------------------------
-cp -r "$BUILD/sources/Dinsy/Dinsy-Regular.ufo" "$BUILD/vfwork/Dinsy/"
-cp -r "$BUILD/sources/Dinsy/Dinsy-Bold.ufo"    "$BUILD/vfwork/Dinsy/"
+for f in Dinsy DinsyCondensed DinsyExpanded; do
+    mkdir -p "$BUILD/vfwork/$f"
+    cp -r "$BUILD/sources/$f/$f-Regular.ufo" "$BUILD/vfwork/$f/"
+    cp -r "$BUILD/sources/$f/$f-Bold.ufo"    "$BUILD/vfwork/$f/"
 
-for weight in Light Heavy Black; do
-    case $weight in Light) w=3;; Heavy) w=8;; Black) w=9;; esac
-    $PYTHON "$TOOLSDIR/interpolate-font.py" \
-        --dest="$BUILD/vfwork/Dinsy/Dinsy-$weight.ufo" --weight=$w \
-        "$BUILD/sources/Dinsy/Dinsy-Regular.ufo" \
-        "$BUILD/sources/Dinsy/Dinsy-Bold.ufo"
+    for weight in Light Heavy Black; do
+        case $weight in Light) w=3;; Heavy) w=8;; Black) w=9;; esac
+        $PYTHON "$TOOLSDIR/interpolate-font.py" \
+            --dest="$BUILD/vfwork/$f/$f-$weight.ufo" --weight=$w \
+            "$BUILD/sources/$f/$f-Regular.ufo" \
+            "$BUILD/sources/$f/$f-Bold.ufo"
+    done
+
+    # DinsyCondensed: replace Heavy/Black digits with Bold (cleaner at narrow widths)
+    if [ "$f" = "DinsyCondensed" ]; then
+        for name in zero one two three four five six seven eight nine; do
+            cp "$BUILD/vfwork/$f/$f-Bold.ufo/glyphs/$name.glif" \
+               "$BUILD/vfwork/$f/$f-Heavy.ufo/glyphs/"
+            cp "$BUILD/vfwork/$f/$f-Bold.ufo/glyphs/$name.glif" \
+               "$BUILD/vfwork/$f/$f-Black.ufo/glyphs/"
+        done
+    fi
+
+    # All families: borrow ordfeminine/ordmasculine + dnom digits from Heavy into Black
+    for name in ordfeminine ordmasculine \
+        zero.dnom one.dnom two.dnom three.dnom four.dnom \
+        five.dnom six.dnom seven.dnom eight.dnom nine.dnom; do
+        cp "$BUILD/vfwork/$f/$f-Heavy.ufo/glyphs/$name.glif" \
+           "$BUILD/vfwork/$f/$f-Black.ufo/glyphs/"
+    done
+
+    # Italic counterparts
+    for weight in Light Regular Bold Black; do
+        [ "$weight" = "Regular" ] && stylename="Italic" || stylename="${weight}Italic"
+        cp -r "$BUILD/vfwork/$f/$f-$weight.ufo" \
+              "$BUILD/vfwork/$f/$f-$stylename.ufo"
+        $PYTHON "$TOOLSDIR/copy-missing-italics.py" \
+            --source "$BUILD/vfwork/$f/$f-$weight.ufo" \
+            --dest   "$BUILD/vfwork/$f/$f-$stylename.ufo" \
+            --uprights "$SRCDIR/sources/Dinsy/upright-in-italic-dinsy.enc"
+    done
+
+    # Remove "Regular" from internal VF source name
+    $SED -i "s/\\($f\\).Regular/\\1/" \
+        "$BUILD/vfwork/$f/$f-Regular.ufo/fontinfo.plist"
 done
 
-# Fixup Black: borrow ordfeminine/ordmasculine + dnom digits from Heavy
-for name in ordfeminine ordmasculine \
-    zero.dnom one.dnom two.dnom three.dnom four.dnom \
-    five.dnom six.dnom seven.dnom eight.dnom nine.dnom; do
-    cp "$BUILD/vfwork/Dinsy/Dinsy-Heavy.ufo/glyphs/$name.glif" \
-       "$BUILD/vfwork/Dinsy/Dinsy-Black.ufo/glyphs/"
-done
-
-# Italic VF counterparts
-for weight in Light Regular Bold Black; do
-    [ "$weight" = "Regular" ] && stylename="Italic" || stylename="${weight}Italic"
-    cp -r "$BUILD/vfwork/Dinsy/Dinsy-$weight.ufo" \
-          "$BUILD/vfwork/Dinsy/Dinsy-$stylename.ufo"
-    $PYTHON "$TOOLSDIR/copy-missing-italics.py" \
-        --source "$BUILD/vfwork/Dinsy/Dinsy-$weight.ufo" \
-        --dest   "$BUILD/vfwork/Dinsy/Dinsy-$stylename.ufo" \
-        --uprights "$SRCDIR/sources/Dinsy/upright-in-italic-dinsy.enc"
-done
-
-# Remove "Regular" from internal VF source name
-$SED -i 's/\(Dinsy\).Regular/\1/' \
-    "$BUILD/vfwork/Dinsy/Dinsy-Regular.ufo/fontinfo.plist"
-
-# Nuke inconsistent anchors
-$PYTHON "$TOOLSDIR/nuke-inconsistent-anchors.py" "$BUILD/vfwork/Dinsy/Dinsy"*.ufo
+# Nuke inconsistent anchors across all VF sources
+$PYTHON "$TOOLSDIR/nuke-inconsistent-anchors.py" "$BUILD"/vfwork/*/*.ufo
 
 # ---------------------------------------------------------------------------
 # Variable font
@@ -92,7 +110,7 @@ from pathlib import Path
 build = Path('$BUILD')
 src   = Path('$SRCDIR')
 ds = (src / 'Dinsy-Variable.designspace').read_text()
-ds = ds.replace('sources/vfwork/Dinsy/', 'vfwork/Dinsy/')
+ds = ds.replace('sources/vfwork/', 'vfwork/')
 (build / 'Dinsy-Variable.designspace').write_text(ds)
 "
 

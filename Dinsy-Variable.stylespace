@@ -9,6 +9,35 @@
 			<array>
 				<dict>
 					<key>name</key>
+					<string>Condensed</string>
+					<key>value</key>
+					<real>75</real>
+				</dict>
+				<dict>
+					<key>flags</key>
+					<array><string>ElidableAxisValueName</string></array>
+					<key>name</key>
+					<string>Regular</string>
+					<key>value</key>
+					<real>100</real>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Expanded</string>
+					<key>value</key>
+					<real>125</real>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Width</string>
+			<key>tag</key>
+			<string>wdth</string>
+		</dict>
+		<dict>
+			<key>locations</key>
+			<array>
+				<dict>
+					<key>name</key>
 					<string>Light</string>
 					<key>value</key>
 					<real>300.0</real>

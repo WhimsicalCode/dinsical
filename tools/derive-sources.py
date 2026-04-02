@@ -25,10 +25,14 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-REPO     = Path(__file__).resolve().parent.parent
-UPSTREAM = REPO / "dinish" / "sources" / "DINish"
-DEST     = REPO / "sources" / "Dinsy"
-OVERLAY  = REPO / "overlay" / "sources" / "Dinsy"
+REPO = Path(__file__).resolve().parent.parent
+
+# Maps dest family name → upstream source directory name
+FAMILIES: dict[str, str] = {
+    "Dinsy":          "DINish",
+    "DinsyCondensed": "DINishCondensed",
+    "DinsyExpanded":  "DINishExpanded",
+}
 
 # Combined scale: UPM rescale × glyph size reduction
 SCALE = (1000 / 1024) * 0.985   # = 0.9619140625
@@ -177,9 +181,17 @@ def scale_glif(src: Path, dst: Path, dry_run: bool) -> None:
 # Per-UFO processing
 # ---------------------------------------------------------------------------
 
-def process_ufo(weight: str, dry_run: bool) -> None:
-    src_ufo = UPSTREAM / f"DINish-{weight}.ufo"
-    dst_ufo = DEST / f"Dinsy-{weight}.ufo"
+def process_ufo(
+    src_dir: Path,   # e.g. dinish/sources/DINish
+    dst_dir: Path,   # e.g. sources/Dinsy  or  .build/sources/DinsyCondensed
+    overlay_dir: Path | None,
+    dst_family: str, # e.g. "Dinsy"
+    src_family: str, # e.g. "DINish"
+    weight: str,
+    dry_run: bool,
+) -> None:
+    src_ufo = src_dir / f"{src_family}-{weight}.ufo"
+    dst_ufo = dst_dir / f"{dst_family}-{weight}.ufo"
 
     print(f"  {src_ufo.name}  →  {dst_ufo.name}")
 
@@ -210,7 +222,6 @@ def process_ufo(weight: str, dry_run: bool) -> None:
             print(f"    scaled {len(glifs)} glif files")
 
         elif item.suffix in (".plist", ".fea"):
-            # lib.plist, layercontents.plist, metainfo.plist, features.fea
             if not dry_run:
                 dst_item.write_text(rename(item.read_text()))
 
@@ -218,26 +229,27 @@ def process_ufo(weight: str, dry_run: bool) -> None:
             if not dry_run:
                 shutil.copy2(item, dst_item)
 
-    # Apply overlay --------------------------------------------------------
-    overlay_glyphs = OVERLAY / f"Dinsy-{weight}.ufo" / "glyphs"
-    if overlay_glyphs.exists():
-        glifs = [p for p in sorted(overlay_glyphs.iterdir())
-                 if p.suffix == ".glif"]
-        if glifs:
-            print(f"    applying {len(glifs)} overlay glyph(s): "
-                  f"{', '.join(p.name for p in glifs)}")
-            if not dry_run:
-                for glif in glifs:
-                    shutil.copy2(glif, dst_ufo / "glyphs" / glif.name)
+    # Apply overlay (only when an overlay dir is provided) -----------------
+    if overlay_dir is not None:
+        overlay_glyphs = overlay_dir / f"{dst_family}-{weight}.ufo" / "glyphs"
+        if overlay_glyphs.exists():
+            glifs = [p for p in sorted(overlay_glyphs.iterdir())
+                     if p.suffix == ".glif"]
+            if glifs:
+                print(f"    applying {len(glifs)} overlay glyph(s): "
+                      f"{', '.join(p.name for p in glifs)}")
+                if not dry_run:
+                    for glif in glifs:
+                        shutil.copy2(glif, dst_ufo / "glyphs" / glif.name)
 
 
 # ---------------------------------------------------------------------------
 # Encoding file
 # ---------------------------------------------------------------------------
 
-def copy_enc(dry_run: bool) -> None:
+def copy_enc(dest_dir: Path, dry_run: bool) -> None:
     src = REPO / "dinish" / "sources" / "upright-in-italic-dinish.enc"
-    dst = DEST / "upright-in-italic-dinsy.enc"
+    dst = dest_dir / "upright-in-italic-dinsy.enc"
     if not dry_run and src.exists():
         dst.write_text(rename(src.read_text()))
     print(f"  enc: {src.name} → {dst.name}")
@@ -252,26 +264,39 @@ def main() -> None:
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--dry-run", action="store_true",
                         help="Show what would be done without writing files")
+    parser.add_argument("--families", nargs="+",
+                        choices=list(FAMILIES.keys()),
+                        default=["Dinsy"],
+                        help="Families to derive (default: Dinsy only)")
+    parser.add_argument("--dest-dir", type=Path, default=None,
+                        help="Root output directory (default: REPO/sources)")
     args = parser.parse_args()
 
-    if not UPSTREAM.exists():
-        print(f"ERROR: {UPSTREAM} not found.\n"
+    upstream_root = REPO / "dinish" / "sources"
+    if not upstream_root.exists():
+        print(f"ERROR: {upstream_root} not found.\n"
               f"Run: git submodule update --init dinish", file=sys.stderr)
         sys.exit(1)
 
+    dest_root   = args.dest_dir or (REPO / "sources")
+    overlay_dir = REPO / "overlay" / "sources"
+
     print(f"Scale factor : {SCALE:.10f}")
-    print(f"Source       : {UPSTREAM.relative_to(REPO)}")
-    print(f"Destination  : {DEST.relative_to(REPO)}")
     if args.dry_run:
         print("DRY RUN — no files will be written\n")
 
-    if not args.dry_run:
-        DEST.mkdir(parents=True, exist_ok=True)
+    for dest_family in args.families:
+        src_family = FAMILIES[dest_family]
+        src_dir    = upstream_root / src_family
+        dst_dir    = dest_root / dest_family
+        print(f"\n{src_family}  →  {dest_family}  (→ {dst_dir})")
+        if not args.dry_run:
+            dst_dir.mkdir(parents=True, exist_ok=True)
+        for weight in ("Regular", "Bold"):
+            process_ufo(src_dir, dst_dir, overlay_dir, dest_family, src_family, weight, args.dry_run)
 
-    for weight in ("Regular", "Bold"):
-        process_ufo(weight, args.dry_run)
-
-    copy_enc(args.dry_run)
+    if "Dinsy" in args.families:
+        copy_enc(dest_root / "Dinsy", args.dry_run)
 
     print(f"\nDone.  Scale factor: {SCALE:.10f}")
     if not args.dry_run:
