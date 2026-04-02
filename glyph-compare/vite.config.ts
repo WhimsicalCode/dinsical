@@ -14,6 +14,7 @@ const MIME: Record<string, string> = {
 }
 
 export default defineConfig({
+  appType: 'mpa',  // serve individual HTML files; no SPA fallback to index.html
   plugins: [
     {
       name: 'project-fonts',
