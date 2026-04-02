@@ -267,6 +267,12 @@
     <span class="ctrl-val" id="val-wdth">100</span>
   </div>
 
+  <div class="ctrl-group">
+    <span class="ctrl-lbl">Line height</span>
+    <input type="range" id="rng-lh" min="0.8" max="2.5" value="1" step="0.05" />
+    <span class="ctrl-val" id="val-lh">1</span>
+  </div>
+
   <div class="ctrl-sep"></div>
 
   <label class="ctrl-check">
@@ -352,7 +358,7 @@
 
   <!-- 4. Paragraph ─────────────────────────────────────────────────────── -->
   <div class="section">
-    <div class="section-head">Paragraph — same font-size, same line-height (1.2)</div>
+    <div class="section-head">Paragraph — same font-size, same line-height (<span id="para-lh-label">1</span>)</div>
     <div class="section-body">
       <div class="para-row" id="para-row">
         <div>
@@ -381,17 +387,18 @@ const X_D       = 499;   // Dinsy
 const X_DC      = 479;   // DINsical
 const DESC      = 170;   // hhea descender absolute value
 
-let fontSize   = 80;
-let fontWeight = 400;
-let fontItalic = false;
-let fontWdth   = 100;
-let showRulers = true;
+let fontSize    = 80;
+let fontWeight  = 400;
+let fontItalic  = false;
+let fontWdth    = 100;
+let lineHeight  = 1;
+let showRulers  = true;
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 function applyFont(el, family) {
   el.style.fontSize   = fontSize + 'px';
   el.style.fontFamily = `'${family}'`;
-  el.style.lineHeight = '1';
+  el.style.lineHeight = lineHeight;
 
   if (family === 'Dinsy') {
     // Variable font: drive all axes via font-variation-settings.
@@ -500,8 +507,6 @@ function updatePara() {
   const dc = document.getElementById('para-dc');
   applyFont(d,  'Dinsy');
   applyFont(dc, 'DINsical');
-  d.style.lineHeight  = '1.2';
-  dc.style.lineHeight = '1.2';
   d.textContent  = PARA_TEXT;
   dc.textContent = PARA_TEXT;
 }
@@ -529,6 +534,13 @@ document.getElementById('rng-size').addEventListener('input', e => {
 document.getElementById('rng-wdth').addEventListener('input', e => {
   fontWdth = +e.target.value;
   document.getElementById('val-wdth').textContent = fontWdth;
+  updateAll();
+});
+document.getElementById('rng-lh').addEventListener('input', e => {
+  lineHeight = +e.target.value;
+  const label = lineHeight.toFixed(2).replace(/\.?0+$/, '') || '1';
+  document.getElementById('val-lh').textContent = label;
+  document.getElementById('para-lh-label').textContent = label;
   updateAll();
 });
 document.getElementById('chk-rulers').addEventListener('change', e => {
