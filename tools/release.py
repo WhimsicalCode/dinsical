@@ -172,8 +172,8 @@ def main() -> None:
     run(["bash", "tools/build-ephemeral-ufos.sh"])
 
     # 10. Commit 2: fonts --------------------------------------------------
-    git("add", "fonts/", "ofl/")
-    fonts_status = git("status", "--short", "--untracked-files=no", "fonts/", "ofl/")
+    git("add", "fonts/")
+    fonts_status = git("status", "--short", "--untracked-files=no", "fonts/")
     if fonts_status:
         git("commit", "-m", f"Release v{new_version}: built fonts")
         # Move tag to include fonts commit

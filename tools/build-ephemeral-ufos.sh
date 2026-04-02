@@ -163,4 +163,3 @@ make -j"$NPROC" build
 # Sync results back to source directory
 # ---------------------------------------------------------------------------
 rsync -raWH --exclude='.git' "$SCRATCH/fonts/" "$SRCDIR/fonts/"
-rsync -raWH --exclude='.git' "$SCRATCH/ofl/"   "$SRCDIR/ofl/"

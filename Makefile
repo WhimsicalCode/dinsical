@@ -20,8 +20,6 @@ sources:  ## Derive sources from dinish/ submodule + overlay
 	$(PYTHON) tools/derive-sources.py
 
 build: sync_features $(OTFS) $(TTFS) $(WOFFS) $(WOFF2S)  ## Quick static-only build from current sources
-	@mkdir -p ofl/dinsy
-	@cp fonts/ttf/Dinsy/*.ttf ofl/dinsy/ 2>/dev/null || true
 
 full:  ## Full build: all weights + italics + variable font (syncs to fonts/)
 	bash tools/build-ephemeral-ufos.sh
@@ -40,7 +38,7 @@ clean:  ## Remove scratch build dir
 	rm -rf /tmp/dinsy-build
 
 dist-clean: clean  ## Remove scratch + built fonts
-	rm -rf fonts/ ofl/dinsy/*.ttf
+	rm -rf fonts/
 
 help:  ## Show this help
 	@grep -E '^[a-z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -70,4 +68,4 @@ fontbakery:
 	-fontbakery check-universal --verbose --full-lists \
 	  --html fontbakery-variable-report.html variable_ttf/*.ttf
 	-fontbakery check-universal --verbose --full-lists \
-	  --html fontbakery-static-report.html ofl/dinsy/*.ttf
+	  --html fontbakery-static-report.html fonts/ttf/Dinsy/*.ttf
