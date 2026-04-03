@@ -50,16 +50,25 @@ SCALE = (1000 / 1024) * 0.985   # = 0.9619140625
 # Set to 0.0 to disable.
 WDTH_BLEND: float = 0.2 # DINish wdth 105
 
-# Line-spacing metrics — set verbatim from DINsical, NOT scaled.
-# Gives: (750 + 250 + 200) / 1000 * 100px = 120.000 px @ 100 px
+# Line-spacing metrics — set verbatim, NOT scaled.
+# hhea and sTypo are intentionally identical so the browser gets the
+# same baseline regardless of which table it picks.
+#
+# Chromium respects USE_TYPO_METRICS for TTF/WOFF2 (uses sTypo) but
+# falls back to hhea for CFF/OTF.  DINsical is CFF, so it effectively
+# uses hhea (asc=830).  Dinsy is a TTF variable font and would use sTypo
+# (asc=750) — placing the baseline 13 px higher at 160 px font-size.
+# Making sTypo == hhea (830/-170/200) eliminates the discrepancy.
+#
+# Gives: (830 + 170 + 200) / 1000 * 100px = 120.000 px line height @ 100 px
 LINE_METRICS: dict = {
     "ascender":                   830,
     "descender":                 -170,
     "openTypeHheaAscender":       830,
     "openTypeHheaDescender":     -170,
     "openTypeHheaLineGap":        200,
-    "openTypeOS2TypoAscender":    750,
-    "openTypeOS2TypoDescender":  -250,
+    "openTypeOS2TypoAscender":    830,   # was 750 — now matches hhea
+    "openTypeOS2TypoDescender":  -170,   # was -250 — now matches hhea
     "openTypeOS2TypoLineGap":     200,
     "openTypeOS2WinAscent":       850,
     "openTypeOS2WinDescent":      350,

@@ -94,9 +94,9 @@
 	<key>openTypeOS2Type</key>
 	<array/>
 	<key>openTypeOS2TypoAscender</key>
-	<integer>750</integer>
+	<integer>830</integer>
 	<key>openTypeOS2TypoDescender</key>
-	<integer>-250</integer>
+	<integer>-170</integer>
 	<key>openTypeOS2TypoLineGap</key>
 	<integer>200</integer>
 	<key>openTypeOS2UnicodeRanges</key>

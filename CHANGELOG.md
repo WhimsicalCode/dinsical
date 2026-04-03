@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+## [1.010] - 2026-04-03
+
+- Fix vertical alignment vs DINsical in CSS layouts.
+  Root cause: Chromium respects `USE_TYPO_METRICS` for TTF/variable fonts
+  (uses sTypo asc=750) but falls back to hhea for CFF/OTF static fonts
+  (uses hhea asc=830). DINsical is CFF, so its effective CSS ascender is
+  830; Dinsy (TTF variable) was using 750 — placing the baseline 13 px
+  higher at 160 px font-size, causing visible vertical shift.
+  Fix: set `sTypo` ascender/descender to match `hhea` (830/−170/200).
+  Both tables now agree so the browser gets the same baseline regardless
+  of which metric path it takes. `line-height: normal` is unchanged (still
+  1.2× font-size: 830+170+200=1200 units).
+- vite.config.ts: set font `Cache-Control: no-store` during dev so rebuilt
+  fonts are always re-fetched.
+
 ## [1.009] - 2026-04-02
 
 - Tuned `WDTH_BLEND` from 0.28 to 0.20 (wdth 107 → 105) after visual review.

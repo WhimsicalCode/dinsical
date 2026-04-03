@@ -26,7 +26,7 @@ export default defineConfig({
           if (!existsSync(filePath)) return next()
           const ext = filePath.split('.').pop()?.toLowerCase() ?? ''
           res.setHeader('Content-Type', MIME[ext] ?? 'application/octet-stream')
-          res.setHeader('Cache-Control', 'max-age=3600')
+          res.setHeader('Cache-Control', 'no-store')
           res.end(readFileSync(filePath))
         })
       },
