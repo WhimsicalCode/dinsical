@@ -5,11 +5,10 @@
 ## [1.009] - 2026-04-02
 
 - Rename font family: Dinsy → Dinsical.
-- Rename reference font: DINsical → DIN Next.
 
 ## [1.008] - 2026-04-02
 
-- Italic slant angle reduced from 12° to 10° to match Dinsical. `slnt` axis range
+- Italic slant angle reduced from 12° to 10° to match Dinsy. `slnt` axis range
   updated to −10–0; italic instances placed at −10. Applied via
   `tools/copy-missing-italics.py` and `tools/build-ephemeral-ufos.sh`.
 
@@ -19,20 +18,20 @@
   Root cause: Chromium respects `USE_TYPO_METRICS` for TTF/variable fonts
   (uses sTypo asc=750) but falls back to hhea for CFF/OTF static fonts
   (uses hhea asc=830). DIN Next is CFF, so its effective CSS ascender is
-  830; Dinsical (TTF variable) was using 750 — placing the baseline 13 px
+  830; Dinsy (TTF variable) was using 750 — placing the baseline 13 px
   higher at 160 px font-size, causing visible vertical shift.
   Fix: set `sTypo` ascender/descender to match `hhea` (830/−170/200).
   Both tables now agree so the browser gets the same baseline regardless
   of which metric path it takes. `line-height: normal` is unchanged (still
   1.2× font-size: 830+170+200=1200 units).
 - Tuned `WDTH_BLEND` from 0.28 to 0.20 (wdth 107 → 105) after visual review.
-- Width blend: `tools/derive-sources.py` now interpolates the Dinsical (wdth=100)
+- Width blend: `tools/derive-sources.py` now interpolates the Dinsy (wdth=100)
   masters toward DINishExpanded by `WDTH_BLEND=0.20` before UPM scaling.
   This corresponds to approximately wdth=105 on the 75–125 axis, matching
   DIN Next letterform ink widths. Implemented via `_blend_roots()` (blends
   all outline points, advances, component offsets, anchors, and PS hints).
 - Spacing patch mechanism: `overlay/spacing-patch.py` is now applied by
-  `tools/derive-sources.py` after every `make sources` run, so Dinsical-specific
+  `tools/derive-sources.py` after every `make sources` run, so Dinsy-specific
   sidebearing changes survive upstream DINish updates automatically.
 - Set sidebearings for ~50 base glyphs (a–z, A–Z, punctuation) to match
   DIN Next's exact LSB/RSB values. Propagated automatically to ~190 composite
@@ -42,7 +41,7 @@
 ## [1.006] - 2026-04-02
 
 - Kern patch mechanism: `overlay/kern-patch.py` is now applied by
-  `tools/derive-sources.py` after every `make sources` run, so Dinsical-specific
+  `tools/derive-sources.py` after every `make sources` run, so Dinsy-specific
   kern changes survive upstream DINish updates automatically.
 - Added complete Y kerning group (~26 pairs) — upstream DINish has none;
   Y. −96, Y- −92, Ya/c/d/e/g/o/q/s −56–−58, Yu −48, Yz −46, Yv/w/y −28,
@@ -73,7 +72,7 @@
 
 - Calibrated weight axis to match DIN Next stem weights — Regular, Medium, and Bold now have
   identical I-glyph stem widths to their DIN Next counterparts (89 / 118 / 147 units at 1000 UPM).
-  Previously DIN Next Bold ≈ old Dinsical Heavy in visual weight.
+  Previously DIN Next Bold ≈ old Dinsy Heavy in visual weight.
 - Weight interpolation changed from linear `(weight−4)/3` to a piecewise-linear calibration
   anchored at Regular (factor 0.298), Medium (0.807), Bold (1.316).
 
@@ -84,8 +83,8 @@
 
 ## [1.003] - 2026-04-02
 
-- Flattened `fonts/` directory — files moved from `fonts/{fmt}/Dinsical/Dinsical-*.{fmt}` to `fonts/{fmt}/Dinsical-*.{fmt}`
-- Variable font renamed from `Dinsical[slnt,wght]` to `Dinsical-Var`
+- Flattened `fonts/` directory — files moved from `fonts/{fmt}/Dinsy/Dinsy-*.{fmt}` to `fonts/{fmt}/Dinsy-*.{fmt}`
+- Variable font renamed from `Dinsy[slnt,wght]` to `Dinsy-Var`
 
 ## [1.002] - 2026-04-02
 
