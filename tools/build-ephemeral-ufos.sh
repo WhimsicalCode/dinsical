@@ -109,11 +109,19 @@ from pathlib import Path
 build = Path('$BUILD')
 src   = Path('$SRCDIR')
 ds = (src / 'Dinsy-Variable.designspace').read_text()
+# Remap build paths
 ds = ds.replace('sources/vfwork/', 'vfwork/')
+# Remap slant axis: upstream DINish uses -12, Dinsy targets -10 to match Dinsical
+ds = ds.replace('minimum=\"-12\"', 'minimum=\"-10\"')
+ds = ds.replace('uservalue=\"-12\"', 'uservalue=\"-10\"')
+ds = ds.replace('xvalue=\"-12\"', 'xvalue=\"-10\"')
+# Scale conditionset threshold proportionally: -3.5/12 * 10 = -2.9
+ds = ds.replace('maximum=\"-3.5\"', 'maximum=\"-2.9\"')
 (build / 'Dinsy-Variable.designspace').write_text(ds)
 "
 
-cp "$SRCDIR/Dinsy-Variable.stylespace" "$BUILD/"
+# Patch stylespace: remap slant stop from -12 to -10 to match copy-missing-italics.py
+$SED 's/-12/-10/g' "$SRCDIR/Dinsy-Variable.stylespace" > "$BUILD/Dinsy-Variable.stylespace"
 
 cd "$BUILD"
 fontmake --flatten-components --overlaps-backend pathops \

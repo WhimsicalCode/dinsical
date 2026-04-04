@@ -1,10 +1,12 @@
 # Changelog
 
-## [1.007] - 2026-04-03
+## [1.008] - 2026-04-02
 
-## [Unreleased]
+- Italic slant angle reduced from 12° to 10° to match Dinsical. `slnt` axis range
+  updated to −10–0; italic instances placed at −10. Applied via
+  `tools/copy-missing-italics.py` and `tools/build-ephemeral-ufos.sh`.
 
-## [1.010] - 2026-04-03
+## [1.007] - 2026-04-02
 
 - Fix vertical alignment vs DINsical in CSS layouts.
   Root cause: Chromium respects `USE_TYPO_METRICS` for TTF/variable fonts
@@ -16,31 +18,12 @@
   Both tables now agree so the browser gets the same baseline regardless
   of which metric path it takes. `line-height: normal` is unchanged (still
   1.2× font-size: 830+170+200=1200 units).
-- vite.config.ts: set font `Cache-Control: no-store` during dev so rebuilt
-  fonts are always re-fetched.
-
-## [1.009] - 2026-04-02
-
 - Tuned `WDTH_BLEND` from 0.28 to 0.20 (wdth 107 → 105) after visual review.
-- Added formula comment: `wdth = 100 + WDTH_BLEND × 25`  /  `WDTH_BLEND = (wdth − 100) / 25`.
-
-## [1.008] - 2026-04-02
-
 - Width blend: `tools/derive-sources.py` now interpolates the Dinsy (wdth=100)
-  masters toward DINishExpanded by `WDTH_BLEND=0.28` before UPM scaling.
-  This corresponds to approximately wdth=107 on the 75–125 axis — the median
-  position at which DINish letterform ink widths match DINsical proportions.
-  Implemented via `_blend_roots()` (blends all outline points, advances,
-  component offsets, anchors, and PS hints between the two source UFOs).
-- h/n advance now exactly matches DINsical (544=544). Overall advance total
-  for `abcdefghijk` moved from −156 to +26 vs DINsical (0.5% over vs
-  original 4.4% under). b/d remain −9 (bowls in DINish are inherently
-  narrower than DINsical’s at this width interpolation point).
-- Condensed and Expanded masters are unaffected (they are derived from their
-  own upstream sources and are not blended).
-
-## [1.007] - 2026-04-02
-
+  masters toward DINishExpanded by `WDTH_BLEND=0.20` before UPM scaling.
+  This corresponds to approximately wdth=105 on the 75–125 axis, matching
+  DINsical letterform ink widths. Implemented via `_blend_roots()` (blends
+  all outline points, advances, component offsets, anchors, and PS hints).
 - Spacing patch mechanism: `overlay/spacing-patch.py` is now applied by
   `tools/derive-sources.py` after every `make sources` run, so Dinsy-specific
   sidebearing changes survive upstream DINish updates automatically.
@@ -48,12 +31,6 @@
   DINsical's exact LSB/RSB values. Propagated automatically to ~190 composite
   glyphs (accented Latin, Cyrillic variants) via advance-width and
   combining-mark xOffset update.
-- Excluded from patch: c/e/o (DINsical same or tighter for round shapes),
-  z (diff <5 units), digits (proportional vs tabular design difference),
-  C/J/O/Q/X (conflicting ink shapes between DINish and DINsical).
-- Residual advance-width difference (~4–8% per letter) reflects DINish
-  letterforms being inherently narrower than DINsical; sidebearing breathing
-  room is now identical.
 
 ## [1.006] - 2026-04-02
 

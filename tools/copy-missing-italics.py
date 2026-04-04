@@ -86,7 +86,7 @@ def copy_glyphs_to_italic(source, dest, upright_list, overwrite_list):
         dstfont.newGlyph(glyph_name)
         newglyph = dstfont[glyph_name]
         #import pdb; pdb.set_trace()
-        slant = math.sin(math.radians(12))
+        slant = math.sin(math.radians(10))
         half_x_height = 529.0 / 2.0
         for component in srcfont[glyph_name].components:
             (x, y) = component.offset
@@ -133,7 +133,7 @@ def copy_glyphs_to_italic(source, dest, upright_list, overwrite_list):
     f.glyphOrder = newGlyphOrder
 
     #f.info.openTypeNameUniqueID = f.info.familyName + ' Italic'
-    f.info.italicAngle = -12
+    f.info.italicAngle = -10
     f.info.openTypeOS2SubscriptXOffset = -16
     f.info.openTypeOS2SuperscriptXOffset = 76
     weightname = f.info.postscriptWeightName
