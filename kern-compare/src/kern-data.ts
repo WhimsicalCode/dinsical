@@ -2,7 +2,7 @@ import type { WeightKey } from './fonts'
 
 // [leftCodepoint, rightCodepoint, xAdvanceValue]
 export type KernEntry = [number, number, number]
-export type KernPairData = { dinsy: KernEntry[]; dinsical: KernEntry[] }
+export type KernPairData = { dinsy: KernEntry[]; dinNext: KernEntry[] }
 export type KernMap = Map<string, number>   // key: "leftCP,rightCP"
 
 export function makeKernMap(entries: KernEntry[]): KernMap {
@@ -24,24 +24,24 @@ export function unionPairs(data: KernPairData): Array<[number, number]> {
     if (!seen.has(k)) { seen.add(k); result.push([l, r]) }
   }
   for (const [l, r] of data.dinsy)    add(l, r)
-  for (const [l, r] of data.dinsical) add(l, r)
+  for (const [l, r] of data.dinNext) add(l, r)
   return result
 }
 
 // ── Filtering ──────────────────────────────────────────────────────────────
 
-export type FilterMode = 'all' | 'dinsical' | 'dinsy'
+export type FilterMode = 'all' | 'dinNext' | 'dinsy'
 export type RangeMode  = 'ascii' | 'latin' | 'all'
 
 export function filterPairs(
   pairs:     Array<[number, number]>,
   dinsyMap:  KernMap,
-  dinsicalMap: KernMap,
+  dinNextMap: KernMap,
   filter:    FilterMode,
   range:     RangeMode,
 ): Array<[number, number]> {
   const inRange = rangeFilter(range)
-  const inFilter = filterFn(filter, dinsyMap, dinsicalMap)
+  const inFilter = filterFn(filter, dinsyMap, dinNextMap)
   return pairs.filter(([l, r]) => inRange(l, r) && inFilter(l, r))
 }
 
@@ -54,9 +54,9 @@ function rangeFilter(range: RangeMode): (l: number, r: number) => boolean {
 function filterFn(
   filter: FilterMode,
   dinsyMap: KernMap,
-  dinsicalMap: KernMap,
+  dinNextMap: KernMap,
 ): (l: number, r: number) => boolean {
-  if (filter === 'dinsical') return (l, r) => lookupKern(dinsicalMap, l, r) !== 0
+  if (filter === 'din-next') return (l, r) => lookupKern(dinNextMap, l, r) !== 0
   if (filter === 'dinsy')    return (l, r) => lookupKern(dinsyMap,    l, r) !== 0
   return () => true
 }

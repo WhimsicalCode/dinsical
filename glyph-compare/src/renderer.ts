@@ -4,7 +4,7 @@ import type { FontPair } from './fonts'
 export interface RenderOpts {
   fontSize:     number
   showDinsy:    boolean
-  showDinsical: boolean
+  showDinNext: boolean
   lineWidth:    number
   showBaseline: boolean
 }
@@ -17,7 +17,7 @@ export interface GlyphInfo {
 
 const PAD = 10
 const DINSY_STROKE    = '#dc2626'
-const DINSICAL_STROKE = '#2563eb'
+const DIN_NEXT_STROKE = '#2563eb'
 
 // ── Metrics ───────────────────────────────────────────────────────────────
 
@@ -27,8 +27,8 @@ function fontScale(font: Font, fontSize: number): number {
 
 export function cellDims(pair: FontPair, fontSize: number): { cellH: number; baseline: number } {
   const s = (f: Font) => fontScale(f, fontSize)
-  const asc  = Math.max(pair.dinsy.ascender   * s(pair.dinsy),  pair.dinsical.ascender   * s(pair.dinsical))
-  const desc = Math.max(-pair.dinsy.descender * s(pair.dinsy), -pair.dinsical.descender  * s(pair.dinsical))
+  const asc  = Math.max(pair.dinsy.ascender   * s(pair.dinsy),  pair.dinNext.ascender   * s(pair.dinNext))
+  const desc = Math.max(-pair.dinsy.descender * s(pair.dinsy), -pair.dinNext.descender  * s(pair.dinNext))
   return {
     cellH:    Math.ceil(asc + desc) + PAD * 2,
     baseline: Math.ceil(asc) + PAD,
@@ -77,9 +77,9 @@ export function renderCell(
   const { cellH, baseline } = cellDims(pair, fontSize)
 
   const gDinsy    = pair.dinsy.charToGlyph(char)
-  const gDinsical = pair.dinsical.charToGlyph(char)
+  const gDinNext = pair.dinNext.charToGlyph(char)
   const aw1 = advancePx(gDinsy,    pair.dinsy,    fontSize)
-  const aw2 = advancePx(gDinsical, pair.dinsical, fontSize)
+  const aw2 = advancePx(gDinNext, pair.dinNext, fontSize)
   const cellW = Math.max(aw1, aw2, fontSize * 0.3) + PAD * 2
 
   canvas.width        = Math.round(cellW * dpr)
@@ -102,9 +102,9 @@ export function renderCell(
     ctx.restore()
   }
 
-  // DINsical first (blue), Dinsy on top (red)
-  if (opts.showDinsical && gDinsical.index > 0) {
-    paint(ctx, gDinsical, pair.dinsical, (cellW - aw2) / 2, baseline, fontSize, DINSICAL_STROKE, opts)
+  // DIN Next first (blue), Dinsy on top (red)
+  if (opts.showDinNext && gDinNext.index > 0) {
+    paint(ctx, gDinNext, pair.dinNext, (cellW - aw2) / 2, baseline, fontSize, DIN_NEXT_STROKE, opts)
   }
   if (opts.showDinsy && gDinsy.index > 0) {
     paint(ctx, gDinsy, pair.dinsy, (cellW - aw1) / 2, baseline, fontSize, DINSY_STROKE, opts)
@@ -139,13 +139,13 @@ function paint(
  */
 export function computeModalFontSize(char: string, pair: FontPair, availW: number, availH: number): number {
   const s1 = 1 / pair.dinsy.unitsPerEm
-  const s2 = 1 / pair.dinsical.unitsPerEm
+  const s2 = 1 / pair.dinNext.unitsPerEm
 
-  const ascR  = Math.max(pair.dinsy.ascender    * s1, pair.dinsical.ascender    * s2)
-  const descR = Math.max(-pair.dinsy.descender  * s1, -pair.dinsical.descender  * s2)
+  const ascR  = Math.max(pair.dinsy.ascender    * s1, pair.dinNext.ascender    * s2)
+  const descR = Math.max(-pair.dinsy.descender  * s1, -pair.dinNext.descender  * s2)
 
   const g1 = pair.dinsy.charToGlyph(char)
-  const g2 = pair.dinsical.charToGlyph(char)
+  const g2 = pair.dinNext.charToGlyph(char)
   const awR = Math.max(
     (g1.advanceWidth ?? 0) * s1,
     (g2.advanceWidth ?? 0) * s2,

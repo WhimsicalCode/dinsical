@@ -12,7 +12,7 @@ interface AppState {
   fontSize:     number
   lineWidth:    number
   showDinsy:    boolean
-  showDinsical: boolean
+  showDinNext: boolean
   showBaseline: boolean
 }
 
@@ -23,7 +23,7 @@ const S: AppState = {
   fontSize:     100,
   lineWidth:    1.2,
   showDinsy:    true,
-  showDinsical: true,
+  showDinNext: true,
   showBaseline: false,
 }
 
@@ -42,7 +42,7 @@ const $valSize     = el('val-size')
 const $rngLw       = el<HTMLInputElement>('rng-lw')
 const $valLw       = el('val-lw')
 const $chkDinsy    = el<HTMLInputElement>('chk-dinsy')
-const $chkDinsical = el<HTMLInputElement>('chk-dinsical')
+const $chkDinNext = el<HTMLInputElement>('chk-din-next')
 const $chkBaseline = el<HTMLInputElement>('chk-baseline')
 const $overlay     = el('modal-overlay')
 const $mChar       = el('modal-char')
@@ -56,7 +56,7 @@ function currentOpts(): RenderOpts {
   return {
     fontSize:     S.fontSize,
     showDinsy:    S.showDinsy,
-    showDinsical: S.showDinsical,
+    showDinNext: S.showDinNext,
     lineWidth:    S.lineWidth,
     showBaseline: S.showBaseline,
   }
@@ -77,7 +77,7 @@ function syncFromControls(): void {
   S.fontSize     = Number($rngSize.value)
   S.lineWidth    = Number($rngLw.value) / 10
   S.showDinsy    = $chkDinsy.checked
-  S.showDinsical = $chkDinsical.checked
+  S.showDinNext = $chkDinNext.checked
   S.showBaseline = $chkBaseline.checked
 
   $valSize.textContent = `${S.fontSize}px`
@@ -148,11 +148,11 @@ async function loadAndBuild(): Promise<void> {
     const pair = await loadFonts(S.weight, S.italic)
     S.pair = pair
     const d = pair.dinsy
-    const c = pair.dinsical
+    const c = pair.dinNext
     $status.textContent =
       `Dinsy — UPM ${d.unitsPerEm}  asc ${d.ascender}  desc ${d.descender}` +
       `   ·   ` +
-      `DINsical — UPM ${c.unitsPerEm}  asc ${c.ascender}  desc ${c.descender}`
+      `DIN Next — UPM ${c.unitsPerEm}  asc ${c.ascender}  desc ${c.descender}`
     buildGrid(pair)
   } catch (err) {
     $status.textContent = `Error: ${(err as Error).message}`
@@ -185,7 +185,7 @@ function openModal(char: string): void {
 
   // Metrics
   const i1 = getGlyphInfo(char, pair.dinsy)
-  const i2 = getGlyphInfo(char, pair.dinsical)
+  const i2 = getGlyphInfo(char, pair.dinNext)
   const awDiff = i1.advanceWidth !== i2.advanceWidth
 
   $mMetrics.innerHTML = `
@@ -196,10 +196,10 @@ function openModal(char: string): void {
       <div class="mrow"><span>UPM</span>          <code>${pair.dinsy.unitsPerEm}</code></div>
     </div>
     <div class="mcard" style="border-top:3px solid #2563eb">
-      <div class="mcard-title" style="color:#2563eb">DINsical</div>
+      <div class="mcard-title" style="color:#2563eb">DIN Next</div>
       <div class="mrow"><span>glyph name</span>  <code>${i2.name}</code></div>
       <div class="mrow"><span>advance width</span><code class="${awDiff ? 'diff' : ''}">${i2.advanceWidth}</code></div>
-      <div class="mrow"><span>UPM</span>          <code>${pair.dinsical.unitsPerEm}</code></div>
+      <div class="mrow"><span>UPM</span>          <code>${pair.dinNext.unitsPerEm}</code></div>
     </div>
   `
 }
@@ -219,7 +219,7 @@ const onRenderChange = () => { syncFromControls(); refreshGrid() }
 $rngSize.addEventListener('input', onRenderChange)
 $rngLw.addEventListener('input', onRenderChange)
 $chkDinsy.addEventListener('change', onRenderChange)
-$chkDinsical.addEventListener('change', onRenderChange)
+$chkDinNext.addEventListener('change', onRenderChange)
 $chkBaseline.addEventListener('change', onRenderChange)
 
 // Modal close

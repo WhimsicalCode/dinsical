@@ -12,12 +12,12 @@ Two specific problems with the upstream DINish font motivated this fork:
    DINish uses 1024 UPM.  At 100 px font-size the natural line height is
    `(1050 + 248) / 1024 × 100 = 126.37 px` — a non-integer that causes
    sub-pixel rendering differences across browsers and canvas implementations.  
-   Dinsy uses 1000 UPM with line metrics copied from DINsical, giving
+   Dinsy uses 1000 UPM with line metrics copied from DIN Next, giving
    exactly **120.000 px** at 100 px (`(750 + 250 + 200) / 1000 × 100`).
 
-2. **Glyph bodies are 1.5 % too large compared to DINsical.**  
+2. **Glyph bodies are 1.5 % too large compared to DIN Next.**  
    Outlines are scaled down by **0.985×** so that `font-size: 1000px` in Dinsy
-   renders identically to `font-size: 1000px` in DINsical.
+   renders identically to `font-size: 1000px` in DIN Next.
 
 ## Font metrics
 
@@ -109,7 +109,7 @@ uv tool install fontmake --with skia-pathops --with fontparts --with xmltodict
    → `sources/Dinsy/Dinsy-{Regular,Bold}.ufo`
 2. **Rename** `DINish` → `Dinsy` in all text content (family names, PS names, class names)
 3. **Scale** all glyph coordinates and advance widths by `(1000/1024) × 0.985 = 0.9619…`
-4. **Set UPM** to 1000; **override line metrics** with exact DINsical values
+4. **Set UPM** to 1000; **override line metrics** with exact DIN Next values
 5. **Apply overlay** — copy any `.glif` files from `overlay/sources/Dinsy/` on top
 
 ## Per-glyph overrides

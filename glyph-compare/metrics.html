@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metrics — Dinsy vs DINsical</title>
+  <title>Metrics — Dinsy vs DIN Next</title>
   <style>
     /* ── Font faces ─────────────────────────────────────────────────────── */
     /* Dinsy — variable font (wght 300–900, slnt 0–−12, wdth 75–125) */
@@ -14,18 +14,18 @@
       font-style: oblique 0deg 12deg;
     }
 
-    @font-face { font-family: 'DINsical'; font-weight: 300; font-style: normal; src: url('/dinsical/otf/DINsical-Light.otf');        }
-    @font-face { font-family: 'DINsical'; font-weight: 300; font-style: italic; src: url('/dinsical/otf/DINsical-LightItalic.otf'); }
-    @font-face { font-family: 'DINsical'; font-weight: 400; font-style: normal; src: url('/dinsical/otf/DINsical-Regular.otf');      }
-    @font-face { font-family: 'DINsical'; font-weight: 400; font-style: italic; src: url('/dinsical/otf/DINsical-Italic.otf');       }
-    @font-face { font-family: 'DINsical'; font-weight: 500; font-style: normal; src: url('/dinsical/otf/DINsical-Medium.otf');       }
-    @font-face { font-family: 'DINsical'; font-weight: 500; font-style: italic; src: url('/dinsical/otf/DINsical-MediumItalic.otf');}
-    @font-face { font-family: 'DINsical'; font-weight: 700; font-style: normal; src: url('/dinsical/otf/DINsical-Bold.otf');         }
-    @font-face { font-family: 'DINsical'; font-weight: 700; font-style: italic; src: url('/dinsical/otf/DINsical-BoldItalic.otf');  }
-    @font-face { font-family: 'DINsical'; font-weight: 800; font-style: normal; src: url('/dinsical/otf/DINsical-Heavy.otf');        }
-    @font-face { font-family: 'DINsical'; font-weight: 800; font-style: italic; src: url('/dinsical/otf/DINsical-HeavyItalic.otf'); }
-    @font-face { font-family: 'DINsical'; font-weight: 900; font-style: normal; src: url('/dinsical/otf/DINsical-Black.otf');        }
-    @font-face { font-family: 'DINsical'; font-weight: 900; font-style: italic; src: url('/dinsical/otf/DINsical-BlackItalic.otf'); }
+    @font-face { font-family: 'DIN Next'; font-weight: 300; font-style: normal; src: url('/din-next/otf/DIN-Next-Light.otf');        }
+    @font-face { font-family: 'DIN Next'; font-weight: 300; font-style: italic; src: url('/din-next/otf/DIN-Next-LightItalic.otf'); }
+    @font-face { font-family: 'DIN Next'; font-weight: 400; font-style: normal; src: url('/din-next/otf/DIN-Next-Regular.otf');      }
+    @font-face { font-family: 'DIN Next'; font-weight: 400; font-style: italic; src: url('/din-next/otf/DIN-Next-Italic.otf');       }
+    @font-face { font-family: 'DIN Next'; font-weight: 500; font-style: normal; src: url('/din-next/otf/DIN-Next-Medium.otf');       }
+    @font-face { font-family: 'DIN Next'; font-weight: 500; font-style: italic; src: url('/din-next/otf/DIN-Next-MediumItalic.otf');}
+    @font-face { font-family: 'DIN Next'; font-weight: 700; font-style: normal; src: url('/din-next/otf/DIN-Next-Bold.otf');         }
+    @font-face { font-family: 'DIN Next'; font-weight: 700; font-style: italic; src: url('/din-next/otf/DIN-Next-BoldItalic.otf');  }
+    @font-face { font-family: 'DIN Next'; font-weight: 800; font-style: normal; src: url('/din-next/otf/DIN-Next-Heavy.otf');        }
+    @font-face { font-family: 'DIN Next'; font-weight: 800; font-style: italic; src: url('/din-next/otf/DIN-Next-HeavyItalic.otf'); }
+    @font-face { font-family: 'DIN Next'; font-weight: 900; font-style: normal; src: url('/din-next/otf/DIN-Next-Black.otf');        }
+    @font-face { font-family: 'DIN Next'; font-weight: 900; font-style: italic; src: url('/din-next/otf/DIN-Next-BlackItalic.otf'); }
 
     /* ── Reset / base ───────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -113,7 +113,7 @@
       overflow: visible;
     }
     .baseline-wrap .font-d  { font-family: 'Dinsy';    color: #c03030; }
-    .baseline-wrap .font-dc { font-family: 'DINsical'; color: #2a5ab4; }
+    .baseline-wrap .font-dc { font-family: 'DIN Next'; color: #2a5ab4; }
     .baseline-wrap .sep { color: #bbb; margin: 0 6px; font-family: system-ui; font-size: 13px; align-self: center; }
 
     /* ── Ruler overlay wrapper ──────────────────────────────────────────── */
@@ -190,7 +190,7 @@
       display: block;
     }
     .pair-char.font-d  { font-family: 'Dinsy';    color: #c03030; }
-    .pair-char.font-dc { font-family: 'DINsical'; color: #2a5ab4; }
+    .pair-char.font-dc { font-family: 'DIN Next'; color: #2a5ab4; }
     .pair-glyph-label {
       font-size: 9px;
       color: #999;
@@ -207,7 +207,7 @@
     }
     .para-block { line-height: 1.2; }
     .para-block.font-d  { font-family: 'Dinsy'; }
-    .para-block.font-dc { font-family: 'DINsical'; }
+    .para-block.font-dc { font-family: 'DIN Next'; }
     .para-label {
       font-family: system-ui;
       font-size: 11px;
@@ -282,7 +282,7 @@
   <div class="ctrl-sep"></div>
 
   <span class="chip chip-d"><span class="chip-dot"></span>Dinsy</span>
-  <span class="chip chip-dc"><span class="chip-dot"></span>DINsical</span>
+  <span class="chip chip-dc"><span class="chip-dot"></span>DIN Next</span>
 </div>
 
 <!-- ── Page ────────────────────────────────────────────────────────────── -->
@@ -295,7 +295,7 @@
       <div class="metric-grid">
         <div class="hdr label">Metric</div>
         <div class="hdr chip chip-d"><span class="chip-dot"></span> Dinsy</div>
-        <div class="hdr chip chip-dc"><span class="chip-dot"></span> DINsical</div>
+        <div class="hdr chip chip-dc"><span class="chip-dot"></span> DIN Next</div>
 
         <div class="label">hhea ascender</div>   <div>830</div>  <div>830</div>
         <div class="label">hhea descender</div>  <div>−170</div> <div>−170</div>
@@ -313,7 +313,7 @@
       <p style="margin-top:10px;font-size:12px;color:#666;">
         All line-box metrics are identical — baseline aligns in mixed text.
         xHeight differs by <strong>20 units (4.2%)</strong>: lowercase letters are optically
-        taller in Dinsy (x reaches y=504 vs DINsical y=490).
+        taller in Dinsy (x reaches y=504 vs DIN Next y=490).
       </p>
     </div>
   </div>
@@ -346,7 +346,7 @@
   <!-- 3. Side-by-side character pairs ─────────────────────────────────── -->
   <div class="section">
     <div class="section-head">Side-by-side character pairs
-      <span style="font-weight:400;color:#888;font-size:11px;">— each pair baseline-aligned, <span class="chip chip-d" style="display:inline-flex"><span class="chip-dot"></span>Dinsy</span> left · <span class="chip chip-dc" style="display:inline-flex"><span class="chip-dot"></span>DINsical</span> right</span>
+      <span style="font-weight:400;color:#888;font-size:11px;">— each pair baseline-aligned, <span class="chip chip-d" style="display:inline-flex"><span class="chip-dot"></span>Dinsy</span> left · <span class="chip chip-dc" style="display:inline-flex"><span class="chip-dot"></span>DIN Next</span> right</span>
     </div>
     <div class="section-body">
       <div class="custom-row">
@@ -366,7 +366,7 @@
           <div class="para-block font-d" id="para-d"></div>
         </div>
         <div>
-          <div class="para-label chip chip-dc"><span class="chip-dot"></span> DINsical</div>
+          <div class="para-label chip chip-dc"><span class="chip-dot"></span> DIN Next</div>
           <div class="para-block font-dc" id="para-dc"></div>
         </div>
       </div>
@@ -384,7 +384,7 @@ const UPM       = 1000;
 const HHEA_ASC  = 830;   // baseline is 83% from top of em-box (line-height:1)
 const CAP       = 680;   // both fonts
 const X_D       = 499;   // Dinsy
-const X_DC      = 479;   // DINsical
+const X_DC      = 479;   // DIN Next
 const DESC      = 170;   // hhea descender absolute value
 
 let fontSize    = 80;
@@ -432,7 +432,7 @@ function makeRulers() {
     { cls: 'rl-asc',  y: HHEA_ASC, label: 'ascender' },
     { cls: 'rl-cap',  y: CAP,      label: 'cap (680)' },
     { cls: 'rl-x-d',  y: X_D,      label: `x Dinsy (${X_D})` },
-    { cls: 'rl-x-dc', y: X_DC,     label: `x DINsical (${X_DC})` },
+    { cls: 'rl-x-dc', y: X_DC,     label: `x DIN Next (${X_DC})` },
     { cls: 'rl-base', y: 0,        label: 'baseline' },
     { cls: 'rl-desc', y: -DESC,    label: 'descender' },
   ];
@@ -450,7 +450,7 @@ function updateInline() {
   const d  = document.getElementById('inline-d');
   const dc = document.getElementById('inline-dc');
   applyFont(d,  'Dinsy');
-  applyFont(dc, 'DINsical');
+  applyFont(dc, 'DIN Next');
   d.textContent  = text;
   dc.textContent = text;
   document.getElementById('inline-rulers').innerHTML = makeRulers();
@@ -485,13 +485,13 @@ function updatePairs() {
     const div = document.createElement('div');
     div.className = 'pair-div';
 
-    // DINsical
+    // DIN Next
     const gdc = document.createElement('div');
     gdc.className = 'pair-glyph';
     const cdc = document.createElement('span');
     cdc.className = 'pair-char font-dc';
     cdc.textContent = ch;
-    applyFont(cdc, 'DINsical');
+    applyFont(cdc, 'DIN Next');
     const ldc = document.createElement('span');
     ldc.className = 'pair-glyph-label';
     ldc.textContent = 'DC';
@@ -506,7 +506,7 @@ function updatePara() {
   const d  = document.getElementById('para-d');
   const dc = document.getElementById('para-dc');
   applyFont(d,  'Dinsy');
-  applyFont(dc, 'DINsical');
+  applyFont(dc, 'DIN Next');
   d.textContent  = PARA_TEXT;
   dc.textContent = PARA_TEXT;
 }

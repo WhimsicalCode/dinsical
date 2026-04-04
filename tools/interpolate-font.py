@@ -37,12 +37,12 @@ def interpolate_font(src1, src2, dest, weight):
     # (3=Light … 9=Black) to a DINish interpolation factor (0=Regular master,
     # 1=Bold master, >1 extrapolates past Bold).
     #
-    # Anchors were measured by comparing I-glyph stem widths between DINsical
+    # Anchors were measured by comparing I-glyph stem widths between DIN Next
     # and Dinsy across the full weight range:
-    #   weight 4 (Regular, wght 400)  →  factor 0.298  (stem ≈89,  DINsical Regular=89)
-    #   weight 5 (Medium,  wght 500)  →  factor 0.807  (stem ≈118, DINsical Medium=118)
-    #   weight 7 (Bold,    wght 700)  →  factor 1.316  (stem ≈148, DINsical Bold=147)
-    # Note: DINsical Bold ≈ Dinsy Heavy in stem weight.
+    #   weight 4 (Regular, wght 400)  →  factor 0.298  (stem ≈89,  DIN Next Regular=89)
+    #   weight 5 (Medium,  wght 500)  →  factor 0.807  (stem ≈118, DIN Next Medium=118)
+    #   weight 7 (Bold,    wght 700)  →  factor 1.316  (stem ≈148, DIN Next Bold=147)
+    # Note: DIN Next Bold ≈ Dinsy Heavy in stem weight.
     # Weights outside the anchor range are linearly extrapolated.
     _ANCHORS = [(4, 0.298), (5, 0.807), (7, 1.316)]
     def _calibrated_factor(w):

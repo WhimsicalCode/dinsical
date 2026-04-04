@@ -320,7 +320,7 @@ input[type='range'] {
 }
 
 .kv.dinsy    { color: var(--red);  background: rgba(220, 38,  38,  0.08); }
-.kv.dinsical { color: var(--blue); background: rgba(37,  99,  235, 0.08); }
+.kv.din-next { color: var(--blue); background: rgba(37,  99,  235, 0.08); }
 .kv.delta    { color: var(--amber); background: rgba(217, 119, 6,  0.12); }
 .kv.missing  { color: #7c3aed;     background: rgba(124, 58,  237, 0.10); }
 .kv.zero     { color: var(--muted); background: transparent; opacity: 0.6; }
