@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.009] - 2026-04-02
+
+- Rename font family: Dinsy → Dinsical.
+- Rename reference font: DINsical → DIN Next.
+
 ## [1.008] - 2026-04-02
 
 - Italic slant angle reduced from 12° to 10° to match Dinsical. `slnt` axis range

@@ -296,34 +296,34 @@ lookup kernHorizontalKerninginLatinlookup0 {
   pos \idieresis \idieresis 103;
   pos \quoteleft \AE -164;
   pos \quotedblleft \AE -164;
-  # ── Pairs missing from upstream but present in DINsical ─────────────────
-  pos \T \J -96;        # TJ  DINsical=-96
-  pos \P \J -79;        # PJ  DINsical=-79
-  pos \V \J -66;        # VJ  DINsical=-66
-  pos \F \J -59;        # FJ  DINsical=-59
-  pos \W \J -55;        # WJ  DINsical=-55
-  pos \Y \J -82;        # YJ  DINsical=-82
+  # ── Pairs missing from upstream but present in DIN Next ─────────────────
+  pos \T \J -96;        # TJ  DIN Next=-96
+  pos \P \J -79;        # PJ  DIN Next=-79
+  pos \V \J -66;        # VJ  DIN Next=-66
+  pos \F \J -59;        # FJ  DIN Next=-59
+  pos \W \J -55;        # WJ  DIN Next=-55
+  pos \Y \J -82;        # YJ  DIN Next=-82
   pos \Yacute \J -82;
   pos \Ydieresis \J -82;
-  pos \T \m -54;        # Tm  DINsical=-54  (was grouped with straight-LC at -12)
-  pos \T \u -54;        # Tu  DINsical=-54
+  pos \T \m -54;        # Tm  DIN Next=-54  (was grouped with straight-LC at -12)
+  pos \T \u -54;        # Tu  DIN Next=-54
   pos \T \ugrave -54;
   pos \T \uacute -54;
   pos \T \ucircumflex -54;
   pos \T \udieresis -54;
-  pos \F \m -24;        # Fm  DINsical=-24  (was grouped with straight-LC at -12)
-  pos \F \u -30;        # Fu  DINsical=-30
+  pos \F \m -24;        # Fm  DIN Next=-24  (was grouped with straight-LC at -12)
+  pos \F \u -30;        # Fu  DIN Next=-30
   pos \F \ugrave -30;
   pos \F \uacute -30;
   pos \F \ucircumflex -30;
   pos \F \udieresis -30;
-  pos \Y \z -46;        # Yz  DINsical=-46
+  pos \Y \z -46;        # Yz  DIN Next=-46
   pos \Yacute \z -46;
   pos \Ydieresis \z -46;
-  pos \Y \m -49;        # Ym  DINsical=-49
+  pos \Y \m -49;        # Ym  DIN Next=-49
   pos \Yacute \m -49;
   pos \Ydieresis \m -49;
-  pos \Y \u -48;        # Yu  DINsical=-48
+  pos \Y \u -48;        # Yu  DIN Next=-48
   pos \Yacute \u -48;
   pos \Ydieresis \u -48;
   pos \Y \ugrave -48;
@@ -344,18 +344,18 @@ lookup kernHorizontalKerninginLatinlookup1 {
   lookupflag 0;
   # ── Specific pair overrides ────────────────────────────────────────────
   # These Format-1 rules take precedence over the class-based (Format-2)
-  # rules below.  DINsical target values are noted inline.
-  pos \L \v -34;       # Lv  DINsical=-34  (class rule has -93)
-  pos \L \w -30;       # Lw  DINsical=-30
-  pos \L \y -16;       # Ly  DINsical=-16
+  # rules below.  DIN Next target values are noted inline.
+  pos \L \v -34;       # Lv  DIN Next=-34  (class rule has -93)
+  pos \L \w -30;       # Lw  DIN Next=-30
+  pos \L \y -16;       # Ly  DIN Next=-16
   pos \L \yacute -16;
   pos \L \ydieresis -16;
-  pos \T \d -40;       # Td  DINsical=-40  (class rule has -82 for open bowl)
-  pos \T \q -40;       # Tq  DINsical=-40
-  pos \Y \S -24;       # YS  DINsical=-24
+  pos \T \d -40;       # Td  DIN Next=-40  (class rule has -82 for open bowl)
+  pos \T \q -40;       # Tq  DIN Next=-40
+  pos \Y \S -24;       # YS  DIN Next=-24
   pos \Yacute \S -24;
   pos \Ydieresis \S -24;
-  pos \Y \f -10;       # Yf  DINsical=-10
+  pos \Y \f -10;       # Yf  DIN Next=-10
   pos \Yacute \f -10;
   pos \Ydieresis \f -10;
   subtable;
@@ -462,17 +462,17 @@ lookup kernHorizontalKerninginLatinlookup1 {
   pos @kc6_first_10 @kc6_second_15 -32;
   pos @kc6_first_11 @kc6_second_1 -7;
   pos @kc6_first_11 @kc6_second_13 -10;
-  pos @kc6_first_12 @kc6_second_1 -12;    # Y+C/G/O/Q      DINsical=-12
-  pos @kc6_first_12 @kc6_second_7 -96;    # Y+period        DINsical=-96
-  pos @kc6_first_12 @kc6_second_9 -28;    # Y+v/w/y avg     DINsical=-28/-23/-33
-  pos @kc6_first_12 @kc6_second_10 -59;   # Y+A             DINsical=-59
-  pos @kc6_first_12 @kc6_second_11 -56;   # Y+a             DINsical=-56
-  pos @kc6_first_12 @kc6_second_13 -58;   # Y+c/e/o         DINsical=-58
-  pos @kc6_first_12 @kc6_second_13b -56;  # Y+d/g/q         DINsical=-56
-  pos @kc6_first_12 @kc6_second_14 -56;   # Y+s             DINsical=-56
-  pos @kc6_first_12 @kc6_second_15 -92;   # Y+hyphen        DINsical=-92
-  pos @kc6_first_12 @kc6_second_18 -53;   # Y+colon/semi    DINsical=-53
-  pos @kc6_first_12 @kc6_second_19 -43;   # Y+x             DINsical=-43
+  pos @kc6_first_12 @kc6_second_1 -12;    # Y+C/G/O/Q      DIN Next=-12
+  pos @kc6_first_12 @kc6_second_7 -96;    # Y+period        DIN Next=-96
+  pos @kc6_first_12 @kc6_second_9 -28;    # Y+v/w/y avg     DIN Next=-28/-23/-33
+  pos @kc6_first_12 @kc6_second_10 -59;   # Y+A             DIN Next=-59
+  pos @kc6_first_12 @kc6_second_11 -56;   # Y+a             DIN Next=-56
+  pos @kc6_first_12 @kc6_second_13 -58;   # Y+c/e/o         DIN Next=-58
+  pos @kc6_first_12 @kc6_second_13b -56;  # Y+d/g/q         DIN Next=-56
+  pos @kc6_first_12 @kc6_second_14 -56;   # Y+s             DIN Next=-56
+  pos @kc6_first_12 @kc6_second_15 -92;   # Y+hyphen        DIN Next=-92
+  pos @kc6_first_12 @kc6_second_18 -53;   # Y+colon/semi    DIN Next=-53
+  pos @kc6_first_12 @kc6_second_19 -43;   # Y+x             DIN Next=-43
 } kernHorizontalKerninginLatinlookup1;
 
 lookup kernHorizontalKerninginLatinlookup3 {
