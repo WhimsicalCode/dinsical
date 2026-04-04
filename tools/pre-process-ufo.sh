@@ -9,7 +9,7 @@ die() {
 	exit 1
 }
 
-[ -e tools ] || die "Run this script from the toplevel directory as ./tools/pre-process-ufo.sh DinsyExpanded"
+[ -e tools ] || die "Run this script from the toplevel directory as ./tools/pre-process-ufo.sh DinsicalExpanded"
 
 family=$1; shift
 [ -d sources/$family/$family-Bold.ufo ] || die "Source not found, did you pass the family name and just the family name?"
@@ -26,7 +26,7 @@ cp -n "$topdir/sources/$family/$family-Bold.ufo/"*.* .
 cp -n "$topdir/sources/$family/$family-Bold.ufo/glyphs/"*.* glyphs
 uv run --with fontparts --with xmltodict python "$topdir"/tools/copy-missing-italics.py \
   --source="$topdir/sources/$family/$family-Bold.ufo" --dest=. \
-  --uprights="$topdir"/sources/upright-in-italic-dinsy.enc \
+  --uprights="$topdir"/sources/upright-in-italic-dinsical.enc \
   --overwrite="a=a.ss02"
 
 echo "Font source created in `pwd`"

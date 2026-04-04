@@ -2,25 +2,25 @@ import { parse as parseFont } from 'opentype.js'
 import type { Font } from 'opentype.js'
 
 export type { Font }
-export type FontPair = { dinsy: Font; dinNext: Font }
+export type FontPair = { dinsical: Font; dinNext: Font }
 
 export type WeightKey = 'Light' | 'Regular' | 'Medium' | 'Bold' | 'Heavy' | 'Black'
 type StyleKey = 'upright' | 'italic'
 type CacheKey = `${WeightKey}-${StyleKey}`
 
-const PATHS: Record<CacheKey, { dinsy: string; dinNext: string }> = {
-  'Light-upright':   { dinsy: '/fonts/ttf/Dinsy-Light.ttf',          dinNext: '/din-next/otf/DIN-Next-Light.otf'        },
-  'Light-italic':    { dinsy: '/fonts/ttf/Dinsy-LightItalic.ttf',    dinNext: '/din-next/otf/DIN-Next-LightItalic.otf'  },
-  'Regular-upright': { dinsy: '/fonts/ttf/Dinsy-Regular.ttf',        dinNext: '/din-next/otf/DIN-Next-Regular.otf'      },
-  'Regular-italic':  { dinsy: '/fonts/ttf/Dinsy-Italic.ttf',         dinNext: '/din-next/otf/DIN-Next-Italic.otf'       },
-  'Medium-upright':  { dinsy: '/fonts/ttf/Dinsy-Medium.ttf',         dinNext: '/din-next/otf/DIN-Next-Medium.otf'       },
-  'Medium-italic':   { dinsy: '/fonts/ttf/Dinsy-MediumItalic.ttf',   dinNext: '/din-next/otf/DIN-Next-MediumItalic.otf' },
-  'Bold-upright':    { dinsy: '/fonts/ttf/Dinsy-Bold.ttf',           dinNext: '/din-next/otf/DIN-Next-Bold.otf'         },
-  'Bold-italic':     { dinsy: '/fonts/ttf/Dinsy-BoldItalic.ttf',     dinNext: '/din-next/otf/DIN-Next-BoldItalic.otf'   },
-  'Heavy-upright':   { dinsy: '/fonts/ttf/Dinsy-Heavy.ttf',          dinNext: '/din-next/otf/DIN-Next-Heavy.otf'        },
-  'Heavy-italic':    { dinsy: '/fonts/ttf/Dinsy-HeavyItalic.ttf',    dinNext: '/din-next/otf/DIN-Next-HeavyItalic.otf'  },
-  'Black-upright':   { dinsy: '/fonts/ttf/Dinsy-Black.ttf',          dinNext: '/din-next/otf/DIN-Next-Black.otf'        },
-  'Black-italic':    { dinsy: '/fonts/ttf/Dinsy-BlackItalic.ttf',    dinNext: '/din-next/otf/DIN-Next-BlackItalic.otf'  },
+const PATHS: Record<CacheKey, { dinsical: string; dinNext: string }> = {
+  'Light-upright':   { dinsical: '/fonts/ttf/Dinsical-Light.ttf',          dinNext: '/din-next/otf/DIN-Next-Light.otf'        },
+  'Light-italic':    { dinsical: '/fonts/ttf/Dinsical-LightItalic.ttf',    dinNext: '/din-next/otf/DIN-Next-LightItalic.otf'  },
+  'Regular-upright': { dinsical: '/fonts/ttf/Dinsical-Regular.ttf',        dinNext: '/din-next/otf/DIN-Next-Regular.otf'      },
+  'Regular-italic':  { dinsical: '/fonts/ttf/Dinsical-Italic.ttf',         dinNext: '/din-next/otf/DIN-Next-Italic.otf'       },
+  'Medium-upright':  { dinsical: '/fonts/ttf/Dinsical-Medium.ttf',         dinNext: '/din-next/otf/DIN-Next-Medium.otf'       },
+  'Medium-italic':   { dinsical: '/fonts/ttf/Dinsical-MediumItalic.ttf',   dinNext: '/din-next/otf/DIN-Next-MediumItalic.otf' },
+  'Bold-upright':    { dinsical: '/fonts/ttf/Dinsical-Bold.ttf',           dinNext: '/din-next/otf/DIN-Next-Bold.otf'         },
+  'Bold-italic':     { dinsical: '/fonts/ttf/Dinsical-BoldItalic.ttf',     dinNext: '/din-next/otf/DIN-Next-BoldItalic.otf'   },
+  'Heavy-upright':   { dinsical: '/fonts/ttf/Dinsical-Heavy.ttf',          dinNext: '/din-next/otf/DIN-Next-Heavy.otf'        },
+  'Heavy-italic':    { dinsical: '/fonts/ttf/Dinsical-HeavyItalic.ttf',    dinNext: '/din-next/otf/DIN-Next-HeavyItalic.otf'  },
+  'Black-upright':   { dinsical: '/fonts/ttf/Dinsical-Black.ttf',          dinNext: '/din-next/otf/DIN-Next-Black.otf'        },
+  'Black-italic':    { dinsical: '/fonts/ttf/Dinsical-BlackItalic.ttf',    dinNext: '/din-next/otf/DIN-Next-BlackItalic.otf'  },
 }
 
 const cache = new Map<CacheKey, FontPair>()
@@ -35,8 +35,8 @@ export async function loadFonts(weight: WeightKey, italic: boolean): Promise<Fon
   const key: CacheKey = `${weight}-${italic ? 'italic' : 'upright'}`
   if (cache.has(key)) return cache.get(key)!
   const p = PATHS[key]
-  const [dinsy, dinNext] = await Promise.all([load(p.dinsy), load(p.dinNext)])
-  const pair: FontPair = { dinsy, dinNext }
+  const [dinsical, dinNext] = await Promise.all([load(p.dinsical), load(p.dinNext)])
+  const pair: FontPair = { dinsical, dinNext }
   cache.set(key, pair)
   return pair
 }

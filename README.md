@@ -1,10 +1,10 @@
-# Dinsy
+# Dinsical
 
-Dinsy is a variable font derived from [DINish](https://github.com/playbeing/dinish)
+Dinsical is a variable font derived from [DINish](https://github.com/playbeing/dinish)
 (itself a fork of Altinn-DIN / D-DIN), tuned for pixel-accurate canvas and web
 rendering.
 
-## Why Dinsy exists
+## Why Dinsical exists
 
 Two specific problems with the upstream DINish font motivated this fork:
 
@@ -12,11 +12,11 @@ Two specific problems with the upstream DINish font motivated this fork:
    DINish uses 1024 UPM.  At 100 px font-size the natural line height is
    `(1050 + 248) / 1024 × 100 = 126.37 px` — a non-integer that causes
    sub-pixel rendering differences across browsers and canvas implementations.  
-   Dinsy uses 1000 UPM with line metrics copied from DIN Next, giving
+   Dinsical uses 1000 UPM with line metrics copied from DIN Next, giving
    exactly **120.000 px** at 100 px (`(750 + 250 + 200) / 1000 × 100`).
 
 2. **Glyph bodies are 1.5 % too large compared to DIN Next.**  
-   Outlines are scaled down by **0.985×** so that `font-size: 1000px` in Dinsy
+   Outlines are scaled down by **0.985×** so that `font-size: 1000px` in Dinsical
    renders identically to `font-size: 1000px` in DIN Next.
 
 ## Font metrics
@@ -42,36 +42,36 @@ Static instances: Light, Regular, Medium, SemiBold, Bold, Heavy, Black
 ## Repository structure
 
 ```
-dinsy-new/
+dinsical-new/
 ├── VERSION                       Version number (e.g. "1.001")
 ├── CHANGELOG.md                  Release history
 ├── Makefile                      Build targets (see below)
-├── Dinsy-Variable.designspace    Variable font designspace
-├── Dinsy-Variable.stylespace     STAT table definitions
+├── Dinsical-Variable.designspace    Variable font designspace
+├── Dinsical-Variable.stylespace     STAT table definitions
 │
 ├── dinish/                       git submodule — upstream DINish sources
 │                                 (read-only; never edit directly)
 │
 ├── overlay/
-│   └── sources/Dinsy/
-│       ├── Dinsy-Regular.ufo/glyphs/   ← drop .glif overrides here
-│       └── Dinsy-Bold.ufo/glyphs/      ← same for Bold
+│   └── sources/Dinsical/
+│       ├── Dinsical-Regular.ufo/glyphs/   ← drop .glif overrides here
+│       └── Dinsical-Bold.ufo/glyphs/      ← same for Bold
 │
 ├── sources/                      Derived UFO masters (committed)
-│   └── Dinsy/
-│       ├── Dinsy-Regular.ufo/
-│       ├── Dinsy-Bold.ufo/
-│       └── upright-in-italic-dinsy.enc
+│   └── Dinsical/
+│       ├── Dinsical-Regular.ufo/
+│       ├── Dinsical-Bold.ufo/
+│       └── upright-in-italic-dinsical.enc
 │
 ├── fonts/                        Built font files (committed, release only)
-│   ├── ttf/Dinsy/
-│   ├── otf/Dinsy/
-│   ├── woff/Dinsy/
-│   ├── woff2/Dinsy/
+│   ├── ttf/Dinsical/
+│   ├── otf/Dinsical/
+│   ├── woff/Dinsical/
+│   ├── woff2/Dinsical/
 │   └── variable/
 │
 └── tools/
-    ├── derive-sources.py         Upstream → Dinsy transformation pipeline
+    ├── derive-sources.py         Upstream → Dinsical transformation pipeline
     ├── release.py                Automated release workflow
     ├── build-ephemeral-ufos.sh   Full build (interpolate + italic + VF + static)
     ├── update-version.sh         Embed version + git hash into fontinfo
@@ -103,14 +103,14 @@ uv tool install fontmake --with skia-pathops --with fontparts --with xmltodict
 
 ## Derivation pipeline (`make sources`)
 
-`tools/derive-sources.py` transforms the upstream DINish sources into Dinsy sources:
+`tools/derive-sources.py` transforms the upstream DINish sources into Dinsical sources:
 
 1. **Copy** `dinish/sources/DINish/DINish-{Regular,Bold}.ufo`
-   → `sources/Dinsy/Dinsy-{Regular,Bold}.ufo`
-2. **Rename** `DINish` → `Dinsy` in all text content (family names, PS names, class names)
+   → `sources/Dinsical/Dinsical-{Regular,Bold}.ufo`
+2. **Rename** `DINish` → `Dinsical` in all text content (family names, PS names, class names)
 3. **Scale** all glyph coordinates and advance widths by `(1000/1024) × 0.985 = 0.9619…`
 4. **Set UPM** to 1000; **override line metrics** with exact DIN Next values
-5. **Apply overlay** — copy any `.glif` files from `overlay/sources/Dinsy/` on top
+5. **Apply overlay** — copy any `.glif` files from `overlay/sources/Dinsical/` on top
 
 ## Per-glyph overrides
 
@@ -118,15 +118,15 @@ To override a specific glyph while keeping everything else from upstream:
 
 1. Place your `.glif` file in the matching weight directory:
    ```
-   overlay/sources/Dinsy/Dinsy-Regular.ufo/glyphs/H_.glif
-   overlay/sources/Dinsy/Dinsy-Bold.ufo/glyphs/H_.glif
+   overlay/sources/Dinsical/Dinsical-Regular.ufo/glyphs/H_.glif
+   overlay/sources/Dinsical/Dinsical-Bold.ufo/glyphs/H_.glif
    ```
 2. The filename must match the entry in
-   `sources/Dinsy/Dinsy-{weight}.ufo/glyphs/contents.plist`
+   `sources/Dinsical/Dinsical-{weight}.ufo/glyphs/contents.plist`
 3. Run `make sources` to apply, then `make full` to rebuild fonts.
 
 Overlay glyphs are applied **after** all transformations, so they are used
-as-is. Design at 1000 UPM with the Dinsy scale factor already baked in.
+as-is. Design at 1000 UPM with the Dinsical scale factor already baked in.
 
 ## Release workflow (`make release`)
 
@@ -163,7 +163,7 @@ git add dinish && git commit -m "Pin dinish to <hash>"
 
 ## Language support
 
-Dinsy inherits DINish's full glyph set:
+Dinsical inherits DINish's full glyph set:
 243 Latin-based languages supported, full European Latin coverage, Cyrillic
 (Russian, Bulgarian, Serbian), Old-style numerals, tabular numerals.
 

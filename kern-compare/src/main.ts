@@ -9,7 +9,7 @@ import {
   renderStringOnCanvas, renderStringOverlay,
   renderPairOnCanvas, renderPairOverlay, renderPairContext,
   pairAdvancePx, stringAdvancePx,
-  DINSY_COLOR, DIN_NEXT_COLOR,
+  DINSICAL_COLOR, DIN_NEXT_COLOR,
   type RenderOpts,
 } from './renderer'
 
@@ -18,7 +18,7 @@ import {
 interface AppState {
   fontPair:    FontPair | null
   kernData:    KernPairData | null
-  dinsyMap:    KernMap
+  dinsicalMap:    KernMap
   dinNextMap: KernMap
   weight:      WeightKey
   italic:      boolean
@@ -34,7 +34,7 @@ interface AppState {
 const S: AppState = {
   fontPair:    null,
   kernData:    null,
-  dinsyMap:    new Map(),
+  dinsicalMap:    new Map(),
   dinNextMap: new Map(),
   weight:      'Regular',
   italic:      false,
@@ -101,12 +101,12 @@ function buildPreview(): void {
   } else {
     // side-by-side = two stacked canvases
     const minW = Math.max(
-      stringAdvancePx(pair.dinsy,    text, S.fontSize),
+      stringAdvancePx(pair.dinsical,    text, S.fontSize),
       stringAdvancePx(pair.dinNext, text, S.fontSize),
     ) + 16
 
     for (const [font, color, label] of [
-      [pair.dinsy,    DINSY_COLOR,    'Dinsy'],
+      [pair.dinsical,    DINSICAL_COLOR,    'Dinsical'],
       [pair.dinNext, DIN_NEXT_COLOR, 'DIN Next'],
     ] as const) {
       const row = document.createElement('div')
@@ -163,7 +163,7 @@ function buildGrid(): void {
   if (!pair || !kern) return
 
   const allPairs = unionPairs(kern)
-  const filtered = filterPairs(allPairs, S.dinsyMap, S.dinNextMap, S.filter, S.range)
+  const filtered = filterPairs(allPairs, S.dinsicalMap, S.dinNextMap, S.filter, S.range)
   const grouped  = groupByCategory(filtered)
 
   const { cellH, baseline } = fakeCellDims(pair, S.fontSize)
@@ -202,10 +202,10 @@ function buildGrid(): void {
 }
 
 function fakeCellDims(pair: FontPair, fontSize: number): { cellH: number; baseline: number } {
-  const s1 = fontSize / pair.dinsy.unitsPerEm
+  const s1 = fontSize / pair.dinsical.unitsPerEm
   const s2 = fontSize / pair.dinNext.unitsPerEm
-  const asc  = Math.max(pair.dinsy.ascender   * s1, pair.dinNext.ascender   * s2)
-  const desc = Math.max(-pair.dinsy.descender * s1, -pair.dinNext.descender * s2)
+  const asc  = Math.max(pair.dinsical.ascender   * s1, pair.dinNext.ascender   * s2)
+  const desc = Math.max(-pair.dinsical.descender * s1, -pair.dinNext.descender * s2)
   return { cellH: Math.ceil(asc + desc) + 16, baseline: Math.ceil(asc) + 8 }
 }
 
@@ -219,13 +219,13 @@ function makePairCell(
   const cell  = document.createElement('div')
   cell.className = 'cell'
 
-  const dv = lookupKern(S.dinsyMap,    leftCP, rightCP)
+  const dv = lookupKern(S.dinsicalMap,    leftCP, rightCP)
   const cv = lookupKern(S.dinNextMap, leftCP, rightCP)
 
   if (S.viewMode === 'overlay') {
     const canvas = document.createElement('canvas')
     // Reserve space so layout doesn't jump when rendered
-    const adv1 = pairAdvancePx(pair.dinsy,    leftCP, rightCP, S.fontSize)
+    const adv1 = pairAdvancePx(pair.dinsical,    leftCP, rightCP, S.fontSize)
     const adv2 = pairAdvancePx(pair.dinNext, leftCP, rightCP, S.fontSize)
     const estW = Math.max(adv1, adv2, S.fontSize * 0.4) + 16
     canvas.style.width  = `${Math.ceil(estW)}px`
@@ -240,13 +240,13 @@ function makePairCell(
     const c2 = document.createElement('canvas')
     c1.className = 'sbs-canvas-d'
     c2.className = 'sbs-canvas-c'
-    const adv1 = pairAdvancePx(pair.dinsy,    leftCP, rightCP, S.fontSize)
+    const adv1 = pairAdvancePx(pair.dinsical,    leftCP, rightCP, S.fontSize)
     const adv2 = pairAdvancePx(pair.dinNext, leftCP, rightCP, S.fontSize)
     c1.style.width  = `${Math.ceil(Math.max(adv1, S.fontSize * 0.4) + 16)}px`
     c1.style.height = `${cellH}px`
     c2.style.width  = `${Math.ceil(Math.max(adv2, S.fontSize * 0.4) + 16)}px`
     c2.style.height = `${cellH}px`
-    scheduleRender(c1, () => renderPairOnCanvas(c1, leftCP, rightCP, pair.dinsy,    DINSY_COLOR,    opts()))
+    scheduleRender(c1, () => renderPairOnCanvas(c1, leftCP, rightCP, pair.dinsical,    DINSICAL_COLOR,    opts()))
     scheduleRender(c2, () => renderPairOnCanvas(c2, leftCP, rightCP, pair.dinNext, DIN_NEXT_COLOR, opts()))
     wrap.appendChild(c1)
     wrap.appendChild(c2)
@@ -268,7 +268,7 @@ function makePairCell(
   vals.className = 'kern-vals'
 
   const vd = document.createElement('span')
-  vd.className = `kv dinsy${dv === 0 ? ' zero' : ''}`
+  vd.className = `kv dinsical${dv === 0 ? ' zero' : ''}`
   vd.textContent = dv === 0 ? '—' : String(dv)
 
   const vc = document.createElement('span')
@@ -323,12 +323,12 @@ function openModal(leftCP: number, rightCP: number): void {
   $mCtxWrap.appendChild(ctxCanvas)
 
   // Metrics
-  const dv = lookupKern(S.dinsyMap,    leftCP, rightCP)
+  const dv = lookupKern(S.dinsicalMap,    leftCP, rightCP)
   const cv = lookupKern(S.dinNextMap, leftCP, rightCP)
   const diff = dv - cv
 
-  const g1d = pair.dinsy.charToGlyph(l)
-  const g2d = pair.dinsy.charToGlyph(r)
+  const g1d = pair.dinsical.charToGlyph(l)
+  const g2d = pair.dinsical.charToGlyph(r)
   const g1c = pair.dinNext.charToGlyph(l)
   const g2c = pair.dinNext.charToGlyph(r)
 
@@ -340,8 +340,8 @@ function openModal(leftCP: number, rightCP: number): void {
   const diffClass = diff !== 0 ? 'diff' : ''
 
   $mMetrics.innerHTML = `
-    <div class="mcard" style="border-top:3px solid ${DINSY_COLOR}">
-      <div class="mcard-title" style="color:${DINSY_COLOR}">Dinsy</div>
+    <div class="mcard" style="border-top:3px solid ${DINSICAL_COLOR}">
+      <div class="mcard-title" style="color:${DINSICAL_COLOR}">Dinsical</div>
       <div class="mrow"><span>left glyph</span><code>${g1d.name ?? '.notdef'}</code></div>
       <div class="mrow"><span>right glyph</span><code>${g2d.name ?? '.notdef'}</code></div>
       <div class="mrow"><span>adv left</span><code>${awL_d}</code></div>
@@ -360,7 +360,7 @@ function openModal(leftCP: number, rightCP: number): void {
     <div class="mcard mcard-delta">
       <div class="mcard-title">Δ</div>
       <div class="mrow"><span>kern difference</span><code class="diff">${diff > 0 ? '+' : ''}${diff}</code></div>
-      <div class="mrow"><span>status</span><code class="diff">${dv === 0 ? 'missing in Dinsy' : cv === 0 ? 'missing in DIN Next' : 'values differ'}</code></div>
+      <div class="mrow"><span>status</span><code class="diff">${dv === 0 ? 'missing in Dinsical' : cv === 0 ? 'missing in DIN Next' : 'values differ'}</code></div>
     </div>` : ''}
   `
 
@@ -386,7 +386,7 @@ async function loadAll(): Promise<void> {
     ])
     S.fontPair    = fontPair
     S.kernData    = kernData
-    S.dinsyMap    = makeKernMap(kernData.dinsy)
+    S.dinsicalMap    = makeKernMap(kernData.dinsical)
     S.dinNextMap = makeKernMap(kernData.dinNext)
 
     buildPreview()

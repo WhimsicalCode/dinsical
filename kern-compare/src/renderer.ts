@@ -8,7 +8,7 @@ export interface RenderOpts {
 }
 
 const PAD = 8
-export const DINSY_COLOR    = '#dc2626'
+export const DINSICAL_COLOR    = '#dc2626'
 export const DIN_NEXT_COLOR = '#2563eb'
 
 // ── Low-level helpers ──────────────────────────────────────────────────────
@@ -95,10 +95,10 @@ function strokeText(
 // ── Metric helpers ─────────────────────────────────────────────────────────
 
 function cellHeightFromPair(pair: FontPair, fontSize: number): { cellH: number; baseline: number } {
-  const s1 = scale(pair.dinsy,    fontSize)
+  const s1 = scale(pair.dinsical,    fontSize)
   const s2 = scale(pair.dinNext, fontSize)
-  const asc  = Math.max(pair.dinsy.ascender   * s1, pair.dinNext.ascender   * s2)
-  const desc = Math.max(-pair.dinsy.descender * s1, -pair.dinNext.descender * s2)
+  const asc  = Math.max(pair.dinsical.ascender   * s1, pair.dinNext.ascender   * s2)
+  const desc = Math.max(-pair.dinsical.descender * s1, -pair.dinNext.descender * s2)
   return { cellH: Math.ceil(asc + desc) + PAD * 2, baseline: Math.ceil(asc) + PAD }
 }
 
@@ -133,7 +133,7 @@ export function renderStringOnCanvas(
   opts:     RenderOpts,
   minWidth: number,
 ): void {
-  const { cellH, baseline } = cellHeightFromPair({ dinsy: font, dinNext: font }, opts.fontSize)
+  const { cellH, baseline } = cellHeightFromPair({ dinsical: font, dinNext: font }, opts.fontSize)
   const w = Math.max(minWidth, stringAdvancePx(font, text, opts.fontSize) + PAD * 2)
   const ctx = setupCanvas(canvas, w, cellH)
   if (opts.showBaseline) drawBaseline(ctx, w, baseline)
@@ -149,14 +149,14 @@ export function renderStringOverlay(
 ): void {
   const { cellH, baseline } = cellHeightFromPair(pair, opts.fontSize)
   const w = Math.max(
-    stringAdvancePx(pair.dinsy,    text, opts.fontSize),
+    stringAdvancePx(pair.dinsical,    text, opts.fontSize),
     stringAdvancePx(pair.dinNext, text, opts.fontSize),
   ) + PAD * 2
 
   const ctx = setupCanvas(canvas, w, cellH)
   if (opts.showBaseline) drawBaseline(ctx, w, baseline)
   strokeText(ctx, pair.dinNext, text, PAD, baseline, opts.fontSize, DIN_NEXT_COLOR, opts.lineWidth)
-  strokeText(ctx, pair.dinsy,    text, PAD, baseline, opts.fontSize, DINSY_COLOR,    opts.lineWidth)
+  strokeText(ctx, pair.dinsical,    text, PAD, baseline, opts.fontSize, DINSICAL_COLOR,    opts.lineWidth)
 }
 
 // ── Pair cells ─────────────────────────────────────────────────────────────
@@ -171,7 +171,7 @@ export function renderPairOnCanvas(
   opts:    RenderOpts,
   fixedW?: number,   // if set, use this width instead of computing from advance
 ): number {
-  const { cellH, baseline } = cellHeightFromPair({ dinsy: font, dinNext: font }, opts.fontSize)
+  const { cellH, baseline } = cellHeightFromPair({ dinsical: font, dinNext: font }, opts.fontSize)
   const adv = pairAdvancePx(font, leftCP, rightCP, opts.fontSize)
   const w   = fixedW ?? (Math.max(adv, opts.fontSize * 0.4) + PAD * 2)
   const ctx = setupCanvas(canvas, w, cellH)
@@ -191,7 +191,7 @@ export function renderPairOverlay(
   opts:    RenderOpts,
 ): void {
   const { cellH, baseline } = cellHeightFromPair(pair, opts.fontSize)
-  const adv1 = pairAdvancePx(pair.dinsy,    leftCP, rightCP, opts.fontSize)
+  const adv1 = pairAdvancePx(pair.dinsical,    leftCP, rightCP, opts.fontSize)
   const adv2 = pairAdvancePx(pair.dinNext, leftCP, rightCP, opts.fontSize)
   const adv  = Math.max(adv1, adv2)
   const w    = Math.max(adv, opts.fontSize * 0.4) + PAD * 2
@@ -200,9 +200,9 @@ export function renderPairOverlay(
   if (opts.showBaseline) drawBaseline(ctx, w, baseline)
 
   const text = String.fromCodePoint(leftCP) + String.fromCodePoint(rightCP)
-  // DIN Next underneath, Dinsy on top
+  // DIN Next underneath, Dinsical on top
   strokeText(ctx, pair.dinNext, text, (w - adv2) / 2, baseline, opts.fontSize, DIN_NEXT_COLOR, opts.lineWidth)
-  strokeText(ctx, pair.dinsy,    text, (w - adv1) / 2, baseline, opts.fontSize, DINSY_COLOR,    opts.lineWidth)
+  strokeText(ctx, pair.dinsical,    text, (w - adv1) / 2, baseline, opts.fontSize, DINSICAL_COLOR,    opts.lineWidth)
 }
 
 /** Render pair context ("n" + pair + "o") for the modal. */
@@ -220,12 +220,12 @@ export function renderPairContext(
 
   const { cellH, baseline } = cellHeightFromPair(pair, opts.fontSize)
   const w = Math.max(
-    stringAdvancePx(pair.dinsy,    full, opts.fontSize),
+    stringAdvancePx(pair.dinsical,    full, opts.fontSize),
     stringAdvancePx(pair.dinNext, full, opts.fontSize),
   ) + PAD * 2
 
   const ctx = setupCanvas(canvas, w, cellH)
   if (opts.showBaseline) drawBaseline(ctx, w, baseline)
   strokeText(ctx, pair.dinNext, full, PAD, baseline, opts.fontSize, DIN_NEXT_COLOR, opts.lineWidth)
-  strokeText(ctx, pair.dinsy,    full, PAD, baseline, opts.fontSize, DINSY_COLOR,    opts.lineWidth)
+  strokeText(ctx, pair.dinsical,    full, PAD, baseline, opts.fontSize, DINSICAL_COLOR,    opts.lineWidth)
 }

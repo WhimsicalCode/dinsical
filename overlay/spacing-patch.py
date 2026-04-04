@@ -1,5 +1,5 @@
 """
-Dinsy spacing patch — increases glyph sidebearings to match DIN Next.
+Dinsical spacing patch — increases glyph sidebearings to match DIN Next.
 
 Applied by tools/derive-sources.py after glyph scaling on every `make sources`
 run. Works in two phases:

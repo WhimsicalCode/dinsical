@@ -1,5 +1,5 @@
 #!/bin/sh
-# Update fontinfo.plist for all Dinsy masters with the current version,
+# Update fontinfo.plist for all Dinsical masters with the current version,
 # git hash, and build timestamp.
 #
 # Version is read from the VERSION file (e.g. "1.001").
@@ -50,7 +50,7 @@ echo "$versionstr"
 # real sources, keeping the working tree clean.
 SOURCES_DIR="${BUILD_SOURCES:-$ROOT/sources}"
 
-for ufo in "$SOURCES_DIR"/Dinsy/Dinsy*.ufo; do
+for ufo in "$SOURCES_DIR"/Dinsical/Dinsical*.ufo; do
     $SED -i \
         -e "/versionMajor/,+1s/>[0-9]*</>$major</" \
         -e "/versionMinor/,+1s/>[0-9]*</>$minor</" \

@@ -2,8 +2,8 @@ SRCDIR  := $(abspath $(lastword $(MAKEFILE_LIST))/..)
 VERSION := $(shell cat VERSION)
 PYTHON  := uv run --with fontparts --with xmltodict --with fonttools python
 
-SOURCES := $(wildcard sources/Dinsy/*.ufo)
-NAMES   := $(patsubst sources/Dinsy/%.ufo,%,$(SOURCES))
+SOURCES := $(wildcard sources/Dinsical/*.ufo)
+NAMES   := $(patsubst sources/Dinsical/%.ufo,%,$(SOURCES))
 OTFS    := $(patsubst %,fonts/otf/%.otf,$(NAMES))
 TTFS    := $(patsubst %,fonts/ttf/%.ttf,$(NAMES))
 WOFFS   := $(patsubst %,fonts/woff/%.woff,$(NAMES))
@@ -43,11 +43,11 @@ help:  ## Show this help
 	@grep -E '^[a-z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 	  awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
 
-fonts/otf/%.otf: sources/Dinsy/%.ufo
+fonts/otf/%.otf: sources/Dinsical/%.ufo
 	@mkdir -p $(@D)
 	tools/process-font.sh $< $@
 
-fonts/ttf/%.ttf: sources/Dinsy/%.ufo
+fonts/ttf/%.ttf: sources/Dinsical/%.ufo
 	@mkdir -p $(@D)
 	tools/process-font.sh $< $@
 
@@ -65,6 +65,6 @@ sync_features:
 
 fontbakery:
 	-fontbakery check-universal --verbose --full-lists \
-	  --html fontbakery-variable-report.html fonts/ttf/Dinsy-Var.ttf
+	  --html fontbakery-variable-report.html fonts/ttf/Dinsical-Var.ttf
 	-fontbakery check-universal --verbose --full-lists \
-	  --html fontbakery-static-report.html fonts/ttf/Dinsy-*.ttf
+	  --html fontbakery-static-report.html fonts/ttf/Dinsical-*.ttf

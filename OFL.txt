@@ -1,4 +1,4 @@
-Copyright 2021 The Dinsy Project Authors (https://github.com/playbeing/dinsy)
+Copyright 2021 The Dinsical Project Authors (https://github.com/playbeing/dinsical)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

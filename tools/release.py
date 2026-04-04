@@ -173,7 +173,7 @@ def main() -> None:
     git("commit", "-m", f"Release v{new_version}: derive sources")
 
     # 8. Tag ---------------------------------------------------------------
-    git("tag", f"v{new_version}", "-m", f"Dinsy v{new_version}")
+    git("tag", f"v{new_version}", "-m", f"Dinsical v{new_version}")
     print(f"Tagged v{new_version}")
 
     # 9. Build fonts -------------------------------------------------------
@@ -186,7 +186,7 @@ def main() -> None:
     if fonts_status:
         git("commit", "-m", f"Release v{new_version}: built fonts")
         # Move tag to include fonts commit
-        git("tag", "-f", f"v{new_version}", "-m", f"Dinsy v{new_version}")
+        git("tag", "-f", f"v{new_version}", "-m", f"Dinsical v{new_version}")
         print(f"Tag v{new_version} moved to fonts commit")
 
     print(f"""

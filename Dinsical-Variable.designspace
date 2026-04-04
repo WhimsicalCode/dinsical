@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='utf-8'?>
+<designspace format="4.0">
+  <axes>
+    <axis tag="wdth" name="width" default="100" minimum="75" maximum="125">
+      <labelname xml:lang="en">Width</labelname>
+      <labels>
+        <label uservalue="75"  name="Condensed"/>
+        <label uservalue="125" name="Expanded"/>
+      </labels>
+      <map output="75"  input="75"/>
+      <map output="100" input="100"/>
+      <map output="125" input="125"/>
+    </axis>
+    <axis tag="slnt" name="slant" default="0" minimum="-12" maximum="0">
+      <labelname xml:lang="en">Slant</labelname>
+      <labels>
+        <label uservalue="-12" name="Italic"/>
+      </labels>
+    </axis>
+    <axis tag="wght" name="weight" default="400" minimum="300" maximum="900">
+      <labelname xml:lang="en">Weight</labelname>
+      <labels>
+        <label uservalue="300" name="Light"/>
+        <label uservalue="400" name="Regular"/>
+        <label uservalue="500" name="Medium"/>
+        <label uservalue="600" name="SemiBold"/>
+        <label uservalue="700" name="Bold"/>
+        <label uservalue="800" name="Heavy"/>
+        <label uservalue="900" name="Black"/>
+      </labels>
+    </axis>
+  </axes>
+  <sources>
+    <!-- Condensed wdth=75 -->
+    <source filename="sources/vfwork/DinsicalCondensed/DinsicalCondensed-Light.ufo"        stylename="CondensedLight"        familyname="Dinsical"><location><dimension xvalue="300" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalCondensed/DinsicalCondensed-LightItalic.ufo"  stylename="CondensedLightItalic"  familyname="Dinsical"><location><dimension xvalue="300" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalCondensed/DinsicalCondensed-Regular.ufo"      stylename="CondensedRegular"      familyname="Dinsical"><location><dimension xvalue="400" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalCondensed/DinsicalCondensed-Italic.ufo"       stylename="CondensedItalic"       familyname="Dinsical"><location><dimension xvalue="400" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalCondensed/DinsicalCondensed-Bold.ufo"         stylename="CondensedBold"         familyname="Dinsical"><location><dimension xvalue="700" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalCondensed/DinsicalCondensed-BoldItalic.ufo"   stylename="CondensedBoldItalic"   familyname="Dinsical"><location><dimension xvalue="700" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalCondensed/DinsicalCondensed-Black.ufo"        stylename="CondensedBlack"        familyname="Dinsical"><location><dimension xvalue="900" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalCondensed/DinsicalCondensed-BlackItalic.ufo"  stylename="CondensedBlackItalic"  familyname="Dinsical"><location><dimension xvalue="900" name="weight"/><dimension xvalue="75"  name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <!-- Regular wdth=100 -->
+    <source filename="sources/vfwork/Dinsical/Dinsical-Light.ufo"        stylename="Light"        familyname="Dinsical"><location><dimension xvalue="300" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsical/Dinsical-LightItalic.ufo"  stylename="LightItalic"  familyname="Dinsical"><location><dimension xvalue="300" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsical/Dinsical-Regular.ufo"      stylename="Regular"      familyname="Dinsical">
+      <location><dimension xvalue="400" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0" name="slant"/></location>
+      <lib copy="1"/><groups copy="1"/><info copy="1"/><features copy="1"/>
+    </source>
+    <source filename="sources/vfwork/Dinsical/Dinsical-Italic.ufo"       stylename="Italic"       familyname="Dinsical"><location><dimension xvalue="400" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsical/Dinsical-Bold.ufo"         stylename="Bold"         familyname="Dinsical"><location><dimension xvalue="700" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsical/Dinsical-BoldItalic.ufo"   stylename="BoldItalic"   familyname="Dinsical"><location><dimension xvalue="700" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsical/Dinsical-Black.ufo"        stylename="Black"        familyname="Dinsical"><location><dimension xvalue="900" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/Dinsical/Dinsical-BlackItalic.ufo"  stylename="BlackItalic"  familyname="Dinsical"><location><dimension xvalue="900" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <!-- Expanded wdth=125 -->
+    <source filename="sources/vfwork/DinsicalExpanded/DinsicalExpanded-Light.ufo"        stylename="ExpandedLight"        familyname="Dinsical"><location><dimension xvalue="300" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalExpanded/DinsicalExpanded-LightItalic.ufo"  stylename="ExpandedLightItalic"  familyname="Dinsical"><location><dimension xvalue="300" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalExpanded/DinsicalExpanded-Regular.ufo"      stylename="ExpandedRegular"      familyname="Dinsical"><location><dimension xvalue="400" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalExpanded/DinsicalExpanded-Italic.ufo"       stylename="ExpandedItalic"       familyname="Dinsical"><location><dimension xvalue="400" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalExpanded/DinsicalExpanded-Bold.ufo"         stylename="ExpandedBold"         familyname="Dinsical"><location><dimension xvalue="700" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalExpanded/DinsicalExpanded-BoldItalic.ufo"   stylename="ExpandedBoldItalic"   familyname="Dinsical"><location><dimension xvalue="700" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalExpanded/DinsicalExpanded-Black.ufo"        stylename="ExpandedBlack"        familyname="Dinsical"><location><dimension xvalue="900" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="0"   name="slant"/></location></source>
+    <source filename="sources/vfwork/DinsicalExpanded/DinsicalExpanded-BlackItalic.ufo"  stylename="ExpandedBlackItalic"  familyname="Dinsical"><location><dimension xvalue="900" name="weight"/><dimension xvalue="125" name="width"/><dimension xvalue="-12" name="slant"/></location></source>
+  </sources>
+  <instances>
+    <!-- Regular width instances -->
+    <instance filename="instances/Dinsical-Light.ufo"         name="Light"         familyname="Dinsical" stylename="Light"         postscriptfontname="Dinsical-Light"><location><dimension xvalue="300" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-LightItalic.ufo"   name="Light Italic"  familyname="Dinsical" stylename="LightItalic"   postscriptfontname="Dinsical-LightItalic"><location><dimension xvalue="300" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-Regular.ufo"       name="Regular"       familyname="Dinsical" stylename="Regular"       postscriptfontname="Dinsical"><location><dimension xvalue="400" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-Italic.ufo"        name="Italic"        familyname="Dinsical" stylename="Italic"        postscriptfontname="Dinsical-Italic"><location><dimension xvalue="400" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-Medium.ufo"        name="Medium"        familyname="Dinsical" stylename="Medium"        postscriptfontname="Dinsical-Medium"><location><dimension xvalue="500" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-MediumItalic.ufo"  name="Medium Italic" familyname="Dinsical" stylename="MediumItalic"  postscriptfontname="Dinsical-MediumItalic"><location><dimension xvalue="500" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-SemiBold.ufo"      name="SemiBold"      familyname="Dinsical" stylename="SemiBold"      postscriptfontname="Dinsical-SemiBold"><location><dimension xvalue="600" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-SemiBoldItalic.ufo" name="SemiBold Italic" familyname="Dinsical" stylename="SemiBoldItalic" postscriptfontname="Dinsical-SemiBoldItalic"><location><dimension xvalue="600" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-Bold.ufo"          name="Bold"          familyname="Dinsical" stylename="Bold"          postscriptfontname="Dinsical-Bold"><location><dimension xvalue="700" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-BoldItalic.ufo"    name="Bold Italic"   familyname="Dinsical" stylename="BoldItalic"    postscriptfontname="Dinsical-BoldItalic"><location><dimension xvalue="700" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-Heavy.ufo"         name="Heavy"         familyname="Dinsical" stylename="Heavy"         postscriptfontname="Dinsical-Heavy"><location><dimension xvalue="800" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-HeavyItalic.ufo"   name="Heavy Italic"  familyname="Dinsical" stylename="HeavyItalic"   postscriptfontname="Dinsical-HeavyItalic"><location><dimension xvalue="800" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-Black.ufo"         name="Black"         familyname="Dinsical" stylename="Black"         postscriptfontname="Dinsical-Black"><location><dimension xvalue="900" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="0"   name="slant"/></location></instance>
+    <instance filename="instances/Dinsical-BlackItalic.ufo"   name="Black Italic"  familyname="Dinsical" stylename="BlackItalic"   postscriptfontname="Dinsical-BlackItalic"><location><dimension xvalue="900" name="weight"/><dimension xvalue="100" name="width"/><dimension xvalue="-12" name="slant"/></location></instance>
+  </instances>
+  <rules>
+    <rule>
+      <sub name="a" with="a.ss02"/>
+      <sub name="aacute" with="aacute.ss02"/>
+      <sub name="abreve" with="abreve.ss02"/>
+      <sub name="acaron" with="acaron.ss02"/>
+      <sub name="acircumflex" with="acircumflex.ss02"/>
+      <sub name="acyr" with="acyr.ss02"/>
+      <sub name="adieresis" with="adieresis.ss02"/>
+      <sub name="adotbelow" with="adotbelow.ss02"/>
+      <sub name="agrave" with="agrave.ss02"/>
+      <sub name="amacron" with="amacron.ss02"/>
+      <sub name="aogonek" with="aogonek.ss02"/>
+      <sub name="aring" with="aring.ss02"/>
+      <sub name="atilde" with="atilde.ss02"/>
+      <conditionset>
+        <condition maximum="-3.5" name="slant"/>
+      </conditionset>
+    </rule>
+  </rules>
+</designspace>

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Extract all GPOS kern pairs (Format 1 + Format 2) from Dinsy and DIN Next fonts.
+Extract all GPOS kern pairs (Format 1 + Format 2) from Dinsical and DIN Next fonts.
 Outputs one JSON file per weight+style into ../public/kern-data/.
 
 JSON format:
-  { "dinsy": [[leftCP, rightCP, value], ...], "dinNext": [...] }
+  { "dinsical": [[leftCP, rightCP, value], ...], "dinNext": [...] }
 """
 
 import json
@@ -12,23 +12,23 @@ from pathlib import Path
 from collections import defaultdict
 from fontTools.ttLib import TTFont
 
-ROOT     = Path(__file__).parent.parent.parent   # dinsy project root
+ROOT     = Path(__file__).parent.parent.parent   # dinsical project root
 OUT      = Path(__file__).parent.parent / 'public' / 'kern-data'
 OUT.mkdir(parents=True, exist_ok=True)
 
 PATHS: dict[str, tuple[str, str]] = {
-    'Light-upright':   ('Dinsy-Light.ttf',         'DIN-Next-Light.otf'),
-    'Light-italic':    ('Dinsy-LightItalic.ttf',   'DIN-Next-LightItalic.otf'),
-    'Regular-upright': ('Dinsy-Regular.ttf',        'DIN-Next-Regular.otf'),
-    'Regular-italic':  ('Dinsy-Italic.ttf',         'DIN-Next-Italic.otf'),
-    'Medium-upright':  ('Dinsy-Medium.ttf',         'DIN-Next-Medium.otf'),
-    'Medium-italic':   ('Dinsy-MediumItalic.ttf',   'DIN-Next-MediumItalic.otf'),
-    'Bold-upright':    ('Dinsy-Bold.ttf',           'DIN-Next-Bold.otf'),
-    'Bold-italic':     ('Dinsy-BoldItalic.ttf',     'DIN-Next-BoldItalic.otf'),
-    'Heavy-upright':   ('Dinsy-Heavy.ttf',          'DIN-Next-Heavy.otf'),
-    'Heavy-italic':    ('Dinsy-HeavyItalic.ttf',    'DIN-Next-HeavyItalic.otf'),
-    'Black-upright':   ('Dinsy-Black.ttf',          'DIN-Next-Black.otf'),
-    'Black-italic':    ('Dinsy-BlackItalic.ttf',    'DIN-Next-BlackItalic.otf'),
+    'Light-upright':   ('Dinsical-Light.ttf',         'DIN-Next-Light.otf'),
+    'Light-italic':    ('Dinsical-LightItalic.ttf',   'DIN-Next-LightItalic.otf'),
+    'Regular-upright': ('Dinsical-Regular.ttf',        'DIN-Next-Regular.otf'),
+    'Regular-italic':  ('Dinsical-Italic.ttf',         'DIN-Next-Italic.otf'),
+    'Medium-upright':  ('Dinsical-Medium.ttf',         'DIN-Next-Medium.otf'),
+    'Medium-italic':   ('Dinsical-MediumItalic.ttf',   'DIN-Next-MediumItalic.otf'),
+    'Bold-upright':    ('Dinsical-Bold.ttf',           'DIN-Next-Bold.otf'),
+    'Bold-italic':     ('Dinsical-BoldItalic.ttf',     'DIN-Next-BoldItalic.otf'),
+    'Heavy-upright':   ('Dinsical-Heavy.ttf',          'DIN-Next-Heavy.otf'),
+    'Heavy-italic':    ('Dinsical-HeavyItalic.ttf',    'DIN-Next-HeavyItalic.otf'),
+    'Black-upright':   ('Dinsical-Black.ttf',          'DIN-Next-Black.otf'),
+    'Black-italic':    ('Dinsical-BlackItalic.ttf',    'DIN-Next-BlackItalic.otf'),
 }
 
 
@@ -118,28 +118,28 @@ def to_codepoints(font: TTFont, pairs: dict[tuple[str, str], int]) -> list[list[
     return out
 
 
-for key, (dinsy_file, din_next_file) in PATHS.items():
-    dinsy_path    = ROOT / 'fonts' / 'ttf' / dinsy_file
+for key, (dinsical_file, din_next_file) in PATHS.items():
+    dinsical_path    = ROOT / 'fonts' / 'ttf' / dinsical_file
     din_next_path = ROOT / 'din-next' / 'otf' / din_next_file
 
-    if not dinsy_path.exists():
-        print(f'SKIP {key}: {dinsy_path.name} not found')
+    if not dinsical_path.exists():
+        print(f'SKIP {key}: {dinsical_path.name} not found')
         continue
     if not din_next_path.exists():
         print(f'SKIP {key}: {din_next_path.name} not found')
         continue
 
     print(f'Processing {key}…', end='  ', flush=True)
-    dinsy_font    = TTFont(str(dinsy_path),    lazy=True)
+    dinsical_font    = TTFont(str(dinsical_path),    lazy=True)
     din_next_font = TTFont(str(din_next_path), lazy=True)
 
-    dinsy_pairs    = to_codepoints(dinsy_font,    get_kern_pairs(dinsy_font))
+    dinsical_pairs    = to_codepoints(dinsical_font,    get_kern_pairs(dinsical_font))
     din_next_pairs = to_codepoints(din_next_font, get_kern_pairs(din_next_font))
 
-    print(f'Dinsy={len(dinsy_pairs)}  DIN Next={len(din_next_pairs)}')
+    print(f'Dinsical={len(dinsical_pairs)}  DIN Next={len(din_next_pairs)}')
 
     out_path = OUT / f'{key}.json'
-    out_path.write_text(json.dumps({'dinsy': dinsy_pairs, 'dinNext': din_next_pairs},
+    out_path.write_text(json.dumps({'dinsical': dinsical_pairs, 'dinNext': din_next_pairs},
                                    separators=(',', ':')))
     print(f'  → {out_path.name}')
 

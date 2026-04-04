@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metrics — Dinsy vs DIN Next</title>
+  <title>Metrics — Dinsical vs DIN Next</title>
   <style>
     /* ── Font faces ─────────────────────────────────────────────────────── */
-    /* Dinsy — variable font (wght 300–900, slnt 0–−12, wdth 75–125) */
+    /* Dinsical — variable font (wght 300–900, slnt 0–−12, wdth 75–125) */
     @font-face {
-      font-family: 'Dinsy';
-      src: url('/fonts/woff2/Dinsy-Var.woff2') format('woff2');
+      font-family: 'Dinsical';
+      src: url('/fonts/woff2/Dinsical-Var.woff2') format('woff2');
       font-weight: 300 900;
       font-style: oblique 0deg 12deg;
     }
@@ -112,7 +112,7 @@
       line-height: 1;
       overflow: visible;
     }
-    .baseline-wrap .font-d  { font-family: 'Dinsy';    color: #c03030; }
+    .baseline-wrap .font-d  { font-family: 'Dinsical';    color: #c03030; }
     .baseline-wrap .font-dc { font-family: 'DIN Next'; color: #2a5ab4; }
     .baseline-wrap .sep { color: #bbb; margin: 0 6px; font-family: system-ui; font-size: 13px; align-self: center; }
 
@@ -189,7 +189,7 @@
       line-height: 1;
       display: block;
     }
-    .pair-char.font-d  { font-family: 'Dinsy';    color: #c03030; }
+    .pair-char.font-d  { font-family: 'Dinsical';    color: #c03030; }
     .pair-char.font-dc { font-family: 'DIN Next'; color: #2a5ab4; }
     .pair-glyph-label {
       font-size: 9px;
@@ -206,7 +206,7 @@
       gap: 20px;
     }
     .para-block { line-height: 1.2; }
-    .para-block.font-d  { font-family: 'Dinsy'; }
+    .para-block.font-d  { font-family: 'Dinsical'; }
     .para-block.font-dc { font-family: 'DIN Next'; }
     .para-label {
       font-family: system-ui;
@@ -281,7 +281,7 @@
 
   <div class="ctrl-sep"></div>
 
-  <span class="chip chip-d"><span class="chip-dot"></span>Dinsy</span>
+  <span class="chip chip-d"><span class="chip-dot"></span>Dinsical</span>
   <span class="chip chip-dc"><span class="chip-dot"></span>DIN Next</span>
 </div>
 
@@ -294,7 +294,7 @@
     <div class="section-body">
       <div class="metric-grid">
         <div class="hdr label">Metric</div>
-        <div class="hdr chip chip-d"><span class="chip-dot"></span> Dinsy</div>
+        <div class="hdr chip chip-d"><span class="chip-dot"></span> Dinsical</div>
         <div class="hdr chip chip-dc"><span class="chip-dot"></span> DIN Next</div>
 
         <div class="label">hhea ascender</div>   <div>830</div>  <div>830</div>
@@ -313,7 +313,7 @@
       <p style="margin-top:10px;font-size:12px;color:#666;">
         All line-box metrics are identical — baseline aligns in mixed text.
         xHeight differs by <strong>20 units (4.2%)</strong>: lowercase letters are optically
-        taller in Dinsy (x reaches y=504 vs DIN Next y=490).
+        taller in Dinsical (x reaches y=504 vs DIN Next y=490).
       </p>
     </div>
   </div>
@@ -329,7 +329,7 @@
         <input type="text" id="inline-text" value="Hamburgevons 0.7% fjord" />
       </div>
       <div style="font-size:11px;color:#888;margin-bottom:12px;font-family:monospace">
-        Dinsy: font-variation-settings: <span id="fvs-badge" style="color:#444"></span>
+        Dinsical: font-variation-settings: <span id="fvs-badge" style="color:#444"></span>
       </div>
       <!-- ruler host wraps both spans so rulers span the full text block -->
       <div class="ruler-host" id="inline-host">
@@ -346,7 +346,7 @@
   <!-- 3. Side-by-side character pairs ─────────────────────────────────── -->
   <div class="section">
     <div class="section-head">Side-by-side character pairs
-      <span style="font-weight:400;color:#888;font-size:11px;">— each pair baseline-aligned, <span class="chip chip-d" style="display:inline-flex"><span class="chip-dot"></span>Dinsy</span> left · <span class="chip chip-dc" style="display:inline-flex"><span class="chip-dot"></span>DIN Next</span> right</span>
+      <span style="font-weight:400;color:#888;font-size:11px;">— each pair baseline-aligned, <span class="chip chip-d" style="display:inline-flex"><span class="chip-dot"></span>Dinsical</span> left · <span class="chip chip-dc" style="display:inline-flex"><span class="chip-dot"></span>DIN Next</span> right</span>
     </div>
     <div class="section-body">
       <div class="custom-row">
@@ -362,7 +362,7 @@
     <div class="section-body">
       <div class="para-row" id="para-row">
         <div>
-          <div class="para-label chip chip-d"><span class="chip-dot"></span> Dinsy</div>
+          <div class="para-label chip chip-d"><span class="chip-dot"></span> Dinsical</div>
           <div class="para-block font-d" id="para-d"></div>
         </div>
         <div>
@@ -383,7 +383,7 @@ const PARA_TEXT = `The quick brown fox jumps over the lazy dog. Pack my box with
 const UPM       = 1000;
 const HHEA_ASC  = 830;   // baseline is 83% from top of em-box (line-height:1)
 const CAP       = 680;   // both fonts
-const X_D       = 499;   // Dinsy
+const X_D       = 499;   // Dinsical
 const X_DC      = 479;   // DIN Next
 const DESC      = 170;   // hhea descender absolute value
 
@@ -400,7 +400,7 @@ function applyFont(el, family) {
   el.style.fontFamily = `'${family}'`;
   el.style.lineHeight = lineHeight;
 
-  if (family === 'Dinsy') {
+  if (family === 'Dinsical') {
     // Variable font: drive all axes via font-variation-settings.
     // slnt: 0 = upright, −12 = full italic
     const slnt = fontItalic ? -12 : 0;
@@ -431,7 +431,7 @@ function makeRulers() {
   const lines = [
     { cls: 'rl-asc',  y: HHEA_ASC, label: 'ascender' },
     { cls: 'rl-cap',  y: CAP,      label: 'cap (680)' },
-    { cls: 'rl-x-d',  y: X_D,      label: `x Dinsy (${X_D})` },
+    { cls: 'rl-x-d',  y: X_D,      label: `x Dinsical (${X_D})` },
     { cls: 'rl-x-dc', y: X_DC,     label: `x DIN Next (${X_DC})` },
     { cls: 'rl-base', y: 0,        label: 'baseline' },
     { cls: 'rl-desc', y: -DESC,    label: 'descender' },
@@ -449,7 +449,7 @@ function updateInline() {
   const text = document.getElementById('inline-text').value;
   const d  = document.getElementById('inline-d');
   const dc = document.getElementById('inline-dc');
-  applyFont(d,  'Dinsy');
+  applyFont(d,  'Dinsical');
   applyFont(dc, 'DIN Next');
   d.textContent  = text;
   dc.textContent = text;
@@ -469,13 +469,13 @@ function updatePairs() {
     const cell = document.createElement('div');
     cell.className = 'pair-cell';
 
-    // Dinsy
+    // Dinsical
     const gd = document.createElement('div');
     gd.className = 'pair-glyph';
     const cd = document.createElement('span');
     cd.className = 'pair-char font-d';
     cd.textContent = ch;
-    applyFont(cd, 'Dinsy');
+    applyFont(cd, 'Dinsical');
     const ld = document.createElement('span');
     ld.className = 'pair-glyph-label';
     ld.textContent = 'D';
@@ -505,7 +505,7 @@ function updatePairs() {
 function updatePara() {
   const d  = document.getElementById('para-d');
   const dc = document.getElementById('para-dc');
-  applyFont(d,  'Dinsy');
+  applyFont(d,  'Dinsical');
   applyFont(dc, 'DIN Next');
   d.textContent  = PARA_TEXT;
   dc.textContent = PARA_TEXT;

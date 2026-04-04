@@ -1,5 +1,5 @@
 """
-Dinsy kern patch — applied on top of the upstream-derived features.fea.
+Dinsical kern patch — applied on top of the upstream-derived features.fea.
 
 Called by tools/derive-sources.py after each `make sources` run.
 The patch is intentionally narrow: it only records divergences from upstream
@@ -213,7 +213,7 @@ _VALUE_CHANGES = [
      '  pos @kc6_first_5 @kc6_second_15 -24;',
      'L+hyphen -133→-24'),
 
-    # P ── period (DIN Next=-140; Dinsy was too loose)
+    # P ── period (DIN Next=-140; Dinsical was too loose)
     ('  pos @kc6_first_6 @kc6_second_7 -115;',
      '  pos @kc6_first_6 @kc6_second_7 -140;',
      'P+period -115→-140'),
@@ -222,7 +222,7 @@ _VALUE_CHANGES = [
     ('  pos @kc6_first_7 @kc6_second_1 -31;',
      '  pos @kc6_first_7 @kc6_second_1 -24;',
      'T+round-UC -31→-24'),
-    # T ── period (DIN Next=-98; Dinsy was too loose)
+    # T ── period (DIN Next=-98; Dinsical was too loose)
     ('  pos @kc6_first_7 @kc6_second_7 -80;',
      '  pos @kc6_first_7 @kc6_second_7 -98;',
      'T+period -80→-98'),
@@ -260,7 +260,7 @@ _VALUE_CHANGES = [
      '  pos @kc6_first_8 @kc6_second_7 -21;',
      'U+period -40→-21'),
 
-    # V ── period (DIN Next=-90; Dinsy was too loose)
+    # V ── period (DIN Next=-90; Dinsical was too loose)
     ('  pos @kc6_first_9 @kc6_second_7 -70;',
      '  pos @kc6_first_9 @kc6_second_7 -90;',
      'V+period -70→-90'),
@@ -279,11 +279,11 @@ _VALUE_CHANGES = [
      '  pos @kc6_first_11 @kc6_second_13 -10;',
      'X+open-bowl-LC -15→-10'),
 
-    # hyphen ── V (DIN Next=-64; Dinsy was too loose)
+    # hyphen ── V (DIN Next=-64; Dinsical was too loose)
     ('  pos @kc9_first_1 @kc9_second_2 -40;',
      '  pos @kc9_first_1 @kc9_second_2 -64;',
      'hyphen+V -40→-64'),
-    # hyphen ── Y (DIN Next=-92; Dinsy was too loose)
+    # hyphen ── Y (DIN Next=-92; Dinsical was too loose)
     ('  pos @kc9_first_1 @kc9_second_4 -72;',
      '  pos @kc9_first_1 @kc9_second_4 -92;',
      'hyphen+Y -72→-92'),
@@ -296,7 +296,7 @@ def _adjust_values(fea: str) -> str:
     return fea
 
 
-# ── 6. Remove rules where Dinsy has extra pairs DIN Next lacks ────────────
+# ── 6. Remove rules where Dinsical has extra pairs DIN Next lacks ────────────
 
 _LINES_TO_REMOVE = [
     # L ── lowercase extras (DIN Next has no L+LC kerning)
@@ -419,7 +419,7 @@ def _add_missing_pairs(fea: str) -> str:
 # ── Entry point ───────────────────────────────────────────────────────────
 
 def apply(fea: str) -> str:
-    """Apply all Dinsy kern patches to features.fea text. Returns patched text."""
+    """Apply all Dinsical kern patches to features.fea text. Returns patched text."""
     fea = _comma_separation(fea)
     fea = _split_round_lc_group(fea)
     fea = _add_specific_overrides(fea)

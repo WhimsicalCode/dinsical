@@ -7,13 +7,13 @@
 	<key>capHeight</key>
 	<integer>680</integer>
 	<key>copyright</key>
-	<string>Copyright 2021-2024 The Dinsy Project Authors (https://github.com/playbeing/dinsy)</string>
+	<string>Copyright 2021-2024 The Dinsical Project Authors (https://github.com/playbeing/dinsical)</string>
 	<key>descender</key>
 	<integer>-170</integer>
 	<key>familyName</key>
-	<string>Dinsy</string>
+	<string>Dinsical</string>
 	<key>openTypeNamePreferredFamilyName</key>
-	<string>Dinsy</string>
+	<string>Dinsical</string>
 	<key>guidelines</key>
 	<array/>
 	<key>italicAngle</key>
@@ -39,9 +39,9 @@
 	<key>openTypeNameManufacturer</key>
 	<string>Playbeing</string>
 	<key>openTypeNameManufacturerURL</key>
-	<string>https://github.com/playbeing/dinsy</string>
+	<string>https://github.com/playbeing/dinsical</string>
 	<key>openTypeNameUniqueID</key>
-	<string>Dinsy</string>
+	<string>Dinsical Bold</string>
 	<key>openTypeNameVersion</key>
 	<string>Version 4.006; git-3971ef33-release</string>
 	<key>openTypeOS2CodePageRanges</key>
@@ -58,7 +58,7 @@
 	<array>
 		<integer>2</integer>
 		<integer>11</integer>
-		<integer>5</integer>
+		<integer>8</integer>
 		<integer>4</integer>
 		<integer>3</integer>
 		<integer>2</integer>
@@ -72,7 +72,7 @@
 		<integer>7</integer>
 	</array>
 	<key>openTypeOS2StrikeoutPosition</key>
-	<integer>299</integer>
+	<integer>307</integer>
 	<key>openTypeOS2StrikeoutSize</key>
 	<integer>49</integer>
 	<key>openTypeOS2SubscriptXOffset</key>
@@ -115,7 +115,7 @@
 	<key>openTypeOS2VendorID</key>
 	<string>PBNG</string>
 	<key>openTypeOS2WeightClass</key>
-	<integer>400</integer>
+	<integer>700</integer>
 	<key>openTypeOS2WidthClass</key>
 	<integer>5</integer>
 	<key>openTypeOS2WinAscent</key>
@@ -129,9 +129,9 @@
 	<key>postscriptFamilyOtherBlues</key>
 	<array/>
 	<key>postscriptFontName</key>
-	<string>Dinsy-Regular</string>
+	<string>Dinsical-Bold</string>
 	<key>postscriptFullName</key>
-	<string>Dinsy</string>
+	<string>Dinsical Bold</string>
 	<key>postscriptOtherBlues</key>
 	<array/>
 	<key>postscriptStemSnapH</key>
@@ -143,13 +143,13 @@
 	<key>postscriptUnderlineThickness</key>
 	<integer>49</integer>
 	<key>postscriptWeightName</key>
-	<string>Regular</string>
+	<string>Bold</string>
 	<key>styleMapFamilyName</key>
-	<string>Dinsy</string>
+	<string>Dinsical</string>
 	<key>styleMapStyleName</key>
-	<string>regular</string>
+	<string>bold</string>
 	<key>styleName</key>
-	<string>Regular</string>
+	<string>Bold</string>
 	<key>trademark</key>
 	<string></string>
 	<key>unitsPerEm</key>
@@ -159,6 +159,6 @@
 	<key>versionMinor</key>
 	<integer>6</integer>
 	<key>xHeight</key>
-	<integer>499</integer>
+	<integer>512</integer>
 </dict>
 </plist>

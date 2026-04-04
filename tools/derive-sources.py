@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Derive Dinsy UFO sources from the dinish/ submodule.
+Derive Dinsical UFO sources from the dinish/ submodule.
 
 Pipeline applied to each master (Regular, Bold):
-  1. Copy DINish/DINish-{weight}.ufo  →  sources/Dinsy/Dinsy-{weight}.ufo
-  2. Rename DINish → Dinsy in all text content (family names, PS names, …)
-  3. [Dinsy only] Blend glyph coordinates toward DINishExpanded by WDTH_BLEND
+  1. Copy DINish/DINish-{weight}.ufo  →  sources/Dinsical/Dinsical-{weight}.ufo
+  2. Rename DINish → Dinsical in all text content (family names, PS names, …)
+  3. [Dinsical only] Blend glyph coordinates toward DINishExpanded by WDTH_BLEND
      (0.28 ≈ wdth 107 on the 75–100–125 axis, matching DIN Next proportions)
   4. Scale all glyph coordinates by a combined factor:
        (1000 / 1024)   — rescale UPM from 1024 to 1000
@@ -14,7 +14,7 @@ Pipeline applied to each master (Regular, Bold):
   5. Set UPM to 1000 and override line metrics with exact DIN Next values
      (hhea 830/−170/200, sTypo 750/−250/200, win 850/350)
      → gives exactly 120 px line height at 100 px font-size
-  6. Apply any per-glyph overrides from overlay/sources/Dinsy/
+  6. Apply any per-glyph overrides from overlay/sources/Dinsical/
   7. Apply spacing patch from overlay/spacing-patch.py
   8. Apply kern patch from overlay/kern-patch.py
 
@@ -34,15 +34,15 @@ REPO = Path(__file__).resolve().parent.parent
 
 # Maps dest family name → upstream source directory name
 FAMILIES: dict[str, str] = {
-    "Dinsy":          "DINish",
-    "DinsyCondensed": "DINishCondensed",
-    "DinsyExpanded":  "DINishExpanded",
+    "Dinsical":          "DINish",
+    "DinsicalCondensed": "DINishCondensed",
+    "DinsicalExpanded":  "DINishExpanded",
 }
 
 # Combined scale: UPM rescale × glyph size reduction
 SCALE = (1000 / 1024) * 0.985   # = 0.9619140625
 
-# Width blend: fraction toward DINishExpanded for the Dinsy (wdth=100) masters.
+# Width blend: fraction toward DINishExpanded for the Dinsical (wdth=100) masters.
 # Formula:  wdth = 100 + WDTH_BLEND × 25   →   WDTH_BLEND = (wdth − 100) / 25
 # 0.0  = pure DINish Normal  (wdth 100)
 # 0.28 ≈ wdth 107  — median of Dinsical ink-width targets
@@ -56,7 +56,7 @@ WDTH_BLEND: float = 0.2 # DINish wdth 105
 #
 # Chromium respects USE_TYPO_METRICS for TTF/WOFF2 (uses sTypo) but
 # falls back to hhea for CFF/OTF.  DIN Next is CFF, so it effectively
-# uses hhea (asc=830).  Dinsy is a TTF variable font and would use sTypo
+# uses hhea (asc=830).  Dinsical is a TTF variable font and would use sTypo
 # (asc=750) — placing the baseline 13 px higher at 160 px font-size.
 # Making sTypo == hhea (830/-170/200) eliminates the discrepancy.
 #
@@ -186,7 +186,7 @@ def _blend_roots(root_n: ET.Element, root_e: ET.Element, t: float) -> None:
 
 
 def rename(s: str) -> str:
-    return s.replace("DINish", "Dinsy").replace("dinish", "dinsy")
+    return s.replace("DINish", "Dinsical").replace("dinish", "dinsical")
 
 
 # ---------------------------------------------------------------------------
@@ -299,9 +299,9 @@ def scale_glif(src: Path, dst: Path, dry_run: bool,
 
 def process_ufo(
     src_dir: Path,   # e.g. dinish/sources/DINish
-    dst_dir: Path,   # e.g. sources/Dinsy  or  .build/sources/DinsyCondensed
+    dst_dir: Path,   # e.g. sources/Dinsical  or  .build/sources/DinsicalCondensed
     overlay_dir: Path | None,
-    dst_family: str, # e.g. "Dinsy"
+    dst_family: str, # e.g. "Dinsical"
     src_family: str, # e.g. "DINish"
     weight: str,
     dry_run: bool,
@@ -327,9 +327,9 @@ def process_ufo(
             if not dry_run:
                 glyphs_dst.mkdir(exist_ok=True)
 
-            # Build expanded-source glyph map for width blending (Dinsy only)
+            # Build expanded-source glyph map for width blending (Dinsical only)
             exp_glif_map: dict[str, Path] = {}
-            if WDTH_BLEND > 0 and dst_family == "Dinsy":
+            if WDTH_BLEND > 0 and dst_family == "Dinsical":
                 exp_ufo = (
                     REPO / "dinish" / "sources" / "DINishExpanded"
                     / f"DINishExpanded-{weight}.ufo"
@@ -371,7 +371,7 @@ def process_ufo(
                 dst_item.write_text(rename(item.read_text()))
 
     # Apply kern patch (features.fea only) --------------------------------
-    if overlay_dir is not None and dst_family == "Dinsy":
+    if overlay_dir is not None and dst_family == "Dinsical":
         kern_patch_path = overlay_dir.parent / "kern-patch.py"
         fea_path = dst_ufo / "features.fea"
         if kern_patch_path.exists() and fea_path.exists() and not dry_run:
@@ -405,8 +405,8 @@ def process_ufo(
                     for glif in glifs:
                         shutil.copy2(glif, dst_ufo / "glyphs" / glif.name)
 
-    # Apply spacing patch (Dinsy only) ------------------------------------
-    if overlay_dir is not None and dst_family == "Dinsy":
+    # Apply spacing patch (Dinsical only) ------------------------------------
+    if overlay_dir is not None and dst_family == "Dinsical":
         spacing_patch_path = overlay_dir.parent / "spacing-patch.py"
         glyphs_dir = dst_ufo / "glyphs"
         if spacing_patch_path.exists() and glyphs_dir.exists() and not dry_run:
@@ -426,7 +426,7 @@ def process_ufo(
 
 def copy_enc(dest_dir: Path, dry_run: bool) -> None:
     src = REPO / "dinish" / "sources" / "upright-in-italic-dinish.enc"
-    dst = dest_dir / "upright-in-italic-dinsy.enc"
+    dst = dest_dir / "upright-in-italic-dinsical.enc"
     if not dry_run and src.exists():
         dst.write_text(rename(src.read_text()))
     print(f"  enc: {src.name} → {dst.name}")
@@ -443,8 +443,8 @@ def main() -> None:
                         help="Show what would be done without writing files")
     parser.add_argument("--families", nargs="+",
                         choices=list(FAMILIES.keys()),
-                        default=["Dinsy"],
-                        help="Families to derive (default: Dinsy only)")
+                        default=["Dinsical"],
+                        help="Families to derive (default: Dinsical only)")
     parser.add_argument("--dest-dir", type=Path, default=None,
                         help="Root output directory (default: REPO/sources)")
     args = parser.parse_args()
@@ -472,8 +472,8 @@ def main() -> None:
         for weight in ("Regular", "Bold"):
             process_ufo(src_dir, dst_dir, overlay_dir, dest_family, src_family, weight, args.dry_run)
 
-    if "Dinsy" in args.families:
-        copy_enc(dest_root / "Dinsy", args.dry_run)
+    if "Dinsical" in args.families:
+        copy_enc(dest_root / "Dinsical", args.dry_run)
 
     print(f"\nDone.  Scale factor: {SCALE:.10f}")
     if not args.dry_run:

@@ -4,7 +4,7 @@
 Interpolate font weights, based on a 400 and a 700 weight font. This
 will probably require a ton of tweaks for the extreme weights (100,
 200, 800 and 900), but it will probably be a good start.
-For Dinsy, the 300, 500, 600 and 800 are usable as is.
+For Dinsical, the 300, 500, 600 and 800 are usable as is.
 """
 
 from fontParts.world import OpenFont, NewFont
@@ -33,16 +33,16 @@ def interpolate_font(src1, src2, dest, weight):
     # Note that we're not saving the new font to the original file, so this is safe
     newfont = OpenFont(src1)
 
-    # Calibrated factor: piecewise-linear mapping of Dinsy weight integer
+    # Calibrated factor: piecewise-linear mapping of Dinsical weight integer
     # (3=Light … 9=Black) to a DINish interpolation factor (0=Regular master,
     # 1=Bold master, >1 extrapolates past Bold).
     #
     # Anchors were measured by comparing I-glyph stem widths between DIN Next
-    # and Dinsy across the full weight range:
+    # and Dinsical across the full weight range:
     #   weight 4 (Regular, wght 400)  →  factor 0.298  (stem ≈89,  DIN Next Regular=89)
     #   weight 5 (Medium,  wght 500)  →  factor 0.807  (stem ≈118, DIN Next Medium=118)
     #   weight 7 (Bold,    wght 700)  →  factor 1.316  (stem ≈148, DIN Next Bold=147)
-    # Note: DIN Next Bold ≈ Dinsy Heavy in stem weight.
+    # Note: DIN Next Bold ≈ Dinsical Heavy in stem weight.
     # Weights outside the anchor range are linearly extrapolated.
     _ANCHORS = [(4, 0.298), (5, 0.807), (7, 1.316)]
     def _calibrated_factor(w):
