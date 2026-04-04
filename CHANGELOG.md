@@ -1,5 +1,7 @@
 # Changelog
 
+## [Unreleased]
+
 ## [1.008] - 2026-04-02
 
 - Italic slant angle reduced from 12° to 10° to match Dinsical. `slnt` axis range

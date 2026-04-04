@@ -25,6 +25,20 @@ To make a persistent change to the derived sources, edit the appropriate script:
 
 `Dinsy-Variable.designspace` is a committed file but intentionally mirrors upstream DINish values. Axis customisations (e.g. slant range -10 instead of -12) are applied as text replacements inside `build-ephemeral-ufos.sh` when it writes the build copy to `.build/`.
 
+## Releasing a new version
+
+Do NOT run `make release` — it auto-generates a changelog entry that overwrites the hand-written `[Unreleased]` section. Instead, follow these steps manually:
+
+1. **Update CHANGELOG.md** — rename `## [Unreleased]` to `## [X.XXX] - YYYY-MM-DD` (next version, today's date), then add a fresh `## [Unreleased]` section at the top.
+2. **Bump VERSION** — increment the minor number (e.g. `1.008` → `1.009`).
+3. **Re-derive sources** — `uv run --with fontparts --with xmltodict --with fonttools python tools/derive-sources.py`
+4. **Commit sources** — `git add CHANGELOG.md VERSION tools/ sources/ && git commit -m "Release vX.XXX: derive sources"`
+5. **Tag** — `git tag vX.XXX -m "Dinsy vX.XXX"`
+6. **Build fonts** — `bash tools/build-ephemeral-ufos.sh`
+7. **Commit fonts** — `git add fonts/ && git commit -m "Release vX.XXX: built fonts"`
+8. **Move tag** — `git tag -f vX.XXX -m "Dinsy vX.XXX"`
+9. Push: `git push && git push --tags`
+
 ## Changelog
 
 - Before adding entries, read the full `[Unreleased]` section to see which subsections already exist
