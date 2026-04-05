@@ -30,7 +30,7 @@ export function unionPairs(data: KernPairData): Array<[number, number]> {
 
 // ── Filtering ──────────────────────────────────────────────────────────────
 
-export type FilterMode = 'all' | 'dinNext' | 'dinsical'
+export type FilterMode = 'all' | 'din-next' | 'dinsical'
 export type RangeMode  = 'ascii' | 'latin' | 'all'
 
 export function filterPairs(
