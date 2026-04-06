@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [1.010] - 2026-04-04
+
+### Fixed
+- Variable font weight 500 (Medium) and 600 (SemiBold) now match the visual
+  weight of the corresponding static instances and DIN Whim. Previously the
+  VF linearly interpolated between the Regular and Bold masters, producing a
+  stem width ~8 units lighter than intended at wght=500. Fix: add Medium and
+  SemiBold as explicit VF masters in `build-ephemeral-ufos.sh` (with the same
+  calibrated `interpolate-font.py` factors as the static fonts) and register
+  them as sources at wght=500/600 in `Dinsical-Variable.designspace`.
+
 ## [1.009] - 2026-04-02
 
 - Rename font family: Dinsy → Dinsical.

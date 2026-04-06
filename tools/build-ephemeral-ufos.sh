@@ -54,8 +54,8 @@ for f in Dinsical DinsicalCondensed DinsicalExpanded; do
     mkdir -p "$BUILD/vfwork/$f"
     # All VF masters go through the calibrated factor — including Regular (w=4)
     # and Bold (w=7) — so the variable font axis matches DIN Whim stem weights.
-    for weight in Light Regular Bold Heavy Black; do
-        case $weight in Light) w=3;; Regular) w=4;; Bold) w=7;; Heavy) w=8;; Black) w=9;; esac
+    for weight in Light Regular Medium SemiBold Bold Heavy Black; do
+        case $weight in Light) w=3;; Regular) w=4;; Medium) w=5;; SemiBold) w=6;; Bold) w=7;; Heavy) w=8;; Black) w=9;; esac
         $PYTHON "$TOOLSDIR/interpolate-font.py" \
             --dest="$BUILD/vfwork/$f/$f-$weight.ufo" --weight=$w \
             "$BUILD/sources/$f/$f-Regular.ufo" \
@@ -81,7 +81,7 @@ for f in Dinsical DinsicalCondensed DinsicalExpanded; do
     done
 
     # Italic counterparts
-    for weight in Light Regular Bold Black; do
+    for weight in Light Regular Medium SemiBold Bold Black; do
         [ "$weight" = "Regular" ] && stylename="Italic" || stylename="${weight}Italic"
         cp -r "$BUILD/vfwork/$f/$f-$weight.ufo" \
               "$BUILD/vfwork/$f/$f-$stylename.ufo"
