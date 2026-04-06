@@ -9,12 +9,12 @@ All files here are version-controlled and re-applied automatically by
 ## Kern patch (`kern-patch.py`)
 
 `overlay/kern-patch.py` defines Dinsical's intentional kern divergences from
-the upstream DINish source, targeting DIN Next values.
+the upstream DINish source, targeting DIN Whim values.
 
 It exposes a single `apply(fea: str) -> str` function that transforms the
 derived `features.fea` text. Changes are applied in this order:
 
-1. **Comma/period separation** — DIN Next doesn't kern before commas; `\comma`
+1. **Comma/period separation** — DIN Whim doesn't kern before commas; `\comma`
    is removed from the period/comma second-groups in both lookup1 and lookup3.
 2. **Round-LC group split** — `@kc6_second_13` (open bowl: c/e/o) is split
    from a new `@kc6_second_13b` (closed bowl: d/g/q) so T, F, K, Y can be
@@ -22,10 +22,10 @@ derived `features.fea` text. Changes are applied in this order:
 3. **Specific pair overrides** — L+v/w/y and T+d/q are inserted before class
    rules so they take Format-1 subtable precedence over the class rules.
 4. **Y kern group** — a complete Y-first kern group is added (`@kc6_first_12`).
-   Upstream DINish has no Y kern pairs; DIN Next has ~28.
+   Upstream DINish has no Y kern pairs; DIN Whim has ~28.
 5. **Value adjustments** — L over-kerning reduced across UC and LC targets;
    T/F/P/U/V/W/X period values corrected; hyphen+V/Y tightened.
-6. **Extra rule removal** — L/T/F/V/W/K + straight-LC extras removed (DIN Next
+6. **Extra rule removal** — L/T/F/V/W/K + straight-LC extras removed (DIN Whim
    lacks these); Z + d/g/q/a extras removed.
 7. **Missing pairs** — TJ/PJ/VJ/FJ/WJ/YJ added; T+m/u, F+m/u, Y+z/m/u
    individual pairs added to lookup0.

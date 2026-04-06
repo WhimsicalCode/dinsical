@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Extract all GPOS kern pairs (Format 1 + Format 2) from Dinsical and DIN Next fonts.
+Extract all GPOS kern pairs (Format 1 + Format 2) from Dinsical and DIN Whim fonts.
 Outputs one JSON file per weight+style into ../public/kern-data/.
 
 JSON format:
-  { "dinsical": [[leftCP, rightCP, value], ...], "dinNext": [...] }
+  { "dinsical": [[leftCP, rightCP, value], ...], "dinWhim": [...] }
 """
 
 import json
@@ -17,18 +17,18 @@ OUT      = Path(__file__).parent.parent / 'public' / 'kern-data'
 OUT.mkdir(parents=True, exist_ok=True)
 
 PATHS: dict[str, tuple[str, str]] = {
-    'Light-upright':   ('Dinsical-Light.ttf',         'DIN-Next-Light.otf'),
-    'Light-italic':    ('Dinsical-LightItalic.ttf',   'DIN-Next-LightItalic.otf'),
-    'Regular-upright': ('Dinsical-Regular.ttf',        'DIN-Next-Regular.otf'),
-    'Regular-italic':  ('Dinsical-Italic.ttf',         'DIN-Next-Italic.otf'),
-    'Medium-upright':  ('Dinsical-Medium.ttf',         'DIN-Next-Medium.otf'),
-    'Medium-italic':   ('Dinsical-MediumItalic.ttf',   'DIN-Next-MediumItalic.otf'),
-    'Bold-upright':    ('Dinsical-Bold.ttf',           'DIN-Next-Bold.otf'),
-    'Bold-italic':     ('Dinsical-BoldItalic.ttf',     'DIN-Next-BoldItalic.otf'),
-    'Heavy-upright':   ('Dinsical-Heavy.ttf',          'DIN-Next-Heavy.otf'),
-    'Heavy-italic':    ('Dinsical-HeavyItalic.ttf',    'DIN-Next-HeavyItalic.otf'),
-    'Black-upright':   ('Dinsical-Black.ttf',          'DIN-Next-Black.otf'),
-    'Black-italic':    ('Dinsical-BlackItalic.ttf',    'DIN-Next-BlackItalic.otf'),
+    'Light-upright':   ('Dinsical-Light.ttf',         'DIN-Whim-Light.otf'),
+    'Light-italic':    ('Dinsical-LightItalic.ttf',   'DIN-Whim-LightItalic.otf'),
+    'Regular-upright': ('Dinsical-Regular.ttf',        'DIN-Whim-Regular.otf'),
+    'Regular-italic':  ('Dinsical-Italic.ttf',         'DIN-Whim-Italic.otf'),
+    'Medium-upright':  ('Dinsical-Medium.ttf',         'DIN-Whim-Medium.otf'),
+    'Medium-italic':   ('Dinsical-MediumItalic.ttf',   'DIN-Whim-MediumItalic.otf'),
+    'Bold-upright':    ('Dinsical-Bold.ttf',           'DIN-Whim-Bold.otf'),
+    'Bold-italic':     ('Dinsical-BoldItalic.ttf',     'DIN-Whim-BoldItalic.otf'),
+    'Heavy-upright':   ('Dinsical-Heavy.ttf',          'DIN-Whim-Heavy.otf'),
+    'Heavy-italic':    ('Dinsical-HeavyItalic.ttf',    'DIN-Whim-HeavyItalic.otf'),
+    'Black-upright':   ('Dinsical-Black.ttf',          'DIN-Whim-Black.otf'),
+    'Black-italic':    ('Dinsical-BlackItalic.ttf',    'DIN-Whim-BlackItalic.otf'),
 }
 
 
@@ -118,28 +118,28 @@ def to_codepoints(font: TTFont, pairs: dict[tuple[str, str], int]) -> list[list[
     return out
 
 
-for key, (dinsical_file, din_next_file) in PATHS.items():
+for key, (dinsical_file, din_whim_file) in PATHS.items():
     dinsical_path    = ROOT / 'fonts' / 'ttf' / dinsical_file
-    din_next_path = ROOT / 'din-next' / 'otf' / din_next_file
+    din_whim_path = ROOT / 'din-whim' / 'otf' / din_whim_file
 
     if not dinsical_path.exists():
         print(f'SKIP {key}: {dinsical_path.name} not found')
         continue
-    if not din_next_path.exists():
-        print(f'SKIP {key}: {din_next_path.name} not found')
+    if not din_whim_path.exists():
+        print(f'SKIP {key}: {din_whim_path.name} not found')
         continue
 
     print(f'Processing {key}…', end='  ', flush=True)
     dinsical_font    = TTFont(str(dinsical_path),    lazy=True)
-    din_next_font = TTFont(str(din_next_path), lazy=True)
+    din_whim_font = TTFont(str(din_whim_path), lazy=True)
 
     dinsical_pairs    = to_codepoints(dinsical_font,    get_kern_pairs(dinsical_font))
-    din_next_pairs = to_codepoints(din_next_font, get_kern_pairs(din_next_font))
+    din_whim_pairs = to_codepoints(din_whim_font, get_kern_pairs(din_whim_font))
 
-    print(f'Dinsical={len(dinsical_pairs)}  DIN Next={len(din_next_pairs)}')
+    print(f'Dinsical={len(dinsical_pairs)}  DIN Whim={len(din_whim_pairs)}')
 
     out_path = OUT / f'{key}.json'
-    out_path.write_text(json.dumps({'dinsical': dinsical_pairs, 'dinNext': din_next_pairs},
+    out_path.write_text(json.dumps({'dinsical': dinsical_pairs, 'dinWhim': din_whim_pairs},
                                    separators=(',', ':')))
     print(f'  → {out_path.name}')
 

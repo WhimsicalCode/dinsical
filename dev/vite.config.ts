@@ -20,7 +20,7 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           const url = (req.url ?? '').split('?')[0]
-          if (!url.startsWith('/fonts/') && !url.startsWith('/din-next/')) return next()
+          if (!url.startsWith('/fonts/') && !url.startsWith('/din-whim/')) return next()
           const filePath = resolve(PROJECT_ROOT, url.slice(1))
           if (!existsSync(filePath)) return next()
           const ext = filePath.split('.').pop()?.toLowerCase() ?? ''

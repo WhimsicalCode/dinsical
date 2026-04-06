@@ -13,7 +13,7 @@ import {
   renderStringOnCanvas, renderStringOverlay,
   renderPairOnCanvas, renderPairOverlay, renderPairContext,
   pairAdvancePx, stringAdvancePx,
-  DINSICAL_COLOR, DIN_NEXT_COLOR,
+  DINSICAL_COLOR, DIN_WHIM_COLOR,
 } from './kern-renderer'
 
 // ── Types ─────────────────────────────────────────────────────────────────
@@ -46,7 +46,7 @@ const KS = {
   fontPair:    null as FontPair | null,
   kernData:    null as KernPairData | null,
   dinsicalMap: new Map() as KernMap,
-  dinNextMap:  new Map() as KernMap,
+  dinWhimMap:  new Map() as KernMap,
   fontSize:    60,
   viewMode:    'overlay' as 'overlay' | 'sbs',
   filter:      'all' as FilterMode,
@@ -242,11 +242,11 @@ async function loadGlyphs(): Promise<void> {
     const pair = await loadFonts(SH.weight, SH.italic)
     GS.pair = pair
     const d = pair.dinsical
-    const c = pair.dinNext
+    const c = pair.dinWhim
     setGlyphStatus(
       `Dinsical — UPM ${d.unitsPerEm}  asc ${d.ascender}  desc ${d.descender}` +
       `   ·   ` +
-      `DIN Next — UPM ${c.unitsPerEm}  asc ${c.ascender}  desc ${c.descender}`,
+      `DIN Whim — UPM ${c.unitsPerEm}  asc ${c.ascender}  desc ${c.descender}`,
     )
     buildGlyphGrid(pair)
   } catch (err) {
@@ -281,7 +281,7 @@ function openGlyphModal(char: string): void {
   })
 
   const i1 = getGlyphInfo(char, pair.dinsical)
-  const i2 = getGlyphInfo(char, pair.dinNext)
+  const i2 = getGlyphInfo(char, pair.dinWhim)
   const awDiff = i1.advanceWidth !== i2.advanceWidth
 
   $mMetrics.innerHTML = `
@@ -292,10 +292,10 @@ function openGlyphModal(char: string): void {
       <div class="mrow"><span>UPM</span>          <code>${pair.dinsical.unitsPerEm}</code></div>
     </div>
     <div class="mcard" style="border-top:3px solid #2563eb">
-      <div class="mcard-title" style="color:#2563eb">DIN Next</div>
+      <div class="mcard-title" style="color:#2563eb">DIN Whim</div>
       <div class="mrow"><span>glyph name</span>  <code>${i2.name}</code></div>
       <div class="mrow"><span>advance width</span><code class="${awDiff ? 'diff' : ''}">${i2.advanceWidth}</code></div>
-      <div class="mrow"><span>UPM</span>          <code>${pair.dinNext.unitsPerEm}</code></div>
+      <div class="mrow"><span>UPM</span>          <code>${pair.dinWhim.unitsPerEm}</code></div>
     </div>
   `
 }
@@ -350,12 +350,12 @@ function buildPreview(): void {
   } else {
     const minW = Math.max(
       stringAdvancePx(pair.dinsical, text, KS.fontSize),
-      stringAdvancePx(pair.dinNext,  text, KS.fontSize),
+      stringAdvancePx(pair.dinWhim,  text, KS.fontSize),
     ) + 16
 
     for (const [font, color, label] of [
       [pair.dinsical, DINSICAL_COLOR, 'Dinsical'],
-      [pair.dinNext,  DIN_NEXT_COLOR, 'DIN Next'],
+      [pair.dinWhim,  DIN_WHIM_COLOR, 'DIN Whim'],
     ] as const) {
       const row = document.createElement('div')
       row.className = 'sbs-row'
@@ -382,7 +382,7 @@ function buildKernGrid(): void {
   if (!pair || !kern) return
 
   const allPairs = unionPairs(kern)
-  const filtered = filterPairs(allPairs, KS.dinsicalMap, KS.dinNextMap, KS.filter, KS.range)
+  const filtered = filterPairs(allPairs, KS.dinsicalMap, KS.dinWhimMap, KS.filter, KS.range)
   const grouped  = groupByCategory(filtered)
 
   const { cellH } = fakeCellDims(pair, KS.fontSize)
@@ -419,9 +419,9 @@ function buildKernGrid(): void {
 
 function fakeCellDims(pair: FontPair, fontSize: number): { cellH: number; baseline: number } {
   const s1 = fontSize / pair.dinsical.unitsPerEm
-  const s2 = fontSize / pair.dinNext.unitsPerEm
-  const asc  = Math.max(pair.dinsical.ascender   * s1, pair.dinNext.ascender   * s2)
-  const desc = Math.max(-pair.dinsical.descender * s1, -pair.dinNext.descender * s2)
+  const s2 = fontSize / pair.dinWhim.unitsPerEm
+  const asc  = Math.max(pair.dinsical.ascender   * s1, pair.dinWhim.ascender   * s2)
+  const desc = Math.max(-pair.dinsical.descender * s1, -pair.dinWhim.descender * s2)
   return { cellH: Math.ceil(asc + desc) + 16, baseline: Math.ceil(asc) + 8 }
 }
 
@@ -435,13 +435,13 @@ function makePairCell(
   cell.className = 'cell'
 
   const dv = lookupKern(KS.dinsicalMap, leftCP, rightCP)
-  const cv = lookupKern(KS.dinNextMap,  leftCP, rightCP)
+  const cv = lookupKern(KS.dinWhimMap,  leftCP, rightCP)
   const opts = kernOpts()
 
   if (KS.viewMode === 'overlay') {
     const canvas = document.createElement('canvas')
     const adv1 = pairAdvancePx(pair.dinsical, leftCP, rightCP, KS.fontSize)
-    const adv2 = pairAdvancePx(pair.dinNext,  leftCP, rightCP, KS.fontSize)
+    const adv2 = pairAdvancePx(pair.dinWhim,  leftCP, rightCP, KS.fontSize)
     const estW = Math.max(adv1, adv2, KS.fontSize * 0.4) + 16
     canvas.style.width  = `${Math.ceil(estW)}px`
     canvas.style.height = `${cellH}px`
@@ -455,13 +455,13 @@ function makePairCell(
     c1.className = 'sbs-canvas-d'
     c2.className = 'sbs-canvas-c'
     const adv1 = pairAdvancePx(pair.dinsical, leftCP, rightCP, KS.fontSize)
-    const adv2 = pairAdvancePx(pair.dinNext,  leftCP, rightCP, KS.fontSize)
+    const adv2 = pairAdvancePx(pair.dinWhim,  leftCP, rightCP, KS.fontSize)
     c1.style.width  = `${Math.ceil(Math.max(adv1, KS.fontSize * 0.4) + 16)}px`
     c1.style.height = `${cellH}px`
     c2.style.width  = `${Math.ceil(Math.max(adv2, KS.fontSize * 0.4) + 16)}px`
     c2.style.height = `${cellH}px`
     scheduleRender(c1, () => renderPairOnCanvas(c1, leftCP, rightCP, pair.dinsical, DINSICAL_COLOR, opts))
-    scheduleRender(c2, () => renderPairOnCanvas(c2, leftCP, rightCP, pair.dinNext,  DIN_NEXT_COLOR, opts))
+    scheduleRender(c2, () => renderPairOnCanvas(c2, leftCP, rightCP, pair.dinWhim,  DIN_WHIM_COLOR, opts))
     wrap.appendChild(c1)
     wrap.appendChild(c2)
     cell.appendChild(wrap)
@@ -541,13 +541,13 @@ function openKernModal(leftCP: number, rightCP: number): void {
   $mCtxWrap.appendChild(ctxCanvas)
 
   const dv = lookupKern(KS.dinsicalMap, leftCP, rightCP)
-  const cv = lookupKern(KS.dinNextMap,  leftCP, rightCP)
+  const cv = lookupKern(KS.dinWhimMap,  leftCP, rightCP)
   const diff = dv - cv
 
   const g1d = pair.dinsical.charToGlyph(l)
   const g2d = pair.dinsical.charToGlyph(r)
-  const g1c = pair.dinNext.charToGlyph(l)
-  const g2c = pair.dinNext.charToGlyph(r)
+  const g1c = pair.dinWhim.charToGlyph(l)
+  const g2c = pair.dinWhim.charToGlyph(r)
 
   const diffClass = diff !== 0 ? 'diff' : ''
 
@@ -560,8 +560,8 @@ function openKernModal(leftCP: number, rightCP: number): void {
       <div class="mrow"><span>adv right</span><code>${g2d.advanceWidth ?? 0}</code></div>
       <div class="mrow"><span>kern</span><code class="${diffClass}">${dv}</code></div>
     </div>
-    <div class="mcard" style="border-top:3px solid ${DIN_NEXT_COLOR}">
-      <div class="mcard-title" style="color:${DIN_NEXT_COLOR}">DIN Next</div>
+    <div class="mcard" style="border-top:3px solid ${DIN_WHIM_COLOR}">
+      <div class="mcard-title" style="color:${DIN_WHIM_COLOR}">DIN Whim</div>
       <div class="mrow"><span>left glyph</span><code>${g1c.name ?? '.notdef'}</code></div>
       <div class="mrow"><span>right glyph</span><code>${g2c.name ?? '.notdef'}</code></div>
       <div class="mrow"><span>adv left</span><code>${g1c.advanceWidth ?? 0}</code></div>
@@ -572,7 +572,7 @@ function openKernModal(leftCP: number, rightCP: number): void {
     <div class="mcard mcard-delta">
       <div class="mcard-title">Δ</div>
       <div class="mrow"><span>kern difference</span><code class="diff">${diff > 0 ? '+' : ''}${diff}</code></div>
-      <div class="mrow"><span>status</span><code class="diff">${dv === 0 ? 'missing in Dinsical' : cv === 0 ? 'missing in DIN Next' : 'values differ'}</code></div>
+      <div class="mrow"><span>status</span><code class="diff">${dv === 0 ? 'missing in Dinsical' : cv === 0 ? 'missing in DIN Whim' : 'values differ'}</code></div>
     </div>` : ''}
   `
 
@@ -595,7 +595,7 @@ async function loadKern(): Promise<void> {
     KS.fontPair    = fontPair
     KS.kernData    = kernData
     KS.dinsicalMap = makeKernMap(kernData.dinsical)
-    KS.dinNextMap  = makeKernMap(kernData.dinNext)
+    KS.dinWhimMap  = makeKernMap(kernData.dinWhim)
 
     buildPreview()
     buildKernGrid()

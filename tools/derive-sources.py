@@ -6,12 +6,12 @@ Pipeline applied to each master (Regular, Bold):
   1. Copy DINish/DINish-{weight}.ufo  →  sources/Dinsical/Dinsical-{weight}.ufo
   2. Rename DINish → Dinsical in all text content (family names, PS names, …)
   3. [Dinsical only] Blend glyph coordinates toward DINishExpanded by WDTH_BLEND
-     (0.28 ≈ wdth 107 on the 75–100–125 axis, matching DIN Next proportions)
+     (0.28 ≈ wdth 107 on the 75–100–125 axis, matching DIN Whim proportions)
   4. Scale all glyph coordinates by a combined factor:
        (1000 / 1024)   — rescale UPM from 1024 to 1000
-       × 0.985         — reduce glyph body to match DIN Next visual size
+       × 0.985         — reduce glyph body to match DIN Whim visual size
        = 0.9619140625
-  5. Set UPM to 1000 and override line metrics with exact DIN Next values
+  5. Set UPM to 1000 and override line metrics with exact DIN Whim values
      (hhea 830/−170/200, sTypo 750/−250/200, win 850/350)
      → gives exactly 120 px line height at 100 px font-size
   6. Apply any per-glyph overrides from overlay/sources/Dinsical/
@@ -55,7 +55,7 @@ WDTH_BLEND: float = 0.2 # DINish wdth 105
 # same baseline regardless of which table it picks.
 #
 # Chromium respects USE_TYPO_METRICS for TTF/WOFF2 (uses sTypo) but
-# falls back to hhea for CFF/OTF.  DIN Next is CFF, so it effectively
+# falls back to hhea for CFF/OTF.  DIN Whim is CFF, so it effectively
 # uses hhea (asc=830).  Dinsical is a TTF variable font and would use sTypo
 # (asc=750) — placing the baseline 13 px higher at 160 px font-size.
 # Making sTypo == hhea (830/-170/200) eliminates the discrepancy.

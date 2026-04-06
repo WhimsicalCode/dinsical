@@ -9,7 +9,7 @@ export interface RenderOpts {
 
 const PAD = 8
 export const DINSICAL_COLOR    = '#dc2626'
-export const DIN_NEXT_COLOR = '#2563eb'
+export const DIN_WHIM_COLOR = '#2563eb'
 
 // ── Low-level helpers ──────────────────────────────────────────────────────
 
@@ -96,9 +96,9 @@ function strokeText(
 
 function cellHeightFromPair(pair: FontPair, fontSize: number): { cellH: number; baseline: number } {
   const s1 = scale(pair.dinsical,    fontSize)
-  const s2 = scale(pair.dinNext, fontSize)
-  const asc  = Math.max(pair.dinsical.ascender   * s1, pair.dinNext.ascender   * s2)
-  const desc = Math.max(-pair.dinsical.descender * s1, -pair.dinNext.descender * s2)
+  const s2 = scale(pair.dinWhim, fontSize)
+  const asc  = Math.max(pair.dinsical.ascender   * s1, pair.dinWhim.ascender   * s2)
+  const desc = Math.max(-pair.dinsical.descender * s1, -pair.dinWhim.descender * s2)
   return { cellH: Math.ceil(asc + desc) + PAD * 2, baseline: Math.ceil(asc) + PAD }
 }
 
@@ -133,7 +133,7 @@ export function renderStringOnCanvas(
   opts:     RenderOpts,
   minWidth: number,
 ): void {
-  const { cellH, baseline } = cellHeightFromPair({ dinsical: font, dinNext: font }, opts.fontSize)
+  const { cellH, baseline } = cellHeightFromPair({ dinsical: font, dinWhim: font }, opts.fontSize)
   const w = Math.max(minWidth, stringAdvancePx(font, text, opts.fontSize) + PAD * 2)
   const ctx = setupCanvas(canvas, w, cellH)
   if (opts.showBaseline) drawBaseline(ctx, w, baseline)
@@ -150,12 +150,12 @@ export function renderStringOverlay(
   const { cellH, baseline } = cellHeightFromPair(pair, opts.fontSize)
   const w = Math.max(
     stringAdvancePx(pair.dinsical,    text, opts.fontSize),
-    stringAdvancePx(pair.dinNext, text, opts.fontSize),
+    stringAdvancePx(pair.dinWhim, text, opts.fontSize),
   ) + PAD * 2
 
   const ctx = setupCanvas(canvas, w, cellH)
   if (opts.showBaseline) drawBaseline(ctx, w, baseline)
-  strokeText(ctx, pair.dinNext, text, PAD, baseline, opts.fontSize, DIN_NEXT_COLOR, opts.lineWidth)
+  strokeText(ctx, pair.dinWhim, text, PAD, baseline, opts.fontSize, DIN_WHIM_COLOR, opts.lineWidth)
   strokeText(ctx, pair.dinsical,    text, PAD, baseline, opts.fontSize, DINSICAL_COLOR,    opts.lineWidth)
 }
 
@@ -171,7 +171,7 @@ export function renderPairOnCanvas(
   opts:    RenderOpts,
   fixedW?: number,   // if set, use this width instead of computing from advance
 ): number {
-  const { cellH, baseline } = cellHeightFromPair({ dinsical: font, dinNext: font }, opts.fontSize)
+  const { cellH, baseline } = cellHeightFromPair({ dinsical: font, dinWhim: font }, opts.fontSize)
   const adv = pairAdvancePx(font, leftCP, rightCP, opts.fontSize)
   const w   = fixedW ?? (Math.max(adv, opts.fontSize * 0.4) + PAD * 2)
   const ctx = setupCanvas(canvas, w, cellH)
@@ -192,7 +192,7 @@ export function renderPairOverlay(
 ): void {
   const { cellH, baseline } = cellHeightFromPair(pair, opts.fontSize)
   const adv1 = pairAdvancePx(pair.dinsical,    leftCP, rightCP, opts.fontSize)
-  const adv2 = pairAdvancePx(pair.dinNext, leftCP, rightCP, opts.fontSize)
+  const adv2 = pairAdvancePx(pair.dinWhim, leftCP, rightCP, opts.fontSize)
   const adv  = Math.max(adv1, adv2)
   const w    = Math.max(adv, opts.fontSize * 0.4) + PAD * 2
   const ctx  = setupCanvas(canvas, w, cellH)
@@ -200,8 +200,8 @@ export function renderPairOverlay(
   if (opts.showBaseline) drawBaseline(ctx, w, baseline)
 
   const text = String.fromCodePoint(leftCP) + String.fromCodePoint(rightCP)
-  // DIN Next underneath, Dinsical on top
-  strokeText(ctx, pair.dinNext, text, (w - adv2) / 2, baseline, opts.fontSize, DIN_NEXT_COLOR, opts.lineWidth)
+  // DIN Whim underneath, Dinsical on top
+  strokeText(ctx, pair.dinWhim, text, (w - adv2) / 2, baseline, opts.fontSize, DIN_WHIM_COLOR, opts.lineWidth)
   strokeText(ctx, pair.dinsical,    text, (w - adv1) / 2, baseline, opts.fontSize, DINSICAL_COLOR,    opts.lineWidth)
 }
 
@@ -221,11 +221,11 @@ export function renderPairContext(
   const { cellH, baseline } = cellHeightFromPair(pair, opts.fontSize)
   const w = Math.max(
     stringAdvancePx(pair.dinsical,    full, opts.fontSize),
-    stringAdvancePx(pair.dinNext, full, opts.fontSize),
+    stringAdvancePx(pair.dinWhim, full, opts.fontSize),
   ) + PAD * 2
 
   const ctx = setupCanvas(canvas, w, cellH)
   if (opts.showBaseline) drawBaseline(ctx, w, baseline)
-  strokeText(ctx, pair.dinNext, full, PAD, baseline, opts.fontSize, DIN_NEXT_COLOR, opts.lineWidth)
+  strokeText(ctx, pair.dinWhim, full, PAD, baseline, opts.fontSize, DIN_WHIM_COLOR, opts.lineWidth)
   strokeText(ctx, pair.dinsical,    full, PAD, baseline, opts.fontSize, DINSICAL_COLOR,    opts.lineWidth)
 }

@@ -53,7 +53,7 @@ $PYTHON "$TOOLSDIR/derive-sources.py" \
 for f in Dinsical DinsicalCondensed DinsicalExpanded; do
     mkdir -p "$BUILD/vfwork/$f"
     # All VF masters go through the calibrated factor — including Regular (w=4)
-    # and Bold (w=7) — so the variable font axis matches DIN Next stem weights.
+    # and Bold (w=7) — so the variable font axis matches DIN Whim stem weights.
     for weight in Light Regular Bold Heavy Black; do
         case $weight in Light) w=3;; Regular) w=4;; Bold) w=7;; Heavy) w=8;; Black) w=9;; esac
         $PYTHON "$TOOLSDIR/interpolate-font.py" \

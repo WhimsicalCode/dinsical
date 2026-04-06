@@ -1,5 +1,5 @@
 """
-Dinsical spacing patch — increases glyph sidebearings to match DIN Next.
+Dinsical spacing patch — increases glyph sidebearings to match DIN Whim.
 
 Applied by tools/derive-sources.py after glyph scaling on every `make sources`
 run. Works in two phases:
@@ -34,7 +34,7 @@ from pathlib import Path
 
 
 # ---------------------------------------------------------------------------
-# Target sidebearing values derived from compiled DIN Next Regular / Bold.
+# Target sidebearing values derived from compiled DIN Whim Regular / Bold.
 # Format: glyph_name → (target_lsb, target_rsb)  [1000 UPM space]
 # ---------------------------------------------------------------------------
 
@@ -391,7 +391,7 @@ def _propagate_to_composites(
 
 def apply(glyphs_dir: Path, weight: str) -> int:
     """
-    Adjust sidebearings for all glyphs in glyphs_dir to match DIN Next targets.
+    Adjust sidebearings for all glyphs in glyphs_dir to match DIN Whim targets.
 
     Args:
         glyphs_dir: path to the UFO's glyphs/ directory (already scaled)

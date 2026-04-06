@@ -1,23 +1,22 @@
 # Dinsical
 
-Dinsical is a variable font derived from [DINish](https://github.com/playbeing/dinish)
-(itself a fork of Altinn-DIN / D-DIN), tuned for pixel-accurate canvas and web
-rendering.
+Dinsical is a variable font derived from [DINish](https://github.com/playbeing/dinish) (itself a fork of Altinn-DIN / 
+D-DIN), tuned to match DIN Whim character size, line size and kerning as closely as possible. 
+
+DIN Whim is a slightly customized version of DIN Next, originally used in Whimsical app.
 
 ## Why Dinsical exists
-
-Two specific problems with the upstream DINish font motivated this fork:
 
 1. **Line height is not pixel-aligned.**  
    DINish uses 1024 UPM.  At 100 px font-size the natural line height is
    `(1050 + 248) / 1024 × 100 = 126.37 px` — a non-integer that causes
    sub-pixel rendering differences across browsers and canvas implementations.  
-   Dinsical uses 1000 UPM with line metrics copied from DIN Next, giving
+   Dinsical uses 1000 UPM with line metrics copied from DIN Whim, giving
    exactly **120.000 px** at 100 px (`(750 + 250 + 200) / 1000 × 100`).
 
-2. **Glyph bodies are 1.5 % too large compared to DIN Next.**  
-   Outlines are scaled down by **0.985×** so that `font-size: 1000px` in Dinsical
-   renders identically to `font-size: 1000px` in DIN Next.
+2. **Side bearing differences**
+
+3. **Kerning differences**
 
 ## Font metrics
 
@@ -34,7 +33,7 @@ Two specific problems with the upstream DINish font motivated this fork:
 | Axis | Tag | Range |
 |---|---|---|
 | Weight | `wght` | 300 (Light) – 900 (Black) |
-| Slant | `slnt` | 0 (upright) – −12 (italic) |
+| Slant | `slnt` | 0 (upright) – −10 (italic) |
 
 Static instances: Light, Regular, Medium, SemiBold, Bold, Heavy, Black
 (+ Italic variants of each).
@@ -42,7 +41,7 @@ Static instances: Light, Regular, Medium, SemiBold, Bold, Heavy, Black
 ## Repository structure
 
 ```
-dinsical-new/
+dinsical/
 ├── VERSION                       Version number (e.g. "1.001")
 ├── CHANGELOG.md                  Release history
 ├── Makefile                      Build targets (see below)
@@ -109,7 +108,7 @@ uv tool install fontmake --with skia-pathops --with fontparts --with xmltodict
    → `sources/Dinsical/Dinsical-{Regular,Bold}.ufo`
 2. **Rename** `DINish` → `Dinsical` in all text content (family names, PS names, class names)
 3. **Scale** all glyph coordinates and advance widths by `(1000/1024) × 0.985 = 0.9619…`
-4. **Set UPM** to 1000; **override line metrics** with exact DIN Next values
+4. **Set UPM** to 1000; **override line metrics** with exact DIN Whim values
 5. **Apply overlay** — copy any `.glif` files from `overlay/sources/Dinsical/` on top
 
 ## Per-glyph overrides
@@ -181,6 +180,7 @@ Dinsical inherits DINish's full glyph set:
 
 SIL Open Font License, Version 1.1 — see [OFL.txt](OFL.txt).
 
+Copyright © 2026 Whimsical, Inc.
 Copyright © 2023–2024 Stefan Peev  
 Copyright © 2021–2025 Bert Driehuis  
 Copyright © 2019 Altinn  
