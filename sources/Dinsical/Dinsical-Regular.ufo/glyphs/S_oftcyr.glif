@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Softcyr" format="2">
+  <advance width="613" />
+  <unicode hex="042C" />
+  <guideline x="296" y="0" angle="90" name="h1" />
+  <guideline x="296" y="0" angle="90" name="h1" />
+  <anchor x="296" y="741" name="top" />
+  <outline>
+    <contour>
+      <point x="77" y="0" type="line" />
+      <point x="332" y="0" type="line" smooth="yes" />
+      <point x="469" y="0" />
+      <point x="549" y="74" />
+      <point x="549" y="203" type="curve" smooth="yes" />
+      <point x="549" y="326" />
+      <point x="467" y="401" />
+      <point x="332" y="401" type="curve" smooth="yes" />
+      <point x="153" y="401" type="line" />
+      <point x="153" y="680" type="line" />
+      <point x="77" y="680" type="line" />
+    </contour>
+    <contour>
+      <point x="153" y="68" type="line" />
+      <point x="153" y="333" type="line" />
+      <point x="327" y="333" type="line" smooth="yes" />
+      <point x="424" y="333" />
+      <point x="473" y="289" />
+      <point x="473" y="203" type="curve" smooth="yes" />
+      <point x="473" y="114" />
+      <point x="425" y="68" />
+      <point x="326" y="68" type="curve" smooth="yes" />
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.metricsLeft</key>
+      <string>=H</string>
+      <key>com.fontlab.metricsRight</key>
+      <string>=B</string>
+      <key>com.fontlab.recipe</key>
+      <string>P%</string>
+    </dict>
+  </lib>
+</glyph>

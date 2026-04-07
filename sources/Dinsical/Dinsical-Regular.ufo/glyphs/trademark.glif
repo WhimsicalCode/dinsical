@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="trademark" format="2">
+  <advance width="822" />
+  <unicode hex="2122" />
+  <outline>
+    <contour>
+      <point x="156" y="291" type="line" />
+      <point x="215" y="291" type="line" />
+      <point x="215" y="625" type="line" />
+      <point x="331" y="625" type="line" />
+      <point x="331" y="680" type="line" />
+      <point x="38" y="680" type="line" />
+      <point x="38" y="625" type="line" />
+      <point x="156" y="625" type="line" />
+    </contour>
+    <contour>
+      <point x="398" y="291" type="line" />
+      <point x="455" y="291" type="line" />
+      <point x="455" y="547" type="line" />
+      <point x="457" y="547" type="line" />
+      <point x="551" y="348" type="line" />
+      <point x="594" y="348" type="line" />
+      <point x="687" y="547" type="line" />
+      <point x="689" y="547" type="line" />
+      <point x="689" y="291" type="line" />
+      <point x="745" y="291" type="line" />
+      <point x="745" y="680" type="line" />
+      <point x="691" y="680" type="line" />
+      <point x="575" y="421" type="line" />
+      <point x="572" y="421" type="line" />
+      <point x="453" y="680" type="line" />
+      <point x="398" y="680" type="line" />
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>627</integer>
+            <key>width</key>
+            <integer>53</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>153</integer>
+            <key>width</key>
+            <integer>58</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>391</integer>
+            <key>width</key>
+            <integer>55</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>672</integer>
+            <key>width</key>
+            <integer>56</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

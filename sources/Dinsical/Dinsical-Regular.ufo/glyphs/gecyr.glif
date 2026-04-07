@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="gecyr" format="2">
+  <advance width="340" />
+  <unicode hex="0433" />
+  <guideline x="207" y="0" angle="90" name="h1" />
+  <anchor x="207" y="564" name="top" />
+  <outline>
+    <contour>
+      <point x="72" y="0" type="line" />
+      <point x="142" y="0" type="line" />
+      <point x="142" y="435" type="line" />
+      <point x="316" y="435" type="line" />
+      <point x="316" y="500" type="line" />
+      <point x="72" y="500" type="line" />
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.metricsLeft</key>
+      <string>=r</string>
+      <key>com.fontlab.metricsRight</key>
+      <string>=r</string>
+    </dict>
+  </lib>
+</glyph>

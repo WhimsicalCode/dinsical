@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="caroncmb.alt" format="2">
+  <outline>
+    <contour>
+      <point x="-33" y="513" type="line" />
+      <point x="33" y="574" type="line" />
+      <point x="33" y="680" type="line" />
+      <point x="-33" y="680" type="line" />
+    </contour>
+  </outline>
+</glyph>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Kacyr" format="2">
+  <advance width="603" />
+  <unicode hex="041A" />
+  <guideline x="63" y="544" angle="0" name="horizontal" />
+  <guideline x="274" y="0" angle="90" name="h1" />
+  <anchor x="282" y="741" name="top" />
+  <outline>
+    <contour>
+      <point x="77" y="0" type="line" />
+      <point x="153" y="0" type="line" />
+      <point x="153" y="314" type="line" />
+      <point x="265" y="314" type="line" />
+      <point x="507" y="0" type="line" />
+      <point x="595" y="0" type="line" />
+      <point x="316" y="368" type="line" />
+      <point x="565" y="680" type="line" />
+      <point x="476" y="680" type="line" />
+      <point x="243" y="381" type="line" />
+      <point x="153" y="381" type="line" />
+      <point x="153" y="680" type="line" />
+      <point x="77" y="680" type="line" />
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.metricsLeft</key>
+      <string>=H</string>
+      <key>com.fontlab.metricsRight</key>
+      <string>=K</string>
+      <key>com.fontlab.recipe</key>
+      <string>K%</string>
+    </dict>
+  </lib>
+</glyph>
