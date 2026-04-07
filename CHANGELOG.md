@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [1.011] - 2026-04-04
+## [1.011] - 2026-04-07
 
 ### Changed
 - Lowercase `u`: added serifs via glyph overlay.
