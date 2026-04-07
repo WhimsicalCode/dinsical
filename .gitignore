@@ -8,3 +8,4 @@ variable_ttf/
 instances/
 zips/
 *.zip
+overlay/**/*.plist
